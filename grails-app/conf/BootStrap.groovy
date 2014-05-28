@@ -11,8 +11,9 @@ class BootStrap {
     void createUserWithRole(){
         School school = School.findByName('Baily School')
         if(!school){
-            school = new School('Baily School')
+            school = new School(name:'Baily School')
             school.id=10000
+            school.save()
         }
         Role superAdmin = Role.findByAuthority("ROLE_SUPER_ADMIN")
         if(!superAdmin){
