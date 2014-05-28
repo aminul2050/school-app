@@ -31,8 +31,8 @@
 
             <div class="login-wrap">
             <div class="user-login-info">
-                <input type="text" name="j_username" id="username" class="form-control" placeholder="User ID" required autofocus>
-                <input type="password" name="j_password" id="password" class="form-control" placeholder="Password" required>
+                <input type="text" name="j_username" id="username" value="admin" class="form-control" placeholder="User ID" required autofocus>
+                <input type="password" name="j_password" value="password" id="password" class="form-control" placeholder="Password" required>
             </div>
             <label class="checkbox">
                 <input type="checkbox" value="remember-me"> Remember me

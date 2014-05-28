@@ -2,8 +2,6 @@ dataSource {
     pooled = true
     jmxExport = true
     driverClassName = "com.mysql.jdbc.Driver"
-//    username = "sa"
-//    password = ""
 }
 hibernate {
     cache.use_second_level_cache = true
@@ -20,7 +18,7 @@ environments {
             url = "jdbc:mysql://localhost:3306/baily"
 //            logSql = true
             username = "root"
-            password = "root"
+            password = ""
         }
     }
     test {
@@ -34,7 +32,7 @@ environments {
             dbCreate = "update"
             url = "jdbc:mysql://mysql-portfolioapp.jelastic.servint.net/portfolio"
             username = "root"
-            password = "22YypgXAW0"
+            password = ""
             properties {
                 // Documentation for Tomcat JDBC Pool
                 // http://tomcat.apache.org/tomcat-7.0-doc/jdbc-pool.html#Common_Attributes
