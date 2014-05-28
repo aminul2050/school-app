@@ -1,14 +1,20 @@
-package com.app.school.settings
+package com.app.school.stmgmt
 
-class ClassSubject {
+import com.app.school.settings.Exam
+
+class Result {
     transient springSecurityService
-
-    ClassName className
-    String subjectIds
+    Exam exam
+    Student student
+    Float gradePoint
+    String gpa
+    Float grandTotal
+    Float highestMark
+    String positionInSection
+    String positionInClass
 
     static constraints = {
     }
-
     //common properties for every table
     Long schoolId
     String createdBy

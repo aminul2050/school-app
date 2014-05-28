@@ -1,14 +1,22 @@
-package com.app.school.settings
+package com.app.school.stmgmt
 
-class ClassSubject {
+import com.app.school.settings.ClassName
+import com.app.school.settings.Section
+
+class AdmissionInfo {
     transient springSecurityService
 
     ClassName className
-    String subjectIds
+    Student student
+    String studentNo
+    Date admissionDate
+    String academicYear
+    Section section
+
+
 
     static constraints = {
     }
-
     //common properties for every table
     Long schoolId
     String createdBy

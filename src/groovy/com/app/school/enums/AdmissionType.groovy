@@ -5,9 +5,9 @@ package com.app.school.enums
  */
 public enum AdmissionType {
 
-    NEWADMISSION("New Admission"),
-    ADMISSION("Admission"),
-    READMISSION("Re Admission"),
+    NEWADMISSION("New AdmissionInfo"),
+    ADMISSION("AdmissionInfo"),
+    READMISSION("Re AdmissionInfo"),
 
     final String value
     AdmissionType(String value) {
