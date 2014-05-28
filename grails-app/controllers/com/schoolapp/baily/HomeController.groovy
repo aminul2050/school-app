@@ -17,4 +17,7 @@ class HomeController {
     def account() {
         render(view: 'account')
     }
+    def dataTable(){
+        render(view: 'dataTable')
+    }
 }
