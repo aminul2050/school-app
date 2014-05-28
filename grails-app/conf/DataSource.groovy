@@ -7,16 +7,13 @@ hibernate {
     cache.use_second_level_cache = true
     cache.use_query_cache = false
     cache.region.factory_class = 'net.sf.ehcache.hibernate.EhCacheRegionFactory' // Hibernate 3
-//    cache.region.factory_class = 'org.hibernate.cache.ehcache.EhCacheRegionFactory' // Hibernate 4
 }
 
-// environment specific settings
 environments {
     development {
         dataSource {
             dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
             url = "jdbc:mysql://localhost:3306/baily"
-//            logSql = true
             username = "root"
             password = ""
         }
@@ -34,9 +31,6 @@ environments {
             username = "root"
             password = ""
             properties {
-                // Documentation for Tomcat JDBC Pool
-                // http://tomcat.apache.org/tomcat-7.0-doc/jdbc-pool.html#Common_Attributes
-                // https://tomcat.apache.org/tomcat-7.0-doc/api/org/apache/tomcat/jdbc/pool/PoolConfiguration.html
                 jmxEnabled = true
                 initialSize = 5
                 maxActive = 50
