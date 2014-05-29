@@ -15,7 +15,7 @@ environments {
             dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
             url = "jdbc:mysql://localhost:3306/baily"
             username = "root"
-            password = ""
+            password = "root"
         }
     }
     test {

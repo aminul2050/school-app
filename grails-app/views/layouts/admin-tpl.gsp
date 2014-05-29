@@ -15,6 +15,7 @@
 
     <!--Bootstrap CSS -->
     <link rel="stylesheet" href="${resource(dir: 'bs3/css', file: 'bootstrap.min.css')}" type="text/css">
+    <link rel="stylesheet" href="${resource(dir: 'css', file: 'DT_bootstrap.css')}" type="text/css">
     <!--Core CSS -->
     <link rel="stylesheet" href="${resource(dir: 'css/', file: 'bootstrap-reset.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css/', file: 'bootstrap-fullcalendar.css')}" type="text/css">
@@ -304,6 +305,9 @@
 <script src="${resource(dir: 'js/', file: 'jquery.nicescroll.js')}"></script>
 <script src="${resource(dir: 'js/', file: 'draggable-portlet.js')}"></script>
 <script src="${resource(dir: 'js/', file: 'scripts.js')}"></script>
+
+<script src="${resource(dir: 'js/', file: 'jquery.dataTables.js')}"></script>
+<script src="${resource(dir: 'js/', file: 'dataTables.bootstrap.js')}"></script>
 
 <g:javascript library="application"/>
 <r:layoutResources/>
