@@ -22,8 +22,8 @@
     </span>
 </header>
 <div class="panel-body">
-<div class="adv-table editable-table ">
-<table class="table table-striped table-hover table-bordered" id="editable-sample">
+<div class="table-responsive">
+<table class="table table-striped table-hover table-bordered" id="list-table">
 <thead>
 <tr>
     <th>First Name</th>
@@ -267,5 +267,95 @@
 </div>
 </div>
 <!-- page end-->
+<r:script>
+    jQuery(function ($) {
+        var oTable1 = $('#list-table').dataTable({
+//            "sDom": "<'row'<'col-md-4'><'col-md-4'><'col-md-4'f>r>t<'row'<'col-md-4'l><'col-md-4'i><'col-md-4'p>>",
+//            "bProcessing": false,
+            "bAutoWidth": true,
+//            "bServerSide": true,
+//            "deferLoading": {totalCount},
+//            "sAjaxSource": "{g.createLink(controller: 'currency',action: 'list')}",
+            /*"fnRowCallback": function (nRow, aData, iDisplayIndex) {
+                if(aData.DT_RowId ==undefined){
+                    return true;
+                }
+                $('td:eq(6)', nRow).html(getActionButtons(nRow, aData));
+                return nRow;
+            },*/
+            "aoColumns": [
+                { "bSortable": false },
+                null,
+                { "bSortable": false },
+                null,
+                { "bSortable": false },
+                { "bSortable": false }
+
+            ]
+        });
+        $('#createCurrencyLink').click(function (e) {
+            var control = this;
+            var url = $(control).attr('href');
+            jQuery.ajax({
+                type: 'POST',
+                url: url,
+                success: function (data, textStatus) {
+                    $('#page-content').html(data);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+// $('#'+updateDiv).html(data);
+                }
+            });
+            e.preventDefault();
+        });
+        $('#sample-table-2').on('click', 'a.edit-reference', function (e) {
+            var control = this;
+            var referenceId = $(control).attr('referenceId');
+            jQuery.ajax({
+                type: 'POST',
+                url: "${g.createLink(controller: 'currency',action: 'update')}?id=" + referenceId,
+                success: function (data, textStatus) {
+                    $('#page-content').html(data);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                }
+            });
+            e.preventDefault();
+        });
+
+        $('#sample-table-2').on('click', 'a.delete-reference', function (e) {
+            var selectRow = $(this).parents('tr');
+            var confirmDel = confirm("Do You Want To Delete?");
+            if (confirmDel == true) {
+                var control = this;
+                var referenceId = $(control).attr('referenceId');
+                jQuery.ajax({
+                    type: 'POST',
+                    dataType:'JSON',
+                    url: "${g.createLink(controller: 'currency',action: 'delete')}?id=" + referenceId,
+                    success: function (data, textStatus) {
+                        if(data.isError==false){
+                            $("#sample-table-2").DataTable().row(selectRow).remove().draw();
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+// $('#'+updateDiv).html(data);
+                    }
+                });
+            }
+            e.preventDefault();
+        });
+    });
+    function getActionButtons(nRow, aData) {
+        var actionButtons = "";
+        actionButtons += '<sec:access controller="currency" action="update"><span class="col-xs-6"><a href="" referenceId="' + aData.DT_RowId + '" class="edit-reference" title="Edit">';
+        actionButtons += '<span class="green glyphicon glyphicon-edit"></span>';
+        actionButtons += '</a></span></sec:access>';
+        actionButtons += '<sec:access controller="currency" action="delete"><span class="col-xs-6"><a href="" referenceId="' + aData.DT_RowId + '" class="delete-reference" title="Delete">';
+        actionButtons += '<span class="red glyphicon glyphicon-trash"></span>';
+        actionButtons += '</a></span></sec:access>';
+        return actionButtons;
+    }
+</r:script>
 </body>
 </html>
