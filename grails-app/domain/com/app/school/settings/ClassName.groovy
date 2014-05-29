@@ -4,6 +4,7 @@ class ClassName {
     transient springSecurityService
     School school
     String name
+    String description
 
     static constraints = {
     }
