@@ -2,7 +2,7 @@ package com.app.school.settings
 
 class ClassName {
     transient springSecurityService
-    School school
+    Long schoolId
     String name
     String description
 
@@ -15,6 +15,7 @@ class ClassName {
     String lastUpdatedBy
     Date lastUpdatedOn
     def beforeInsert(){
+        schoolId=10000
         createdBy = springSecurityService.principal.username
         createdOn = new Date()
     }

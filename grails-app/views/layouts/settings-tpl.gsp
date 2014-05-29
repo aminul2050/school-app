@@ -15,11 +15,11 @@
 
     <!--Bootstrap CSS -->
     <link rel="stylesheet" href="${resource(dir: 'bs3/css', file: 'bootstrap.min.css')}" type="text/css">
+    <link rel="stylesheet" href="${resource(dir: 'css', file: 'DT_bootstrap.css')}" type="text/css">
     <!--Core CSS -->
     <link rel="stylesheet" href="${resource(dir: 'css/', file: 'bootstrap-reset.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css/', file: 'bootstrap-fullcalendar.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'font-awesome/css/', file: 'font-awesome.css')}" type="text/css">
-    <link rel="stylesheet" href="${resource(dir: 'css/', file: 'DT_bootstrap.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css/', file: 'style.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css/', file: 'style-responsive.css')}" type="text/css">
 
@@ -242,8 +242,8 @@
 
 <div class="top-nav clearfix">
     <!--search & user info start-->
-
     <g:render template="/module-menu"/>
+
     <!--search & user info end-->
 </div>
 </header>
@@ -252,7 +252,7 @@
 <aside>
     <div id="sidebar" class="nav-collapse">
         <!-- sidebar menu start-->
-        <g:render template="/admin-left-menu"/>
+        <g:render template="/settings-left-menu"/>
         <!-- sidebar menu end-->
     </div>
 </aside>
