@@ -6,7 +6,7 @@
 
 </head>
 <body>
-%{--<g:render template="createClassName"/>--}%
+<g:render template="createClassName"/>
 
 <div class="row">
 <div class="col-sm-12">

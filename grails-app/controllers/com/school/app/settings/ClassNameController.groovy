@@ -72,7 +72,7 @@ class ClassNameController {
         }
         className.save(flush: true)
 
-        def result=[isError:false,message:"ClassName deleted successfully"]
+        def result=[isError:false,message:"ClassName deleted g g successfully"]
         String outPut=result as JSON
         render outPut
     }
