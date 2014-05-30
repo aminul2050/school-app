@@ -1,12 +1,10 @@
-<div class="row">
+<div class="row" id="classNameCreate" style="display:none">
     <div class="col-lg-12">
         <section class="panel">
             <header class="panel-heading">
                 Advanced Form validations
                 <span class="tools pull-right">
                     <a class="fa fa-chevron-down" href="javascript:;"></a>
-                    <a class="fa fa-cog" href="javascript:;"></a>
-                    <a class="fa fa-times" href="javascript:;"></a>
                 </span>
             </header>
             <div class="panel-body">

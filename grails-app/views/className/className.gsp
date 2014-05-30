@@ -82,7 +82,8 @@
             ]
         });
         $('#add-new-btn').click(function (e) {
-            alert("added new");
+//            document.getElementById(classNameCreate).style.display = 'block';
+        $("#classNameCreate").toggle(1000);
             e.preventDefault();
         });
         $('#sample-table-2').on('click', 'a.edit-reference', function (e) {
@@ -123,6 +124,7 @@
             e.preventDefault();
         });
     });
+
     function getActionButtons(nRow, aData) {
         var actionButtons = "";
         actionButtons += '<sec:access controller="className" action="edit"><span class="col-xs-6"><a href="" referenceId="' + aData.DT_RowId + '" class="edit-reference" title="Edit">';
