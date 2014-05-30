@@ -8,6 +8,7 @@
 <body>
 
 <div class="row">
+    <g:render template="createClassName"/>
     <p> Here is some</p>
 
 </div>
