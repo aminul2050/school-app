@@ -13,51 +13,15 @@
                 <div class="form">
                     <form class="cmxform form-horizontal " id="signupForm" method="get" action="">
                         <div class="form-group ">
-                            <label for="firstname" class="control-label col-lg-3">Firstname</label>
+                            <label for="name" class="control-label col-lg-3">Firstname</label>
                             <div class="col-lg-6">
-                                <input class=" form-control" id="firstname" name="firstname" type="text" />
+                                <input class=" form-control" id="name" name="name" type="text" />
                             </div>
                         </div>
                         <div class="form-group ">
-                            <label for="lastname" class="control-label col-lg-3">Lastname</label>
+                            <label for="description" class="control-label col-lg-3">Lastname</label>
                             <div class="col-lg-6">
-                                <input class=" form-control" id="lastname" name="lastname" type="text" />
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label for="username" class="control-label col-lg-3">Username</label>
-                            <div class="col-lg-6">
-                                <input class="form-control " id="username" name="username" type="text" />
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label for="password" class="control-label col-lg-3">Password</label>
-                            <div class="col-lg-6">
-                                <input class="form-control " id="password" name="password" type="password" />
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label for="confirm_password" class="control-label col-lg-3">Confirm Password</label>
-                            <div class="col-lg-6">
-                                <input class="form-control " id="confirm_password" name="confirm_password" type="password" />
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label for="email" class="control-label col-lg-3">Email</label>
-                            <div class="col-lg-6">
-                                <input class="form-control " id="email" name="email" type="email" />
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label for="agree" class="control-label col-lg-3 col-sm-3">Agree to Our Policy</label>
-                            <div class="col-lg-6 col-sm-9">
-                                <input  type="checkbox" style="width: 20px" class="checkbox form-control" id="agree" name="agree" />
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label for="newsletter" class="control-label col-lg-3 col-sm-3">Receive the Newsletter</label>
-                            <div class="col-lg-6 col-sm-9">
-                                <input  type="checkbox" style="width: 20px" class="checkbox form-control" id="newsletter" name="newsletter" />
+                                <input class=" form-control" id="description" name="description" type="text" />
                             </div>
                         </div>
 

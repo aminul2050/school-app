@@ -84,7 +84,7 @@
 
 <script src="${resource(dir: 'js/', file: 'jquery.dataTables.js')}"></script>
 <script src="${resource(dir: 'js/', file: 'dataTables.bootstrap.js')}"></script>
-<script src="${resource(dir: 'js/', file: 'validation-init.js')}"></script>
+<script src="${resource(dir: 'js/', file: 'jquery.validate.min.js')}"></script>
 
 <g:javascript library="application"/>
 <r:layoutResources/>

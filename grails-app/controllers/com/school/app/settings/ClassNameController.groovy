@@ -9,14 +9,15 @@ class ClassNameController {
     def classNameService
 
     def index() {
-        LinkedHashMap resultMap = classNameService.classNamePaginateList(params)
+        /*LinkedHashMap resultMap = classNameService.classNamePaginateList(params)
 
         if (!resultMap || resultMap.totalCount == 0) {
             render(view: 'className', model: [dataReturn: null, totalCount: 0])
             return
         }
         int totalCount = resultMap.totalCount
-        render(view: 'className', model: [dataReturn: resultMap.results, totalCount: totalCount])
+        render(view: 'className', model: [dataReturn: resultMap.results, totalCount: totalCount])*/
+        render(view: 'className')
     }
 
     def save(ClassNameCommand classNameCommand) {
