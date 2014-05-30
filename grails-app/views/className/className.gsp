@@ -40,7 +40,7 @@
         <td>${className[2]}</td>
         <td>
             <sec:access controller="className" action="edit">
-                <span class="col-xs-6"><a href="" referenceId="${className.DT_RowId}" class="edit-reference" title="Edit"><span class="green glyphicon glyphicon-edit"></span></a></span>
+                <span class="col-xs-6"><a href="" referenceId="${className.DT_RowId}" class="edit-reference btn btn-info" title="Edit"><span class="green glyphicon glyphicon-edit"></span></a></span>
             </sec:access>
             <sec:access controller="className" action="delete">
                 <span class="col-xs-6"><a href="" referenceId="${className.DT_RowId}" class="delete-reference" title="Delete"><span class="red glyphicon glyphicon-trash"></span></a></span>
@@ -82,11 +82,10 @@
             ]
         });
         $('#add-new-btn').click(function (e) {
-//            document.getElementById(classNameCreate).style.display = 'block';
-        $("#classNameCreate").toggle(1000);
+            $("#classNameCreate").toggle(1000);
             e.preventDefault();
         });
-        $('#sample-table-2').on('click', 'a.edit-reference', function (e) {
+        $('#list-table').on('click', 'a.edit-reference', function (e) {
             var control = this;
             var referenceId = $(control).attr('referenceId');
             jQuery.ajax({
@@ -101,7 +100,7 @@
             e.preventDefault();
         });
 
-        $('#sample-table-2').on('click', 'a.delete-reference', function (e) {
+        $('#list-table').on('click', 'a.delete-reference', function (e) {
             var selectRow = $(this).parents('tr');
             var confirmDel = confirm("Do You Want To Delete?");
             if (confirmDel == true) {
@@ -110,14 +109,13 @@
                 jQuery.ajax({
                     type: 'POST',
                     dataType:'JSON',
-                    url: "${g.createLink(controller: 'currency',action: 'delete')}?id=" + referenceId,
+                    url: "${g.createLink(controller: 'className',action: 'delete')}?id=" + referenceId,
                     success: function (data, textStatus) {
                         if(data.isError==false){
-                            $("#sample-table-2").DataTable().row(selectRow).remove().draw();
+                            $("#list-table").DataTable().row(selectRow).remove().draw();
                         }
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
-// $('#'+updateDiv).html(data);
                     }
                 });
             }
@@ -129,10 +127,10 @@
         var actionButtons = "";
         actionButtons += '<sec:access controller="className" action="edit"><span class="col-xs-6"><a href="" referenceId="' + aData.DT_RowId + '" class="edit-reference" title="Edit">';
         actionButtons += '<span class="green glyphicon glyphicon-edit"></span>';
-        actionButtons += '</a></span></sec:access>';
+        actionButtons += '&nbsp;Edit&nbsp;</a></span></sec:access>';
         actionButtons += '<sec:access controller="className" action="delete"><span class="col-xs-6"><a href="" referenceId="' + aData.DT_RowId + '" class="delete-reference" title="Delete">';
         actionButtons += '<span class="red glyphicon glyphicon-trash"></span>';
-        actionButtons += '</a></span></sec:access>';
+        actionButtons += '&nbsp;Delete&nbsp;</a></span></sec:access>';
         return actionButtons;
     }
 </r:script>

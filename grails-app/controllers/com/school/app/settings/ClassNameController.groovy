@@ -21,45 +21,59 @@ class ClassNameController {
 
     def save(ClassNameCommand classNameCommand) {
         if (!request.method == 'POST') {
-            //return json message
+            redirect(action: 'index')
             return
         }
+        LinkedHashMap result = new LinkedHashMap()
+        result.put('isError',true)
+        String outPut
         if (classNameCommand.hasErrors()) {
-            //return json message
+            result.put('message','Please fill the form correctly')
+            outPut=result as JSON
+            render outPut
             return
         }
         ClassName className
         if (params.id) { //update Currency
             className = ClassName.get(classNameCommand.id)
             if (!className) {
-                //return json message
+                result.put('message','Class not found')
+                outPut=result as JSON
+                render outPut
                 return
             }
             className.properties = classNameCommand.properties
             if (!className.validate()) {
-                //return json message
+                result.put('message','Please fill the form correctly')
+                outPut=result as JSON
+                render outPut
                 return
             }
-            className.save(flush: true)
-            //LinkedHashMap resultMap = currencyService.currencyPaginateList(params)
-            //flash.message = "Currency Updated successfully"
-            //render(template: '/coreBanking/settings/currency/currencyList', model: [dataReturn: resultMap.results, totalCount: resultMap.totalCount])
+            ClassName savedClass =className.save()
+            result.put('isError',false)
+            result.put('message','Class added successfully')
+            outPut=result as JSON
+            render outPut
             return
         }
         className = new ClassName(classNameCommand.properties)
         if (!classNameCommand.validate()) {
-            //render(template: '/coreBanking/settings/currency/createCurrency', model: [currencys: currencys])
+            result.put('message','Please fill the form correctly')
+            outPut=result as JSON
+            render outPut
             return
         }
         ClassName savedCurr = className.save(flush: true)
         if (!savedCurr) {
-            //render(template: '/coreBanking/settings/currency/createCurrency', model: [currencys: currencys])
+            result.put('message','Please fill the form correctly')
+            outPut=result as JSON
+            render outPut
+            return
         }
-
-//        LinkedHashMap resultMap = currencyService.currencyPaginateList(params)
-//        flash.message = "Currency created successfully"
-//        render(template: '/coreBanking/settings/currency/currencyList', model: [dataReturn: resultMap.results, totalCount: resultMap.totalCount])
-        return
+        result.put('isError',false)
+        result.put('message','Class updated successfully')
+        outPut=result as JSON
+        render outPut
 
     }
 
@@ -69,7 +83,7 @@ class ClassNameController {
            // flash.message = "Currency not found"
             //render(template: '/coreBanking/settings/currency/currencyList')
         }
-        className.save(flush: true)
+        className.delete(flush: true)
 
         def result=[isError:false,message:"ClassName deleted g g successfully"]
         String outPut=result as JSON
