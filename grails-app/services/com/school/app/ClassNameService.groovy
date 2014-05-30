@@ -44,7 +44,7 @@ class ClassNameService {
                 } else {
                     serial--
                 }
-                dataReturns.add([DT_RowId: className.id, 0: serial, 1: className.name, 2: ''])
+                dataReturns.add([DT_RowId: className.id, 0: serial, 1: className.name,2:className.description, 3: ''])
             }
         }
         return [totalCount:totalCount,results:dataReturns]

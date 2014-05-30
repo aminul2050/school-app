@@ -1,3 +1,4 @@
+import com.app.school.settings.ClassName
 import com.app.school.settings.School
 import com.myapp.security.Role
 import com.myapp.security.User
@@ -7,7 +8,13 @@ class BootStrap {
 
     def init = { servletContext ->
         createUserWithRole()
+        createClassName()
     }
+    void createClassName(){
+        ClassName.findByName('Class 1')?:new ClassName(name: 'Class 1',description: 'Eligible age limit 3 to 5 only').save()
+        ClassName.findByName('Class 2')?:new ClassName(name: 'Class 2',description: 'Eligible age limit 5 to 6 only').save()
+      ClassName.findByName('Class 3')?:new ClassName(name: 'Class 3',description: 'Eligible age limit 6 to 7 only').save(flush: true)
+      }
     void createUserWithRole(){
         School school = School.findByName('Baily School')
         if(!school){
