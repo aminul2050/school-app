@@ -5,8 +5,15 @@ class ClassSubject {
 
     ClassName className
     String subjectIds
+    String compulsorySubIds
 
     static constraints = {
+        className unique: true
+        schoolId nullable: true
+        createdBy nullable: true
+        createdOn nullable: true
+        lastUpdatedBy nullable: true
+        lastUpdatedOn nullable: true
     }
 
     //common properties for every table
