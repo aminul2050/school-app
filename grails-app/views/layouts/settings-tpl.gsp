@@ -81,8 +81,7 @@
 <script src="${resource(dir: 'js/', file: 'jquery.nicescroll.js')}"></script>
 <script src="${resource(dir: 'js/', file: 'draggable-portlet.js')}"></script>
 <script src="${resource(dir: 'js/', file: 'scripts.js')}"></script>
-
-<script src="${resource(dir: 'js/', file: 'jquery.dataTables.js')}"></script>
+<script src="${resource(dir: 'js/', file: 'jquery.dataTables.min.js')}"></script>
 <script src="${resource(dir: 'js/', file: 'dataTables.bootstrap.js')}"></script>
 <script src="${resource(dir: 'js/', file: 'jquery.validate.min.js')}"></script>
 

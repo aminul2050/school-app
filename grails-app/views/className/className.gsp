@@ -40,10 +40,10 @@
         <td>${className[2]}</td>
         <td>
             <sec:access controller="className" action="edit">
-                <span class="col-xs-6"><a href="" referenceId="${className.DT_RowId}" class="edit-reference btn btn-info" title="Edit"><span class="green glyphicon glyphicon-edit"></span></a></span>
+                <span class="col-xs-6"><a href="" referenceId="${className.DT_RowId}" class="edit-reference" title="Edit"><span class="green glyphicon glyphicon-edit"></span>&nbsp;Edit&nbsp;</a></span>
             </sec:access>
             <sec:access controller="className" action="delete">
-                <span class="col-xs-6"><a href="" referenceId="${className.DT_RowId}" class="delete-reference" title="Delete"><span class="red glyphicon glyphicon-trash"></span></a></span>
+                <span class="col-xs-6"><a href="" referenceId="${className.DT_RowId}" class="delete-reference" title="Delete"><span class="green glyphicon glyphicon-trash"></span>&nbsp;Delete&nbsp;</a></span>
             </sec:access>
         </td>
     </tr>
@@ -61,7 +61,7 @@
     jQuery(function ($) {
         var oTable1 = $('#list-table').dataTable({
 //            "sDom": "<'row'<'col-md-4'><'col-md-4'><'col-md-4'f>r>t<'row'<'col-md-4'l><'col-md-4'i><'col-md-4'p>>",
-            "bProcessing": false,
+            "bProcessing": true,
             "bAutoWidth": true,
             "bServerSide": true,
             "deferLoading": ${totalCount},
@@ -90,7 +90,7 @@
             var referenceId = $(control).attr('referenceId');
             jQuery.ajax({
                 type: 'POST',
-                url: "${g.createLink(controller: 'currency',action: 'update')}?id=" + referenceId,
+                url: "${g.createLink(controller: 'className',action: 'edit')}?id=" + referenceId,
                 success: function (data, textStatus) {
                     $('#page-content').html(data);
                 },
@@ -102,7 +102,7 @@
 
         $('#list-table').on('click', 'a.delete-reference', function (e) {
             var selectRow = $(this).parents('tr');
-            var confirmDel = confirm("Do You Want To Delete?");
+            var confirmDel = confirm("Are you sure?");
             if (confirmDel == true) {
                 var control = this;
                 var referenceId = $(control).attr('referenceId');
