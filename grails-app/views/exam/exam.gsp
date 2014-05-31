@@ -5,6 +5,7 @@
     <title>Create Exam</title>
 
 </head>
+
 <body>
 <g:render template="createExam"/>
 
@@ -21,6 +22,7 @@
                     </div>
                 </span>
             </header>
+
             <div class="panel-body">
                 <div class="table-responsive">
                     <table class="table table-striped table-hover table-bordered" id="list-table">
@@ -50,10 +52,14 @@
                                 <td>${exam[7]}</td>
                                 <td>
                                     <sec:access controller="subjectName" action="edit">
-                                        <span class="col-xs-6"><a href="" referenceId="${exam.DT_RowId}" class="edit-reference" title="Edit"><span class="green glyphicon glyphicon-edit"></span></a></span>
+                                        <span class="col-xs-6"><a href="" referenceId="${exam.DT_RowId}"
+                                                                  class="edit-reference" title="Edit"><span
+                                                    class="green glyphicon glyphicon-edit"></span></a></span>
                                     </sec:access>
                                     <sec:access controller="subjectName" action="delete">
-                                        <span class="col-xs-6"><a href="" referenceId="${exam.DT_RowId}" class="delete-reference" title="Delete"><span class="red glyphicon glyphicon-trash"></span></a></span>
+                                        <span class="col-xs-6"><a href="" referenceId="${exam.DT_RowId}"
+                                                                  class="delete-reference" title="Delete"><span
+                                                    class="red glyphicon glyphicon-trash"></span></a></span>
                                     </sec:access>
                                 </td>
                             </tr>
@@ -69,13 +75,25 @@
 <!-- page end-->
 <r:script>
     jQuery(function ($) {
-        var oTable1 = $('#list-table').dataTable({
-//            "sDom": "<'row'<'col-md-4'><'col-md-4'><'col-md-4'f>r>t<'row'<'col-md-4'l><'col-md-4'i><'col-md-4'p>>",
-            "bProcessing": false,
-            "bAutoWidth": true,
-            "bServerSide": true,
-            "deferLoading": ${totalCount},
-            "sAjaxSource": "${g.createLink(controller: 'exam',action: 'list')}",
+    %{--var beginDate = "${beginingDate}";--}%
+%{--$("#beginingDate").val(beginDate);--}%
+
+    //date picker object
+     $("#dateBegin").datepicker({
+    //            format: dateF,
+                startDate: date,
+                gotoCurrent: true,
+                stepMonths: 1,
+                minDate: new Date(),
+                autoclose: true
+            });
+            var oTable1 = $('#list-table').dataTable({
+    //            "sDom": "<'row'<'col-md-4'><'col-md-4'><'col-md-4'f>r>t<'row'<'col-md-4'l><'col-md-4'i><'col-md-4'p>>",
+                "bProcessing": false,
+                "bAutoWidth": true,
+                "bServerSide": true,
+                "deferLoading": ${totalCount},
+            "sAjaxSource": "${g.createLink(controller: 'exam', action: 'list')}",
             "fnRowCallback": function (nRow, aData, iDisplayIndex) {
                 if(aData.DT_RowId ==undefined){
                     return true;
@@ -101,7 +119,7 @@
             var referenceId = $(control).attr('referenceId');
             jQuery.ajax({
                 type: 'POST',
-                url: "${g.createLink(controller: 'currency',action: 'update')}?id=" + referenceId,
+                url: "${g.createLink(controller: 'currency', action: 'update')}?id=" + referenceId,
                 success: function (data, textStatus) {
                     $('#page-content').html(data);
                 },
@@ -120,7 +138,7 @@
                 jQuery.ajax({
                     type: 'POST',
                     dataType:'JSON',
-                    url: "${g.createLink(controller: 'currency',action: 'delete')}?id=" + referenceId,
+                    url: "${g.createLink(controller: 'currency', action: 'delete')}?id=" + referenceId,
                     success: function (data, textStatus) {
                         if(data.isError==false){
                             $("#sample-table-2").DataTable().row(selectRow).remove().draw();
@@ -137,12 +155,18 @@
 
     function getActionButtons(nRow, aData) {
         var actionButtons = "";
-        actionButtons += '<sec:access controller="exam" action="edit"><span class="col-xs-6"><a href="" referenceId="' + aData.DT_RowId + '" class="edit-reference" title="Edit">';
-actionButtons += '<span class="green glyphicon glyphicon-edit"></span>';
-actionButtons += '</a></span></sec:access>';
-        actionButtons += '<sec:access controller="exam" action="delete"><span class="col-xs-6"><a href="" referenceId="' + aData.DT_RowId + '" class="delete-reference" title="Delete">';
-actionButtons += '<span class="red glyphicon glyphicon-trash"></span>';
-actionButtons += '</a></span></sec:access>';
+        actionButtons += '<sec:access controller="exam" action="edit"><span class="col-xs-6"><a href=""
+                                                                                                referenceId="' + aData.DT_RowId + '"
+                                                                                                class="edit-reference"
+                                                                                                title="Edit">';
+    actionButtons += '<span class="green glyphicon glyphicon-edit"></span>';
+    actionButtons += '</a></span></sec:access>';
+        actionButtons += '<sec:access controller="exam" action="delete"><span class="col-xs-6"><a href=""
+                                                                                                  referenceId="' + aData.DT_RowId + '"
+                                                                                                  class="delete-reference"
+                                                                                                  title="Delete">';
+    actionButtons += '<span class="red glyphicon glyphicon-trash"></span>';
+    actionButtons += '</a></span></sec:access>';
         return actionButtons;
     }
 </r:script>

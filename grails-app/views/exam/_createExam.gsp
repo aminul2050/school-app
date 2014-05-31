@@ -49,8 +49,28 @@
 
                         <div class="form-group ">
                             <label for="publishedDate" class="control-label col-lg-3">Subject Description.</label>
+
                             <div class="col-lg-6">
-                                <input class=" form-control" id="publishedDate" name="publishedDate" type="text" />
+                                <input class=" form-control" id="publishedDate" name="publishedDate" type="text"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="beginingDate" class="control-label col-lg-3">Begaining Date.</label>
+
+                            <div class="col-lg-6">
+                                <input class=" form-control" id="beginingDate" name="beginingDate" type="text" class="form-control datepicker" data-date-format="dd/mm/yyyy"/>
+                                <span class="input-group-addon add-on"><i class="icon-calendar"></i></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-4">
+                            <div class="clearfix">
+                                <div class="input-append date input-group" id="dateBegin">
+                                    <input type="date" id="beginingDate" name="beginingDate"
+                                           class="form-control datepicker" data-date-format="dd/mm/yyyy"/>
+                                    <span class="input-group-addon add-on"><i class="icon-calendar"></i></span>
+                                </div>
                             </div>
                         </div>
 
