@@ -7,8 +7,13 @@
         </li>
 
         <li>
-            <g:activeLink controller="classSubject" action="index"><i class="fa fa-dashboard"></i>
+            <g:activeLink controller="subject" action="index"><i class="fa fa-dashboard"></i>
                 <span>Add Subject</span>
+            </g:activeLink>
+        </li>
+        <li>
+            <g:activeLink controller="classSubject" action="index"><i class="fa fa-dashboard"></i>
+                <span>Map Class Subject</span>
             </g:activeLink>
         </li>
 

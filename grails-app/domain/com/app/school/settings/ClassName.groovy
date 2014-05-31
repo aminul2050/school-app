@@ -6,6 +6,10 @@ class ClassName {
     String description
 
     static constraints = {
+        name nullable: false, unique: true
+        description nullable: true
+
+        //System inserted data
         schoolId nullable: true
         createdBy nullable: true
         createdOn nullable: true
