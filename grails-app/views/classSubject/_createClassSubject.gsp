@@ -35,3 +35,53 @@
         </section>
     </div>
 </div>
+
+<r:script>
+    $('#create-form').validate({
+        errorElement: 'small',
+        errorClass: 'help-block',
+        focusInvalid: false,
+        rules: {
+            name: {
+                required: true,
+                minlength: 4,
+                maxlength: 15
+            },
+            description: {
+                minlength: 5,
+                maxlength: 225
+            }
+        },
+        messages: {
+            name: {
+                required: "Class Name required"
+            }
+        },
+        invalidHandler: function (event, validator) { //display error alert on form submit
+            $('.alert-danger', $('#currencyForm')).show();
+        },
+
+        highlight: function (e) {
+            $(e).closest('.form-group').removeClass('has-info').addClass('has-error');
+        },
+
+        success: function (e) {
+            $(e).closest('.form-group').removeClass('has-error').addClass('has-info');
+            $(e).remove();
+        },
+        submitHandler: function (form) {
+            $.ajax({
+                url: "${createLink(controller: 'className', action: 'save')}",
+                type: 'post',
+                dataType: "json",
+                data: $("#create-form").serialize(),
+                success: function (data) {
+                    alert(data.message);
+                    clearForm(form);
+                },
+                failure: function (data) {
+                }
+            })
+        }
+    });
+</r:script>
