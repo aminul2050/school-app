@@ -12,13 +12,12 @@
     <link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon">
     <link rel="apple-touch-icon" href="${resource(dir: 'images', file: 'apple-touch-icon.png')}">
     <link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
-
     <!--Bootstrap CSS -->
     <link rel="stylesheet" href="${resource(dir: 'bs3/css', file: 'bootstrap.min.css')}" type="text/css">
-    <link rel="stylesheet" href="${resource(dir: 'css', file: 'DT_bootstrap.css')}" type="text/css">
     <!--Core CSS -->
     <link rel="stylesheet" href="${resource(dir: 'css/', file: 'bootstrap-reset.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css/', file: 'bootstrap-fullcalendar.css')}" type="text/css">
+    <link rel="stylesheet" href="${resource(dir: 'css/', file: 'datepicker.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'font-awesome/css/', file: 'font-awesome.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css/', file: 'style.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css/', file: 'style-responsive.css')}" type="text/css">
@@ -75,6 +74,7 @@
 <script src="${resource(dir: 'js/', file: 'fullcalendar.min.js')}"></script>
 <script src="${resource(dir: 'js/', file: 'external-dragging-calendar.js')}"></script>
 <script src="${resource(dir: 'bs3/js', file: 'bootstrap.min.js')}"></script>
+<script src="${resource(dir: 'js/date-time', file: 'bootstrap-datepicker.min.js')}"></script>
 <script src="${resource(dir: 'js/', file: 'jquery.dcjqaccordion.2.7.js')}"></script>
 <script src="${resource(dir: 'js/', file: 'jquery.scrollTo.min.js')}"></script>
 <script src="${resource(dir: 'js/', file: 'jquery.nicescroll.js')}"></script>
