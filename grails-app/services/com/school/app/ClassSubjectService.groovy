@@ -9,7 +9,7 @@ class ClassSubjectService {
 
     def springSecurityService
     static final String[] sortColumns = ['id','className','subjectIds']
-    LinkedHashMap ClassSubjectPaginateList(GrailsParameterMap params){
+    LinkedHashMap classSubjectPaginateList(GrailsParameterMap params){
         int iDisplayStart = params.iDisplayStart ? params.getInt('iDisplayStart') : CommonUtils.DEFAULT_PAGINATION_START
         int iDisplayLength = params.iDisplayLength ? params.getInt('iDisplayLength') : CommonUtils.DEFAULT_PAGINATION_LENGTH
         String sSortDir = params.sSortDir_0 ? params.sSortDir_0 : CommonUtils.DEFAULT_PAGINATION_SORT_ORDER
@@ -45,7 +45,7 @@ class ClassSubjectService {
                 } else {
                     serial--
                 }
-                dataReturns.add([DT_RowId: classSubject.id, 0: serial, 1: classSubject.className,2:classSubject.subjectIds, 3: ''])
+                dataReturns.add([DT_RowId: classSubject.id, 0: serial, 1: classSubject.className.name,2:classSubject.subjectIds, 3: ''])
             }
         }
         return [totalCount:totalCount,results:dataReturns]

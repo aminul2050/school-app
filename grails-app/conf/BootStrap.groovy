@@ -1,5 +1,7 @@
 import com.app.school.settings.ClassName
+import com.app.school.settings.ClassSubject
 import com.app.school.settings.School
+import com.app.school.settings.Subject
 import com.myapp.security.Role
 import com.myapp.security.User
 import com.myapp.security.UserRole
@@ -9,12 +11,33 @@ class BootStrap {
     def init = { servletContext ->
         createUserWithRole()
         createClassName()
+        createSubjects()
+        mapClassSubject()
     }
     void createClassName(){
         ClassName.findByName('Class 1')?:new ClassName(name: 'Class 1',description: 'Eligible age limit 3 to 5 only').save()
         ClassName.findByName('Class 2')?:new ClassName(name: 'Class 2',description: 'Eligible age limit 5 to 6 only').save()
       ClassName.findByName('Class 3')?:new ClassName(name: 'Class 3',description: 'Eligible age limit 6 to 7 only').save(flush: true)
       }
+    void createSubjects(){
+        Subject.findByName('Bangla')?:new Subject(name: 'Bangla',description: 'Bangla for all students',ctMark: 30,hallMark: 80,compulsory: true).save()
+        Subject.findByName('English')?:new Subject(name: 'English',description: 'Bangla for all students',ctMark: 30,hallMark: 80,compulsory: true).save()
+        Subject.findByName('Mathematics')?:new Subject(name: 'Mathematics',description: 'Bangla for all students',ctMark: 30,hallMark: 80,compulsory: true).save()
+        Subject.findByName('Physics')?:new Subject(name: 'Physics',description: 'Bangla for all students',ctMark: 30,hallMark: 80,compulsory: false).save()
+        Subject.findByName('Biology')?:new Subject(name: 'Biology',description: 'Bangla for all students',ctMark: 30,hallMark: 80,compulsory: false).save()
+    }
+    void mapClassSubject(){
+        Subject bangla = Subject.findByName('Bangla')
+        Subject english = Subject.findByName('English')
+        Subject physics = Subject.findByName('Physics')
+        Subject biology = Subject.findByName('Biology')
+        ClassName cls1 = ClassName.findByName('Class 1')
+        ClassName cls2 = ClassName.findByName('Class 2')
+        ClassName cls3 = ClassName.findByName('Class 3')
+        ClassSubject.findByClassName(cls1)?:new ClassSubject(className: cls1,subjectIds: "${bangla.id},${english.id},${biology.id}").save()
+        ClassSubject.findByClassName(cls2)?:new ClassSubject(className: cls2,subjectIds: "${bangla.id},${english.id},${physics.id}").save()
+        ClassSubject.findByClassName(cls3)?:new ClassSubject(className: cls3,subjectIds: "${bangla.id},${english.id},${physics.id}").save(flush: true)
+    }
     void createUserWithRole(){
         School school = School.findByName('Baily School')
         if(!school){

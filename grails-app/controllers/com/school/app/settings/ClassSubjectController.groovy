@@ -6,17 +6,17 @@ import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_SUPER_ADMIN'])
 class ClassSubjectController {
-    def ClassSubjectService
+    def classSubjectService
 
     def index() {
-        LinkedHashMap resultMap = null//ClassSubjectService.ClassSubjectPaginateList(params)
+        LinkedHashMap resultMap = classSubjectService.classSubjectPaginateList(params)
 
         if (!resultMap || resultMap.totalCount == 0) {
             render(view: 'classSubject', model: [dataReturn: null, totalCount: 0])
             return
         }
-        /*int totalCount = resultMap.totalCount
-        render(view: 'classSubject', model: [dataReturn: resultMap.results, totalCount: totalCount])*/
+        int totalCount = resultMap.totalCount
+        render(view: 'classSubject', model: [dataReturn: resultMap.results, totalCount: totalCount])
     }
 
     def save(ClassSubjectCommand classSubjectCommand) {
