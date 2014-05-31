@@ -90,9 +90,18 @@
             var referenceId = $(control).attr('referenceId');
             jQuery.ajax({
                 type: 'POST',
+                dataType:'JSON',
                 url: "${g.createLink(controller: 'className',action: 'edit')}?id=" + referenceId,
                 success: function (data, textStatus) {
-                    $('#page-content').html(data);
+                    if(data.isError==false){
+                            clearForm('#create-form');
+                            $('#id').val(data.obj.id);
+                            $('#name').val(data.obj.name);
+                            $('#description').val(data.obj.description);
+                            $("#classNameCreate").show(1000);
+                        }else{
+                            alert(data.message);
+                        }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                 }
@@ -113,6 +122,8 @@
                     success: function (data, textStatus) {
                         if(data.isError==false){
                             $("#list-table").DataTable().row(selectRow).remove().draw();
+                        }else{
+                            alert(data.message);
                         }
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {

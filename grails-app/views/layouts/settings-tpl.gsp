@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="${resource(dir: 'css/', file: 'bootstrap-reset.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css/', file: 'bootstrap-fullcalendar.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css/', file: 'datepicker.css')}" type="text/css">
+    <link rel="stylesheet" href="${resource(dir: 'css/', file: 'DT_bootstrap.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'font-awesome/css/', file: 'font-awesome.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css/', file: 'style.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css/', file: 'style-responsive.css')}" type="text/css">

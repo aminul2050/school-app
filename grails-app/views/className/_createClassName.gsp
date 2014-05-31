@@ -10,6 +10,7 @@
             <div class="panel-body">
                 <div class="form">
                     <form class="cmxform form-horizontal " id="create-form">
+                        <g:hiddenField name="id"/>
                         <div class="form-group ">
                             <label for="name" class="control-label col-lg-3">Class Name</label>
                             <div class="col-lg-6">

@@ -51,7 +51,7 @@ class ClassNameController {
             }
             ClassName savedClass =className.save()
             result.put('isError',false)
-            result.put('message','Class added successfully')
+            result.put('message','Class Updated successfully')
             outPut=result as JSON
             render outPut
             return
@@ -108,13 +108,25 @@ class ClassNameController {
 
     }
 
-    def update(Long id) {
+    def edit(Long id) {
+        if (!request.method == 'POST') {
+            redirect(action: 'index')
+            return
+        }
+        LinkedHashMap result = new LinkedHashMap()
+        result.put('isError',true)
+        String outPut
         ClassName className = ClassName.read(id)
         if (!className) {
-           // flash.message = "Currency not found"
-            //render(template: '/coreBanking/settings/currency/currencyList')
+            result.put('message','Class name not found')
+            outPut = result as JSON
+            render outPut
+            return
         }
-      //  render(template: '/coreBanking/settings/currency/createCurrency', model: [className: className])
+        result.put('isError',false)
+        result.put('obj',className)
+        outPut = result as JSON
+        render outPut
     }
 
 }
