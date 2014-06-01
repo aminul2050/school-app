@@ -3,6 +3,7 @@ package com.school.app.settings
 import com.app.school.settings.ClassName
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
+import org.springframework.dao.DataIntegrityViolationException
 
 @Secured(['ROLE_SUPER_ADMIN'])
 class ClassNameController {
@@ -78,16 +79,36 @@ class ClassNameController {
     }
 
     def delete(Long id) {
+        LinkedHashMap result = new LinkedHashMap()
+        result.put('isError',true)
+        String outPut
         ClassName className = ClassName.get(id)
-        if (!className) {
-           // flash.message = "Currency not found"
-            //render(template: '/coreBanking/settings/currency/currencyList')
-        }
-        className.delete(flush: true)
+        if(className) {
+            try {
+                println "+++++++++++++++++++++++++"
+                className.delete(flush:true)
+                result.put('isError',false)
+                result.put('message',"Class deleted successfully.")
+                outPut = result as JSON
+                render outPut
+                return
 
-        def result=[isError:false,message:"ClassName deleted g g successfully"]
-        String outPut=result as JSON
+            }
+
+            catch(DataIntegrityViolationException e) {
+                result.put('isError',true)
+                result.put('message',"Class could not deleted. Already in use.")
+                outPut = result as JSON
+                render outPut
+                return
+            }
+
+        }
+        result.put('isError',true)
+        result.put('message',"Class not found")
+        outPut = result as JSON
         render outPut
+        return
     }
 
     def list() {

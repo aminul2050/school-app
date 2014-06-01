@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="${resource(dir: 'bs3/css', file: 'bootstrap.min.css')}" type="text/css">
     <!--Core CSS -->
     <link rel="stylesheet" href="${resource(dir: 'css/', file: 'bootstrap-reset.css')}" type="text/css">
+    <link rel="stylesheet" href="${resource(dir: 'css/', file: 'bootstrap-duallistbox.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css/', file: 'bootstrap-fullcalendar.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css/', file: 'datepicker.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css/', file: 'DT_bootstrap.css')}" type="text/css">
@@ -75,6 +76,7 @@
 <script src="${resource(dir: 'js/', file: 'fullcalendar.min.js')}"></script>
 <script src="${resource(dir: 'js/', file: 'external-dragging-calendar.js')}"></script>
 <script src="${resource(dir: 'bs3/js', file: 'bootstrap.min.js')}"></script>
+<script src="${resource(dir: 'js', file: 'jquery.bootstrap-duallistbox.js')}"></script>
 <script src="${resource(dir: 'js/date-time', file: 'bootstrap-datepicker.min.js')}"></script>
 <script src="${resource(dir: 'js/', file: 'jquery.dcjqaccordion.2.7.js')}"></script>
 <script src="${resource(dir: 'js/', file: 'jquery.scrollTo.min.js')}"></script>

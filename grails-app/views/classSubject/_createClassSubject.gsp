@@ -1,3 +1,4 @@
+<%@ page import="com.app.school.settings.Subject" %>
 <div class="row" id="createClassSubject" style="display:none">
     <div class="col-lg-12">
         <section class="panel">
@@ -8,36 +9,29 @@
                 </span>
             </header>
             <div class="panel-body">
-                <div class="form">
-                    <form class="cmxform form-horizontal " id="create-form">
-                        <g:hiddenField name="id"/>
-                        <div class="form-group ">
-                            <label for="name" class="control-label col-lg-3">Class Name</label>
-                            <div class="col-lg-6">
-                                <g:textField class="form-control" id="name" name="name"/>
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label for="description" class="control-label col-lg-3">Description</label>
-                            <div class="col-lg-6">
-                                <input class=" form-control" id="description" name="description" type="text" />
-                            </div>
-                        </div>
+                <form id="demoform" action="#" method="post">
+                    <g:select name="duallistbox_demo1[]"
+                              multiple="multiple"
+                              optionKey="id"
+                              optionValue="name"
+                              from="${Subject.list()}"
+                              value="${Subject.list()}" />
 
-                        <div class="form-group">
-                            <div class="col-lg-offset-3 col-lg-6">
-                                <button class="btn btn-primary" type="submit">Save</button>
-                                <button class="btn btn-default" type="button">Cancel</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary btn-block">Submit data</button>
+                </form>
+
             </div>
         </section>
     </div>
 </div>
 
 <r:script>
+        var demo1 = $('[name="duallistbox_demo1[]"]').bootstrapDualListbox();
+        $("#demoform").submit(function(){
+        alert($('[name="duallistbox_demo1[]"]').val());
+        return false;
+        });
     $('#create-form').validate({
         errorElement: 'small',
         errorClass: 'help-block',

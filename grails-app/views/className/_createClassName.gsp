@@ -77,8 +77,9 @@
                 dataType: "json",
                 data: $("#create-form").serialize(),
                 success: function (data) {
-                    alert(data.message);
                     clearForm(form);
+                    var table = $('#list-table').DataTable();
+                    table.ajax.reload();
                 },
                 failure: function (data) {
                 }

@@ -6,8 +6,7 @@ import org.codehaus.groovy.grails.web.servlet.mvc.GrailsParameterMap
 
 @Transactional
 class ClassSubjectService {
-
-    def springSecurityService
+    def subjectService
     static final String[] sortColumns = ['id','className','subjectIds']
     LinkedHashMap classSubjectPaginateList(GrailsParameterMap params){
         int iDisplayStart = params.iDisplayStart ? params.getInt('iDisplayStart') : CommonUtils.DEFAULT_PAGINATION_START
@@ -35,6 +34,7 @@ class ClassSubjectService {
         }
         int totalCount = results.totalCount
         int serial = iDisplayStart;
+        String subjects
         if (totalCount > 0) {
             if (sSortDir.equals(CommonUtils.SORT_ORDER_DESC)) {
                 serial = (totalCount + 1) - iDisplayStart
@@ -45,7 +45,8 @@ class ClassSubjectService {
                 } else {
                     serial--
                 }
-                dataReturns.add([DT_RowId: classSubject.id, 0: serial, 1: classSubject.className.name,2:classSubject.subjectIds, 3: ''])
+                subjects = subjectService.getName(classSubject.subjectIds)
+                dataReturns.add([DT_RowId: classSubject.id, 0: serial, 1: classSubject.className.name,2:subjects, 3: ''])
             }
         }
         return [totalCount:totalCount,results:dataReturns]
