@@ -17,6 +17,24 @@
             </g:activeLink>
         </li>
 
+        <li>
+            <g:activeLink controller="exam" action="index"><i class="fa fa-dashboard"></i>
+                <span>Exam Entry</span>
+            </g:activeLink>
+        </li>
+
+        <li>
+            <g:activeLink controller="examMark" action="index"><i class="fa fa-dashboard"></i>
+                <span>Exam Mark</span>
+            </g:activeLink>
+        </li>
+
+        <li>
+            <g:activeLink controller="section" action="index"><i class="fa fa-dashboard"></i>
+                <span>Section Insert</span>
+            </g:activeLink>
+        </li>
+
         %{--<li class="sub-menu">--}%
             %{--<a href="javascript:;">--}%
                 %{--<i class="fa fa-glass"></i>--}%

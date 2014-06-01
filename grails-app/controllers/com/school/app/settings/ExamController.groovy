@@ -3,11 +3,11 @@ import com.app.school.settings.Exam
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['ROLE_SUPER_ADMIN'])
 class ExamController {
 
     def ExamService
 
+    @Secured(['ROLE_SUPER_ADMIN'])
     def index() {
         LinkedHashMap resultMap = ExamService.ExamPaginateList(params)
 
