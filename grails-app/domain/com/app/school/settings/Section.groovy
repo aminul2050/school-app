@@ -6,7 +6,7 @@ class Section {
     ClassName className
     String classDuration
     static constraints = {
-        classDuration nullable: true
+    classDuration nullable: true
     }
     //common properties for every table
     Long schoolId
@@ -15,11 +15,12 @@ class Section {
     String lastUpdatedBy
     Date lastUpdatedOn
     def beforeInsert(){
-        createdBy = springSecurityService.principal.username
+        schoolId=10000
+        createdBy = springSecurityService?.principal? springSecurityService.principal.username:'SystemUser'
         createdOn = new Date()
     }
     def beforeUpdate() {
-        lastUpdatedBy = springSecurityService.principal.username
+        lastUpdatedBy = springSecurityService?.principal? springSecurityService.principal.username:'SystemUser'
         lastUpdatedOn = new Date()
     }
     //common properties for every table
