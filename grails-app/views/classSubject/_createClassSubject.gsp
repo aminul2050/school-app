@@ -1,4 +1,4 @@
-<%@ page import="com.app.school.settings.Subject" %>
+<%@ page import="com.app.school.settings.ClassName; com.app.school.settings.Subject" %>
 <div class="row" id="createClassSubject" style="display:none">
     <div class="col-lg-12">
         <section class="panel">
@@ -9,11 +9,22 @@
                 </span>
             </header>
             <div class="panel-body">
-                <form id="demoform" action="#" method="post">
+                <form class="form-horizontal" id="demoform" action="#" method="post">
+                    <div class="form-group">
+                        <label for="className" class="col-lg-2 col-sm-2 control-label">Class Name</label>
+
+                        <div class="col-lg-10">
+                            <g:select id="className" name='className' value="${classSubject?.id}"
+                                      noSelection="${['null':'Select One...']}"
+                                      from='${ClassName.list()}'
+                                      optionKey="id" optionValue="name"></g:select>
+                        </div>
+                    </div>
+
                     <g:select name="duallistbox_demo1[]"
                               multiple="multiple"
                               optionKey="id"
-                              optionValue="name"
+                              optionValue="subjectName"
                               from="${Subject.list()}"
                               value="${Subject.list()}" />
 

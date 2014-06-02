@@ -27,6 +27,7 @@ class ClassNameService {
             if (sSearch) {
                 or {
                     ilike('name', sSearch)
+                    ilike('description', sSearch)
                 }
             }
             order(sortColumn, sSortDir)
