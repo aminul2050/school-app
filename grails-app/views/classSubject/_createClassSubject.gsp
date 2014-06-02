@@ -1,4 +1,4 @@
-<%@ page import="com.app.school.settings.Subject" %>
+<%@ page import="com.app.school.settings.ClassName; com.app.school.settings.Subject" %>
 <div class="row" id="createClassSubject" style="display:none">
     <div class="col-lg-12">
         <section class="panel">
@@ -9,14 +9,29 @@
                 </span>
             </header>
             <div class="panel-body">
-                <form id="demoform" action="#" method="post">
-                    <g:select name="duallistbox_demo1[]"
-                              multiple="multiple"
-                              optionKey="id"
-                              optionValue="name"
-                              from="${Subject.list()}"
-                              value="${Subject.list()}" />
+                <form class="form-horizontal" id="demoform" action="#" method="post">
+                    <div class="form-group">
+                        <label for="className" class="col-lg-2 col-sm-2 control-label">Class Name</label>
 
+                        <div class="col-lg-6">
+                            <g:select class="form-control input-sm" id="className" name='className' value="${classSubject?.id}"
+                                      noSelection="${['null':'Select One...']}"
+                                      from='${ClassName.list()}'
+                                      optionKey="id" optionValue="name"></g:select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="className" class="col-lg-2 col-sm-2 control-label">Class subjects</label>
+
+                        <div class="col-lg-8">
+                            <g:select name="classSubjectMap[]"
+                                      multiple="multiple"
+                                      optionKey="id"
+                                      optionValue="subjectName"
+                                      from="${subjectList}"
+                                      value="${selectedSubjects}" />
+                        </div>
+                    </div>
                     <br>
                     <button type="submit" class="btn btn-primary btn-block">Submit data</button>
                 </form>
@@ -27,9 +42,9 @@
 </div>
 
 <r:script>
-        var demo1 = $('[name="duallistbox_demo1[]"]').bootstrapDualListbox();
+        var demo1 = $('[name="classSubjectMap[]"]').bootstrapDualListbox();
         $("#demoform").submit(function(){
-        alert($('[name="duallistbox_demo1[]"]').val());
+        alert($('[name="classSubjectMap[]"]').val());
         return false;
         });
     $('#create-form').validate({

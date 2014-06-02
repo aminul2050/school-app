@@ -19,8 +19,10 @@ class Subject {
         lastUpdatedBy nullable: true
         lastUpdatedOn nullable: true
     }
+    static transients = ['subjectName']
 
     //common properties for every table
+    String subjectName
     Long schoolId
     String createdBy
     Date createdOn
@@ -36,4 +38,10 @@ class Subject {
         lastUpdatedOn = new Date()
     }
     //common properties for every table
+    String getSubjectName(){
+        if(this.compulsory){
+            return this.name
+        }
+        return this.name+" (Optional)"
+    }
 }

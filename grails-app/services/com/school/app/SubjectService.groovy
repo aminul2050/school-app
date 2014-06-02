@@ -61,15 +61,22 @@ class SubjectService {
             (schoolId == CommonUtils.DEFAULT_SCHOOL_ID && id in subjectIds)
         }
         def results = query.list()
-        String subjectStr =""
-        results.each {Subject subject ->
-            if(subject.compulsory){
-                subjectStr+= subject.name+", "
-            }else {
-                subjectStr+=subject.name+" (Optional), "
-            }
-        }
+        String subjectStr =results.collect {it.subjectName}.join(', ')
         return subjectStr
+    }
+    def getSubjects(String ids){
+        if(!ids){
+            return "No subject Added"
+        }
+        def subjectIds = ids.split(',').collect{it as Long}
+        if(!subjectIds){
+            return "No subject Added"
+        }
+        def query = Subject.where {
+            (schoolId == CommonUtils.DEFAULT_SCHOOL_ID && id in subjectIds)
+        }
+        def results = query.list()
+        return results
     }
 
 }
