@@ -9,6 +9,7 @@
 <g:render template="createSection"/>
 
 <div class="row">
+
     <div class="col-sm-12">
         <section class="panel">
             <header class="panel-heading">
@@ -27,8 +28,9 @@
                         <thead>
                         <tr>
                             <th>Serial</th>
-                            <th>Name</th>
-                            <th>Description</th>
+                            <th>Class Name</th>
+                            <th>Section Name</th>
+                            <th>Section Time</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -38,6 +40,7 @@
                                 <td>${section[0]}</td>
                                 <td>${section[1]}</td>
                                 <td>${section[2]}</td>
+                                <td>${section[3]}</td>
                                 <td>
                                     <sec:access controller="section" action="edit">
                                         <span class="col-xs-6"><a href="" referenceId="${className.DT_RowId}" class="edit-reference" title="Edit"><span class="green glyphicon glyphicon-edit"></span>&nbsp;Edit&nbsp;</a></span>
