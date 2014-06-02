@@ -67,7 +67,7 @@
                         <div class="col-md-4 col-sm-4">
                             <div class="clearfix">
                                 <div class="input-append date input-group" id="dateBegin">
-                                    <input type="date" id="beginingDate" name="beginingDate"
+                                    <input type="date" id="beginingDatea" name="beginingDate"
                                            class="form-control datepicker" data-date-format="dd/mm/yyyy"/>
                                     <span class="input-group-addon add-on"><i class="icon-calendar"></i></span>
                                 </div>
