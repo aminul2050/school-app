@@ -2,17 +2,16 @@
 <html>
 <head>
     <meta name="layout" content="settings-tpl"/>
-    <title>Subject Insert</title>
+    <title>Empty page - Edupal.co</title>
 
 </head>
 <body>
 <g:render template="createSubject"/>
-
 <div class="row">
     <div class="col-sm-12">
         <section class="panel">
             <header class="panel-heading">
-                Subject List
+                Class Name List
                 <span class="tools pull-right">
                     <div class="btn-group">
                         <button id="add-new-btn" class="btn btn-primary">
@@ -59,35 +58,39 @@
                     </table>
                 </div>
             </div>
+
         </section>
     </div>
 </div>
-<!-- page end-->
 <r:script>
     jQuery(function ($) {
         var oTable1 = $('#list-table').dataTable({
-//            "sDom": "<'row'<'col-md-4'><'col-md-4'><'col-md-4'f>r>t<'row'<'col-md-4'l><'col-md-4'i><'col-md-4'p>>",
-            "bProcessing": true,
-            "bAutoWidth": true,
-            "bServerSide": true,
-            "deferLoading": ${totalCount},
-            "sAjaxSource": "${g.createLink(controller: 'subject',action: 'list')}",
-            "fnRowCallback": function (nRow, aData, iDisplayIndex) {
-                if(aData.DT_RowId ==undefined){
-                    return true;
-                }
-                $('td:eq(3)', nRow).html(getActionButtons(nRow, aData));
-                return nRow;
-            },
-            "aoColumns": [
-                null,
-                null,
-                { "bSortable": false },
-                { "bSortable": false }
+    //            "sDom": "<'row'<'col-md-4'><'col-md-4'><'col-md-4'f>r>t<'row'<'col-md-4'l><'col-md-4'i><'col-md-4'p>>",
+//                "bProcessing": true,
+                "bAutoWidth": true,
+                "bServerSide": true,
+                "deferLoading": ${totalCount},
+                "sAjaxSource": "${g.createLink(controller: 'subject',action: 'list')}",
+                "fnRowCallback": function (nRow, aData, iDisplayIndex) {
+                    if(aData.DT_RowId ==undefined){
+                        return true;
+                    }
+                    $('td:eq(6)', nRow).html(getActionButtons(nRow, aData));
+                    return nRow;
+                },
+                "aoColumns": [
+                    null,
+                    null,
+                    { "bSortable": false },
+                    { "bSortable": false },
+                    { "bSortable": false },
+                    { "bSortable": false },
+                    { "bSortable": false }
 
-            ]
-        });
-        $('#add-new-btn').click(function (e) {
+                ]
+            });
+
+     $('#add-new-btn').click(function (e) {
             $("#subjectCreate").toggle(1000);
             e.preventDefault();
         });
@@ -153,6 +156,5 @@ actionButtons += '&nbsp;Delete&nbsp;</a></span></sec:access>';
         return actionButtons;
     }
 </r:script>
-
 </body>
 </html>
