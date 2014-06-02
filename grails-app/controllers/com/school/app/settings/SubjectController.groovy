@@ -9,6 +9,7 @@ class SubjectController {
     def subjectService
 
     def index() {
+        print("params----------"+params)
         LinkedHashMap resultMap = subjectService.subjectPaginateList(params)
 
         if (!resultMap || resultMap.totalCount == 0) {
@@ -18,6 +19,20 @@ class SubjectController {
         int totalCount = resultMap.totalCount
         render(view: 'subject', model: [dataReturn: resultMap.results, totalCount: totalCount])
     }
+
+//    def index() {
+//
+//        print("params-------------------"+params)
+//        print("params-------------------"+params.name)
+//        LinkedHashMap resultMap = subjectService.subjectPaginateList(params)
+//
+//        if (!resultMap || resultMap.totalCount == 0) {
+//            render(view: 'subject', model: [dataReturn: null, totalCount: 0])
+//            return
+//        }
+//        int totalCount = resultMap.totalCount
+//        render(view: 'subject', model: [dataReturn: resultMap.results, totalCount: totalCount])
+//    }
 
     def save(ClassNameCommand subjectCommand) {
         if (!request.method == 'POST') {
@@ -37,7 +52,7 @@ class SubjectController {
         if (params.id) { //update Currency
             subject = Subject.get(subjectCommand.id)
             if (!subject) {
-                result.put('message','Class not found')
+                result.put('message','Subject not found')
                 outPut=result as JSON
                 render outPut
                 return
@@ -51,7 +66,7 @@ class SubjectController {
             }
             Subject savedClass =subject.save()
             result.put('isError',false)
-            result.put('message','Class Updated successfully')
+            result.put('message','Subject Updated successfully')
             outPut=result as JSON
             render outPut
             return
@@ -71,7 +86,7 @@ class SubjectController {
             return
         }
         result.put('isError',false)
-        result.put('message','Class updated successfully')
+        result.put('message','Subject updated successfully')
         outPut=result as JSON
         render outPut
 
@@ -118,7 +133,7 @@ class SubjectController {
         String outPut
         Subject subject = Subject.read(id)
         if (!subject) {
-            result.put('message','Class name not found')
+            result.put('message','Subject name not found')
             outPut = result as JSON
             render outPut
             return
@@ -135,6 +150,9 @@ class SubjectCommand {
     Long id
     String name
     String description
+    Integer ctMark
+    Integer hallMark
+    Boolean compulsory =true
 
     static constraints = {
         name nullable: false

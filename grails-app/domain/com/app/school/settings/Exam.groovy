@@ -15,6 +15,7 @@ class Exam {
     Section section
     ExamType examType
 
+    //common properties for every table
     static constraints = {
         name(unique: true)
     }
