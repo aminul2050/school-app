@@ -1,22 +1,26 @@
 package com.school.app.settings
 
 import com.app.school.settings.ClassSubject
+import com.app.school.settings.Subject
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_SUPER_ADMIN'])
 class ClassSubjectController {
     def classSubjectService
+    def subjectService
 
     def index() {
         LinkedHashMap resultMap = classSubjectService.classSubjectPaginateList(params)
+        def subjectList = Subject.list()
+        def selectedSubjects = subjectService.getSubjects('2,3')
 
         if (!resultMap || resultMap.totalCount == 0) {
-            render(view: 'classSubject', model: [dataReturn: null, totalCount: 0])
+            render(view: 'classSubject', model: [dataReturn: null, totalCount: 0,subjectList:subjectList,selectedSubjects:null])
             return
         }
         int totalCount = resultMap.totalCount
-        render(view: 'classSubject', model: [dataReturn: resultMap.results, totalCount: totalCount])
+        render(view: 'classSubject', model: [dataReturn: resultMap.results, totalCount: totalCount,subjectList:subjectList,selectedSubjects:null])
     }
 
     def save(ClassSubjectCommand classSubjectCommand) {
