@@ -11,6 +11,13 @@
                 <span>Add Subject</span>
             </g:activeLink>
         </li>
+
+        <li>
+            <g:activeLink controller="section" action="index"><i class="fa fa-dashboard"></i>
+                <span>Section Insert</span>
+            </g:activeLink>
+        </li>
+
         <li>
             <g:activeLink controller="classSubject" action="index"><i class="fa fa-dashboard"></i>
                 <span>Map Class Subject</span>
@@ -29,11 +36,7 @@
             </g:activeLink>
         </li>
 
-        <li>
-            <g:activeLink controller="section" action="index"><i class="fa fa-dashboard"></i>
-                <span>Section Insert</span>
-            </g:activeLink>
-        </li>
+
 
         %{--<li class="sub-menu">--}%
             %{--<a href="javascript:;">--}%
