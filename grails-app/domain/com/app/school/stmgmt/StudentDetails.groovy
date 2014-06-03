@@ -16,9 +16,8 @@ class StudentDetails {
     String email
     String mobileNo
     String cardNo
-    Date entryDate
     String imagePath
-    Enum  religion
+    Religion religion
     String presentAddress
     String permanentAddress
     String fathersProfession
@@ -27,7 +26,22 @@ class StudentDetails {
 
     static constraints = {
 
+        fatherAvgIncome nullable: true
+        mothersProfession nullable: true
+        fathersProfession nullable: true
+        permanentAddress nullable: true
+        presentAddress nullable: true
+        religion nullable: true
+        imagePath nullable: true
+        cardNo nullable: true
+        mobileNo nullable: true
+        bloodGroup nullable: true
+        birthDate nullable: true
+        motherName nullable: true
+        fatherName nullable: true
+        email nullable: true
         nickName nullable: true
+
         //System inserted data
         schoolId nullable: true
         createdBy nullable: true
@@ -36,7 +50,10 @@ class StudentDetails {
         lastUpdatedOn nullable: true
     }
 
+    static transients = ['fullName']
+
     //common properties for every table
+    String fullName
     Long schoolId
     String createdBy
     Date createdOn
@@ -53,4 +70,9 @@ class StudentDetails {
     }
     //common properties for every table
 
+    //common properties for every table
+    String getFullName(){
+
+        return this.firstName+" "+this.lastName
+    }
 }

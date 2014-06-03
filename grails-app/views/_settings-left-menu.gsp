@@ -38,6 +38,12 @@
 
 
 
+        <li>
+            <g:activeLink controller="studentDetails" action="index"><i class="fa fa-dashboard"></i>
+                <span>Student Insert</span>
+            </g:activeLink>
+        </li>
+
         %{--<li class="sub-menu">--}%
             %{--<a href="javascript:;">--}%
                 %{--<i class="fa fa-glass"></i>--}%
