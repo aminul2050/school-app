@@ -6,8 +6,17 @@ class Section {
     ClassName className
     String classDuration
     static constraints = {
-    classDuration nullable: true
+        name nullable: false, unique: true
+        classDuration nullable: true
+
+        //System inserted data
+        schoolId nullable: true
+        createdBy nullable: true
+        createdOn nullable: true
+        lastUpdatedBy nullable: true
+        lastUpdatedOn nullable: true
     }
+
     //common properties for every table
     Long schoolId
     String createdBy

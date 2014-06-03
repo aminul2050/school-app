@@ -155,8 +155,9 @@ class SectionController {
 
 class SectionCommand {
     Long id
+    String className
     String name
-    String description
+    String classDuration
 
     static constraints = {
         name nullable: false

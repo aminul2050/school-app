@@ -43,10 +43,10 @@
                                 <td>${section[3]}</td>
                                 <td>
                                     <sec:access controller="section" action="edit">
-                                        <span class="col-xs-6"><a href="" referenceId="${className.DT_RowId}" class="edit-reference" title="Edit"><span class="green glyphicon glyphicon-edit"></span>&nbsp;Edit&nbsp;</a></span>
+                                        <span class="col-xs-6"><a href="" referenceId="${section.DT_RowId}" class="edit-reference" title="Edit"><span class="green glyphicon glyphicon-edit"></span>&nbsp;Edit&nbsp;</a></span>
                                     </sec:access>
                                     <sec:access controller="section" action="delete">
-                                        <span class="col-xs-6"><a href="" referenceId="${className.DT_RowId}" class="delete-reference" title="Delete"><span class="green glyphicon glyphicon-trash"></span>&nbsp;Delete&nbsp;</a></span>
+                                        <span class="col-xs-6"><a href="" referenceId="${section.DT_RowId}" class="delete-reference" title="Delete"><span class="green glyphicon glyphicon-trash"></span>&nbsp;Delete&nbsp;</a></span>
                                     </sec:access>
                                 </td>
                             </tr>
@@ -68,7 +68,7 @@
             "bAutoWidth": true,
             "bServerSide": true,
             "deferLoading": ${totalCount},
-            "sAjaxSource": "${g.createLink(controller: 'className',action: 'list')}",
+            "sAjaxSource": "${g.createLink(controller: 'section',action: 'list')}",
             "fnRowCallback": function (nRow, aData, iDisplayIndex) {
                 if(aData.DT_RowId ==undefined){
                     return true;
@@ -80,12 +80,12 @@
                 null,
                 null,
                 { "bSortable": false },
+                { "bSortable": false },
                 { "bSortable": false }
 
             ]
         });
         $('#add-new-btn').click(function (e) {
-        alert("Hi")
             $("#sectionCreate").toggle(1000);
             e.preventDefault();
         });

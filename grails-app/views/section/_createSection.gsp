@@ -28,28 +28,9 @@
                             </div>
                         </div>
                         <div class="form-group ">
-                            <label for="description" class="control-label col-lg-3">Section Time</label>
+                            <label for="classDuration" class="control-label col-lg-3">Section Time</label>
                             <div class="col-lg-6">
-                                <input class=" form-control" id="description" name="description" type="text" />
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label for="ctMark" class="control-label col-lg-3">Class Test Mark.</label>
-                            <div class="col-lg-6">
-                                <g:textField class="form-control" id="ctMark" name="ctMark"/>
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label for="hallMark" class="control-label col-lg-3">Hall Exam Mark</label>
-                            <div class="col-lg-6">
-                                <input class=" form-control" id="hallMark" name="hallMark" type="checkbox" value=""/>
-                            </div>
-                        </div>
-
-                        <div class="form-group ">
-                            <label for="compulsory" class="control-label col-lg-3">Hall Exam Mark</label>
-                            <div class="col-lg-6">
-                                <input class=" form-control" id="compulsory" name="compulsory" type="checkbox" />
+                                <input class=" form-control" id="classDuration" name="classDuration" type="text" />
                             </div>
                         </div>
 
