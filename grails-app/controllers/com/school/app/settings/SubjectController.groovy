@@ -35,6 +35,8 @@ class SubjectController {
 //    }
 
     def save(ClassNameCommand subjectCommand) {
+
+
         if (!request.method == 'POST') {
             redirect(action: 'index')
             return

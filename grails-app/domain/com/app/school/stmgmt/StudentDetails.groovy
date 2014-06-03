@@ -13,32 +13,27 @@ class StudentDetails {
     String motherName
     Date birthDate
     String bloodGroup
-    PersonalInfo personalInfo
     String email
     String mobileNo
     String cardNo
     Date entryDate
     String imagePath
+    Enum  religion
+    String presentAddress
+    String permanentAddress
+    String fathersProfession
+    String mothersProfession
+    Double fatherAvgIncome
 
     static constraints = {
 
-//            studentID(nullable: true)
-//            name(blank: false, nullable: false)
-//            stuFatherName(blank: false, nullable: false)
-//            stuMotherName(nullable: true)
-//            stuReligion(nullable: true)
-//            stuStreetPAddress(nullable: true)
-//            stuCStreetAddress(nullable: true)
-//            stuPhone(nullable: true)
-//            stuEmail(nullable: true, email: true)
-//            immMob(nullable: true)
-//            fatherProfession(nullable: true)
-//            motherProfession(nullable: true)
-//            fatherAvgIncome(nullable: true)
-//            cardNo(nullable: true)
-//            stuEntryDate(nullable: true)
-//            stdBirthDate(nullable: true)
-//            imagePath(nullable: true)
+        nickName nullable: true
+        //System inserted data
+        schoolId nullable: true
+        createdBy nullable: true
+        createdOn nullable: true
+        lastUpdatedBy nullable: true
+        lastUpdatedOn nullable: true
     }
 
     //common properties for every table
@@ -48,11 +43,12 @@ class StudentDetails {
     String lastUpdatedBy
     Date lastUpdatedOn
     def beforeInsert(){
-        createdBy = springSecurityService.principal.username
+        schoolId=10000
+        createdBy = springSecurityService?.principal? springSecurityService.principal.username:'SystemUser'
         createdOn = new Date()
     }
     def beforeUpdate() {
-        lastUpdatedBy = springSecurityService.principal.username
+        lastUpdatedBy = springSecurityService?.principal? springSecurityService.principal.username:'SystemUser'
         lastUpdatedOn = new Date()
     }
     //common properties for every table

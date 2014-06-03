@@ -24,6 +24,26 @@
                             </div>
                         </div>
 
+                        <div class="form-group ">
+                            <label for="ctMark" class="control-label col-lg-3">Class Test Mark.</label>
+                            <div class="col-lg-6">
+                                <g:textField class="form-control" id="ctMark" name="ctMark"/>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label for="hallMark" class="control-label col-lg-3">Hall Exam Mark</label>
+                            <div class="col-lg-6">
+                                <input class=" form-control" id="hallMark" name="hallMark" type="text"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="compulsory" class="control-label col-lg-3">Compulsory</label>
+                            <div class="col-lg-6">
+                                <input class=" form-control" id="compulsory" name="compulsory" type="checkbox" />
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <div class="col-lg-offset-3 col-lg-6">
                                 <button class="btn btn-primary" type="submit">Save</button>
@@ -72,7 +92,7 @@
         },
         submitHandler: function (form) {
             $.ajax({
-                url: "${createLink(controller: 'className', action: 'save')}",
+                url: "${createLink(controller: 'subject', action: 'save')}",
                 type: 'post',
                 dataType: "json",
                 data: $("#create-form").serialize(),

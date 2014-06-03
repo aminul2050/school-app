@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="settings-tpl"/>
-    <title>Empty page - Edupal.co</title>
+    <title>Subject Entry</title>
 
 </head>
 <body>
