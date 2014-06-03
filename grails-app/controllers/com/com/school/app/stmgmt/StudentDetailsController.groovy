@@ -1,5 +1,6 @@
 package com.com.school.app.stmgmt
 
+import com.app.school.enums.Religion
 import com.app.school.stmgmt.StudentDetails
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
@@ -154,10 +155,28 @@ class StudentDetailsController {
 
 class StudentDetailsCommand {
     Long id
-    String name
-    String description
+    String studentID
+    String firstName
+    String lastName
+    String nickName
+    String fatherName
+    String motherName
+    Date birthDate
+    String bloodGroup
+    String email
+    String mobileNo
+    String cardNo
+    String imagePath
+    Religion religion
+    String presentAddress
+    String permanentAddress
+    String fathersProfession
+    String mothersProfession
+    Double fatherAvgIncome
 
     static constraints = {
-        name nullable: false
+        studentID nullable: false
+        firstName nullable: false
+        lastName nullable: false
     }
 }

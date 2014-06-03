@@ -34,9 +34,7 @@ class SubjectController {
 //        render(view: 'subject', model: [dataReturn: resultMap.results, totalCount: totalCount])
 //    }
 
-    def save(SubjectCommand subjectCommand) {
-
-
+    def save(ClassNameCommand subjectCommand) {
         if (!request.method == 'POST') {
             redirect(action: 'index')
             return

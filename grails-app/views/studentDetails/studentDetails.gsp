@@ -102,8 +102,24 @@
                     if(data.isError==false){
                             clearForm('#create-form');
                             $('#id').val(data.obj.id);
-                            $('#name').val(data.obj.name);
-                            $('#description').val(data.obj.description);
+                            $('#studentID').val(data.obj.studentID);
+                            $('#firstName').val(data.obj.firstName);
+                            $('#lastName').val(data.obj.lastName);
+                            $('#nickName').val(data.obj.nickName);
+                            $('#fatherName').val(data.obj.fatherName);
+                            $('#motherName').val(data.obj.motherName);
+                            $('#birthDate').val(data.obj.birthDate);
+                            $('#bloodGroup').val(data.obj.bloodGroup);
+                            $('#email').val(data.obj.email);
+                            $('#mobileNo').val(data.obj.mobileNo);
+                            $('#cardNo').val(data.obj.cardNo);
+                            $('#imagePath').val(data.obj.imagePath);
+                            $('#religion').val(data.obj.religion);
+                            $('#presentAddress').val(data.obj.presentAddress);
+                            $('#permanentAddress').val(data.obj.permanentAddress);
+                            $('#fathersProfession').val(data.obj.fathersProfession);
+                            $('#mothersProfession').val(data.obj.mothersProfession);
+                            $('#fatherAvgIncome').val(data.obj.fatherAvgIncome);
                             $("#createStudentDetails").show(1000);
                         }else{
                             alert(data.message);
