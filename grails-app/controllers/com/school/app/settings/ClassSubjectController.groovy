@@ -1,9 +1,11 @@
 package com.school.app.settings
 
+import com.app.school.settings.ClassName
 import com.app.school.settings.ClassSubject
 import com.app.school.settings.Subject
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
+import org.springframework.dao.DataIntegrityViolationException
 
 @Secured(['ROLE_SUPER_ADMIN'])
 class ClassSubjectController {
@@ -13,71 +15,105 @@ class ClassSubjectController {
     def index() {
         LinkedHashMap resultMap = classSubjectService.classSubjectPaginateList(params)
         def subjectList = Subject.list()
-        def selectedSubjects = subjectService.getSubjects('2,3')
+        def selectedSubjects = null //subjectService.getSubjects('2,3')
 
         if (!resultMap || resultMap.totalCount == 0) {
-            render(view: 'classSubject', model: [dataReturn: null, totalCount: 0,subjectList:subjectList,selectedSubjects:null])
+            render(view: 'classSubject', model: [dataReturn: null, totalCount: 0,subjectList:subjectList,selectedSubjects:selectedSubjects])
             return
         }
         int totalCount = resultMap.totalCount
-        render(view: 'classSubject', model: [dataReturn: resultMap.results, totalCount: totalCount,subjectList:subjectList,selectedSubjects:null])
+        render(view: 'classSubject', model: [dataReturn: resultMap.results, totalCount: totalCount,subjectList:subjectList,selectedSubjects:selectedSubjects])
     }
 
     def save(ClassSubjectCommand classSubjectCommand) {
         if (!request.method == 'POST') {
-            //return json message
+            redirect(action: 'index')
             return
         }
+        LinkedHashMap result = new LinkedHashMap()
+        result.put('isError',true)
+        String outPut
         if (classSubjectCommand.hasErrors()) {
-            //return json message
+            result.put('message','Please fill the form correctly')
+            outPut=result as JSON
+            render outPut
             return
         }
         ClassSubject classSubject
         if (params.id) { //update Currency
             classSubject = ClassSubject.get(classSubjectCommand.id)
             if (!classSubject) {
-                //return json message
+                result.put('message','Class not found')
+                outPut=result as JSON
+                render outPut
                 return
             }
             classSubject.properties = classSubjectCommand.properties
             if (!classSubject.validate()) {
-                //return json message
+                result.put('message','Please fill the form correctly')
+                outPut=result as JSON
+                render outPut
                 return
             }
-            classSubject.save(flush: true)
-            //LinkedHashMap resultMap = currencyService.currencyPaginateList(params)
-            //flash.message = "Currency Updated successfully"
-            //render(template: '/coreBanking/settings/currency/currencyList', model: [dataReturn: resultMap.results, totalCount: resultMap.totalCount])
+            ClassSubject savedClass =classSubject.save()
+            result.put('isError',false)
+            result.put('message','Class Updated successfully')
+            outPut=result as JSON
+            render outPut
             return
         }
         classSubject = new ClassSubject(classSubjectCommand.properties)
         if (!classSubjectCommand.validate()) {
-            //render(template: '/coreBanking/settings/currency/createCurrency', model: [currencys: currencys])
+            result.put('message','Please fill the form correctly')
+            outPut=result as JSON
+            render outPut
             return
         }
         ClassSubject savedCurr = classSubject.save(flush: true)
         if (!savedCurr) {
-            //render(template: '/coreBanking/settings/currency/createCurrency', model: [currencys: currencys])
+            result.put('message','Please fill the form correctly')
+            outPut=result as JSON
+            render outPut
+            return
         }
-
-//        LinkedHashMap resultMap = currencyService.currencyPaginateList(params)
-//        flash.message = "Currency created successfully"
-//        render(template: '/coreBanking/settings/currency/currencyList', model: [dataReturn: resultMap.results, totalCount: resultMap.totalCount])
-        return
+        result.put('isError',false)
+        result.put('message','Class updated successfully')
+        outPut=result as JSON
+        render outPut
 
     }
 
     def delete(Long id) {
+        LinkedHashMap result = new LinkedHashMap()
+        result.put('isError',true)
+        String outPut
         ClassSubject classSubject = ClassSubject.get(id)
-        if (!classSubject) {
-            // flash.message = "Currency not found"
-            //render(template: '/coreBanking/settings/currency/currencyList')
-        }
-        classSubject.save(flush: true)
+        if(classSubject) {
+            try {
+                println "+++++++++++++++++++++++++"
+                classSubject.delete(flush:true)
+                result.put('isError',false)
+                result.put('message',"Mapping deleted successfully.")
+                outPut = result as JSON
+                render outPut
+                return
 
-        def result=[isError:false,message:"ClassSubject deleted g g successfully"]
-        String outPut=result as JSON
+            }
+
+            catch(DataIntegrityViolationException e) {
+                result.put('isError',true)
+                result.put('message',"Class could not deleted. Already in use.")
+                outPut = result as JSON
+                render outPut
+                return
+            }
+
+        }
+        result.put('isError',true)
+        result.put('message',"Class not found")
+        outPut = result as JSON
         render outPut
+        return
     }
 
     def list() {
@@ -98,23 +134,35 @@ class ClassSubjectController {
 
     }
 
-    def update(Long id) {
+    def edit(Long id) {
+        if (!request.method == 'POST') {
+            redirect(action: 'index')
+            return
+        }
+        LinkedHashMap result = new LinkedHashMap()
+        result.put('isError',true)
+        String outPut
         ClassSubject classSubject = ClassSubject.read(id)
         if (!classSubject) {
-            // flash.message = "Currency not found"
-            //render(template: '/coreBanking/settings/currency/currencyList')
+            result.put('message','No mapping found')
+            outPut = result as JSON
+            render outPut
+            return
         }
-        //  render(template: '/coreBanking/settings/currency/createCurrency', model: [classSubject: classSubject])
+        result.put('isError',false)
+        result.put('obj',classSubject)
+        outPut = result as JSON
+        render outPut
     }
 
 }
 
 class ClassSubjectCommand {
     Long id
-    String name
-    String description
+    ClassName className
+    String subjectIds
 
     static constraints = {
-        name nullable: false
+        subjectIds nullable: false
     }
 }

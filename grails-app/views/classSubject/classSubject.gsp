@@ -96,8 +96,7 @@
                     if(data.isError==false){
                             clearForm('#create-form');
                             $('#id').val(data.obj.id);
-                            $('#name').val(data.obj.name);
-                            $('#description').val(data.obj.description);
+                            $('#className').val(data.obj.className.id);
                             $("#createClassSubject").show(1000);
                         }else{
                             alert(data.message);
