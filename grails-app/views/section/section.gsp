@@ -73,7 +73,7 @@
                 if(aData.DT_RowId ==undefined){
                     return true;
                 }
-                $('td:eq(3)', nRow).html(getActionButtons(nRow, aData));
+                $('td:eq(4)', nRow).html(getActionButtons(nRow, aData));
                 return nRow;
             },
             "aoColumns": [
@@ -101,7 +101,8 @@
                             clearForm('#create-form');
                             $('#id').val(data.obj.id);
                             $('#name').val(data.obj.name);
-                            $('#description').val(data.obj.description);
+                            $('#className').val(data.obj.className.id);
+                            $('#classDuration').val(data.obj.classDuration);
                             $("#sectionCreate").show(1000);
                         }else{
                             alert(data.message);

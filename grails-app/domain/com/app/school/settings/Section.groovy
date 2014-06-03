@@ -7,7 +7,7 @@ class Section {
     String classDuration
     static constraints = {
         name nullable: false, unique: true
-        classDuration nullable: true
+        classDuration nullable: false
 
         //System inserted data
         schoolId nullable: true

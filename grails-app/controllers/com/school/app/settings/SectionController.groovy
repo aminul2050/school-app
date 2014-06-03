@@ -161,5 +161,6 @@ class SectionCommand {
 
     static constraints = {
         name nullable: false
+        className nullable: false
     }
 }

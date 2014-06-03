@@ -30,13 +30,14 @@
                         <div class="form-group ">
                             <label for="classDuration" class="control-label col-lg-3">Section Time</label>
                             <div class="col-lg-6">
-                                <input class=" form-control" id="classDuration" name="classDuration" type="text" />
+                                <g:textField class=" form-control" id="classDuration" name="classDuration"  />
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-lg-offset-3 col-lg-6">
                                 <button class="btn btn-primary" type="submit">Save</button>
+                                <g:submitButton name="reset" type="reset" value="Cancel"/>
                                 <button class="btn btn-default" type="button">Cancel</button>
                             </div>
                         </div>
@@ -56,6 +57,11 @@
             name: {
                 required: true,
                 minlength: 4,
+                maxlength: 15
+            },
+             classDuration: {
+                required: true,
+                minlength: 5,
                 maxlength: 15
             },
             description: {
@@ -87,7 +93,7 @@
                 dataType: "json",
                 data: $("#create-form").serialize(),
                 success: function (data) {
-                    clearForm(form);
+                    clearSectionform(form);
                     var table = $('#list-table').DataTable();
                     table.ajax.reload();
                 },
@@ -96,4 +102,8 @@
             })
         }
     });
+    function clearSectionform(form){
+        clearForm(form);
+        $('#className').prop('selectedIndex',0);
+    }
 </r:script>
