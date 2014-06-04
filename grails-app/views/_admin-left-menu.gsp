@@ -1,3 +1,4 @@
+%{--
 <div class="leftside-navigation">
     <ul class="sidebar-menu" id="nav-accordion">
         <li>
@@ -16,7 +17,8 @@
             </g:activeLink>
         </li>
 
-        %{--<li class="sub-menu">
+        --}%
+%{--<li class="sub-menu">
             <a href="javascript:;">
                 <i class="fa fa-glass"></i>
                 <span>Extra</span>
@@ -25,6 +27,7 @@
                 <li><a href="#">Blank Page</a></li>
                 <li><a href="#">Lock Screen</a></li>
             </ul>
-        </li>--}%
+        </li>--}%%{--
 
-    </ul></div>
+
+    </ul></div>--}%

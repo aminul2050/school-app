@@ -52,11 +52,9 @@
 <!--header end-->
 <!--sidebar start-->
 <aside>
-    <div id="sidebar" class="nav-collapse">
         <!-- sidebar menu start-->
         <g:render template="/settings-left-menu"/>
         <!-- sidebar menu end-->
-    </div>
 </aside>
 <!--sidebar end-->
 <!--main content start-->
