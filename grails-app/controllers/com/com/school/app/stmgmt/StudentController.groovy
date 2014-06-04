@@ -1,28 +1,27 @@
 package com.com.school.app.stmgmt
 
-import com.app.school.enums.Religion
-import com.app.school.stmgmt.StudentDetails
+import com.app.school.stmgmt.Student
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.dao.DataIntegrityViolationException
 
 @Secured(['ROLE_SUPER_ADMIN'])
-class StudentDetailsController {
+class StudentController {
 
-    def studentDetailsService
+    def studentService
 
     def index() {
-        LinkedHashMap resultMap = studentDetailsService.studentDetailsPaginateList(params)
+        LinkedHashMap resultMap = studentService.studentPaginateList(params)
 
         if (!resultMap || resultMap.totalCount == 0) {
-            render(view: 'studentDetails', model: [dataReturn: null, totalCount: 0])
+            render(view: 'student', model: [dataReturn: null, totalCount: 0])
             return
         }
         int totalCount = resultMap.totalCount
-        render(view: 'studentDetails', model: [dataReturn: resultMap.results, totalCount: totalCount])
+        render(view: 'student', model: [dataReturn: resultMap.results, totalCount: totalCount])
     }
 
-    def save(StudentDetailsCommand studentDetailsCommand) {
+    def save(StudentCommand studentCommand) {
         if (!request.method == 'POST') {
             redirect(action: 'index')
             return
@@ -30,43 +29,43 @@ class StudentDetailsController {
         LinkedHashMap result = new LinkedHashMap()
         result.put('isError',true)
         String outPut
-        if (studentDetailsCommand.hasErrors()) {
+        if (studentCommand.hasErrors()) {
             result.put('message','Please fill the form correctly')
             outPut=result as JSON
             render outPut
             return
         }
-        StudentDetails studentDetails
+        Student student
         if (params.id) { //update Currency
-            studentDetails = StudentDetails.get(studentDetailsCommand.id)
-            if (!studentDetails) {
+            student = Student.get(studentCommand.id)
+            if (!student) {
                 result.put('message','Student not found')
                 outPut=result as JSON
                 render outPut
                 return
             }
-            studentDetails.properties = studentDetailsCommand.properties
-            if (!studentDetails.validate()) {
+            student.properties = studentCommand.properties
+            if (!student.validate()) {
                 result.put('message','Please fill the form correctly')
                 outPut=result as JSON
                 render outPut
                 return
             }
-            StudentDetails savedStudent =studentDetails.save()
+            Student savedStudent =student.save()
             result.put('isError',false)
             result.put('message','Student Updated successfully')
             outPut=result as JSON
             render outPut
             return
         }
-        studentDetails = new StudentDetails(studentDetailsCommand.properties)
-        if (!studentDetailsCommand.validate()) {
+        student = new Student(studentCommand.properties)
+        if (!studentCommand.validate()) {
             result.put('message','Please fill the form correctly')
             outPut=result as JSON
             render outPut
             return
         }
-        StudentDetails savedCurr = studentDetails.save(flush: true)
+        Student savedCurr = student.save(flush: true)
         if (!savedCurr) {
             result.put('message','Please fill the form correctly')
             outPut=result as JSON
@@ -84,10 +83,10 @@ class StudentDetailsController {
         LinkedHashMap result = new LinkedHashMap()
         result.put('isError',true)
         String outPut
-        StudentDetails studentDetails = StudentDetails.get(id)
-        if(studentDetails) {
+        Student student = Student.get(id)
+        if(student) {
             try {
-                studentDetails.delete(flush:true)
+                student.delete(flush:true)
                 result.put('isError',false)
                 result.put('message',"Student deleted successfully.")
                 outPut = result as JSON
@@ -115,7 +114,7 @@ class StudentDetailsController {
     def list() {
         LinkedHashMap gridData
         String result
-        LinkedHashMap resultMap =studentDetailsService.studentDetailsPaginateList(params)
+        LinkedHashMap resultMap =studentService.studentPaginateList(params)
 
         if(!resultMap || resultMap.totalCount== 0){
             gridData = [iTotalRecords: 0, iTotalDisplayRecords: 0, aaData: null]
@@ -138,45 +137,27 @@ class StudentDetailsController {
         LinkedHashMap result = new LinkedHashMap()
         result.put('isError',true)
         String outPut
-        StudentDetails studentDetails = StudentDetails.read(id)
-        if (!studentDetails) {
+        Student student = Student.read(id)
+        if (!student) {
             result.put('message','Student name not found')
             outPut = result as JSON
             render outPut
             return
         }
         result.put('isError',false)
-        result.put('obj',studentDetails)
+        result.put('obj',student)
         outPut = result as JSON
         render outPut
     }
 
 }
 
-class StudentDetailsCommand {
+class StudentCommand {
     Long id
-    String studentID
-    String firstName
-    String lastName
-    String nickName
-    String fatherName
-    String motherName
-    Date birthDate
-    String bloodGroup
-    String email
-    String mobileNo
-    String cardNo
-    String imagePath
-    Religion religion
-    String presentAddress
-    String permanentAddress
-    String fathersProfession
-    String mothersProfession
-    Double fatherAvgIncome
+    String name
+    String description
 
     static constraints = {
-        studentID nullable: false
-        firstName nullable: false
-        lastName nullable: false
+        name nullable: false
     }
 }

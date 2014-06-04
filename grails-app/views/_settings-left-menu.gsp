@@ -35,7 +35,8 @@
                 <span>Student Mgmt</span>
             </a>
             <ul class="sub">
-                <li><a data-linkTo="studentDetails" href="${g.createLink(controller: 'studentDetails',action: 'index')}">New Entry</a></li>
+                <li><a data-linkTo="studentDetails" href="${g.createLink(controller: 'studentDetails',action: 'index')}">Student Entry</a></li>
+                <li><a data-linkTo="student" href="${g.createLink(controller: 'student',action: 'index')}">Student Admission</a></li>
             </ul>
         </li>
     </ul></div>

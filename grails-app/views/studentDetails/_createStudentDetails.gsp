@@ -191,8 +191,6 @@
 
 <r:script>
 
-     
-
     $('#create-form').validate({
         errorElement: 'small',
         errorStudent: 'help-block',
