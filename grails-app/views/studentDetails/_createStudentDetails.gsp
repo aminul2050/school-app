@@ -63,10 +63,10 @@
                             </div>
 
                             <div class="form-group ">
-                                <label for="birthDate" class="control-label col-md-5">Birth Date</label>
+                                <label for="datepicker" class="control-label col-md-5">Birth Date</label>
 
                                 <div class="col-md-7">
-                                    <input type="date" id="birthDate" name="birthDate"
+                                    <input type="date" id="datepicker" name="birthDate"
                                            class="form-control datepicker" data-date-format="dd/mm/yyyy"/>
                                 </div>
                             </div>
@@ -187,6 +187,12 @@
 </div>
 
 <r:script>
+    $('#datepicker').datepicker({
+    format: 'mm/dd/yyyy',
+    startDate: '-3d',
+    autoclose: true
+})
+
     $('#create-form').validate({
         errorElement: 'small',
         errorClass: 'help-block',

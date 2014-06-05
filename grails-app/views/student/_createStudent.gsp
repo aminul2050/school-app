@@ -77,12 +77,6 @@
                                           from='${com.app.school.enums.AdmissionType.values()}'
                                           optionKey="key" optionValue="value"></g:select>
 
-                                %{--<g:select name="defaultVat" id="defaultVat" class="form-control"--}%
-                                          %{--noSelection="['': 'Choose Default Vat']"--}%
-                                          %{--from="${DefaultVat.values()}"--}%
-                                          %{--value="${bankSetupData?.defaultVat}"--}%
-                                          %{--optionKey="value" optionValue="value"></g:select>--}%
-
                             </div>
                         </div>
 
