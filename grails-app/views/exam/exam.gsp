@@ -30,12 +30,12 @@
                         <tr>
                             <th>Serial</th>
                             <th>Class Name</th>
-                            <th>Section</th>
+                            <th>Section Name</th>
                             <th>Exam Type</th>
+                            <th>Name</th>
                             <th>Start Date</th>
-                            <th>End Date</th>
-                            <th>Publish Date</th>
                             <th>Exam Status</th>
+                            <th>Publish Date</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -51,12 +51,12 @@
                                 <td>${exam[6]}</td>
                                 <td>${exam[7]}</td>
                                 <td>
-                                    <sec:access controller="subjectName" action="edit">
+                                    <sec:access controller="exam" action="edit">
                                         <span class="col-xs-6"><a href="" referenceId="${exam.DT_RowId}"
                                                                   class="edit-reference" title="Edit"><span
                                                     class="green glyphicon glyphicon-edit"></span></a></span>
                                     </sec:access>
-                                    <sec:access controller="subjectName" action="delete">
+                                    <sec:access controller="exam" action="delete">
                                         <span class="col-xs-6"><a href="" referenceId="${exam.DT_RowId}"
                                                                   class="delete-reference" title="Delete"><span
                                                     class="red glyphicon glyphicon-trash"></span></a></span>
@@ -76,12 +76,12 @@
 <r:script>
     jQuery(function ($) {
     %{--var beginDate = "${beginingDate}";--}%
-%{--$("#beginingDate").val(beginDate);--}%
+//    $("#beginingDate").val(beginDate);
 
     //date picker object
      $("#dateBegin").datepicker({
     //            format: dateF,
-                startDate: date,
+                startDate: new Date(),
                 gotoCurrent: true,
                 stepMonths: 1,
                 minDate: new Date(),

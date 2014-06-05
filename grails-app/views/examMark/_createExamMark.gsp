@@ -1,8 +1,8 @@
-<div class="row" id="classNameCreate" style="display:none">
+<div class="row" id="examMarkCreate" style="display:none">
     <div class="col-lg-12">
         <section class="panel">
             <header class="panel-heading">
-                Create Class
+                Exam Mark
                 <span class="tools pull-right">
                     <a class="fa fa-chevron-down" href="javascript:;"></a>
                 </span>
@@ -12,13 +12,19 @@
                     <form class="cmxform form-horizontal " id="create-form">
                         <g:hiddenField name="id"/>
                         <div class="form-group ">
-                            <label for="name" class="control-label col-lg-3">Class Name</label>
+                            <label for="name" class="control-label col-lg-3">Student Name</label>
                             <div class="col-lg-6">
                                 <g:textField class="form-control" id="name" name="name"/>
                             </div>
                         </div>
                         <div class="form-group ">
-                            <label for="description" class="control-label col-lg-3">Description</label>
+                            <label for="name" class="control-label col-lg-3">Mark </label>
+                            <div class="col-lg-6">
+                                <g:textField class="form-control" id="mark" name="mark"/>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label for="description" class="control-label col-lg-3">Comments</label>
                             <div class="col-lg-6">
                                 <input class=" form-control" id="description" name="description" type="text" />
                             </div>
@@ -48,14 +54,22 @@
                 minlength: 4,
                 maxlength: 15
             },
+             mark: {
+                required: true,
+                minlength: 1,
+                maxlength: 3
+            },
             description: {
-                minlength: 5,
+                minlength: 0,
                 maxlength: 225
             }
         },
         messages: {
             name: {
                 required: "Class Name required"
+            },
+             mark: {
+                required: "Mark required"
             }
         },
         invalidHandler: function (event, validator) { //display error alert on form submit
@@ -72,7 +86,7 @@
         },
         submitHandler: function (form) {
             $.ajax({
-                url: "${createLink(controller: 'className', action: 'save')}",
+                url: "${createLink(controller: 'examMark', action: 'save')}",
                 type: 'post',
                 dataType: "json",
                 data: $("#create-form").serialize(),

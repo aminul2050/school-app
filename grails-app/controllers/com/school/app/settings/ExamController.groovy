@@ -9,7 +9,7 @@ class ExamController {
 
     @Secured(['ROLE_SUPER_ADMIN'])
     def index() {
-        LinkedHashMap resultMap = ExamService.ExamPaginateList(params)
+        LinkedHashMap resultMap =ExamService.ExamPaginateList(params)
 
         if (!resultMap || resultMap.totalCount == 0) {
             render(view: 'exam', model: [dataReturn: null, totalCount: 0])

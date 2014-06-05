@@ -17,8 +17,16 @@ class Exam {
 
     //common properties for every table
     static constraints = {
-        name(unique: true)
+        endDate(unique: true)
+        publishedDate(unique: true)
+        //System inserted data
+        schoolId nullable: true
+        createdBy nullable: true
+        createdOn nullable: true
+        lastUpdatedBy nullable: true
+        lastUpdatedOn nullable: true
     }
+
     //common properties for every table
     Long schoolId
     String createdBy
@@ -26,11 +34,12 @@ class Exam {
     String lastUpdatedBy
     Date lastUpdatedOn
     def beforeInsert(){
-        createdBy = springSecurityService.principal.username
+        schoolId=10000
+        createdBy = springSecurityService?.principal? springSecurityService.principal.username:'SystemUser'
         createdOn = new Date()
     }
     def beforeUpdate() {
-        lastUpdatedBy = springSecurityService.principal.username
+        lastUpdatedBy = springSecurityService?.principal? springSecurityService.principal.username:'SystemUser'
         lastUpdatedOn = new Date()
     }
     //common properties for every table

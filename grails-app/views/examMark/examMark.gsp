@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="settings-tpl"/>
-    <title>Empty page - Edupal.co</title>
+    <title>Entry Mark - Baily School</title>
 
 </head>
 <body>
@@ -12,7 +12,7 @@
     <div class="col-sm-12">
         <section class="panel">
             <header class="panel-heading">
-                Class Name List
+                [ExamName] [SubjectName] Marks
                 <span class="tools pull-right">
                     <div class="btn-group">
                         <button id="add-new-btn" class="btn btn-primary">
@@ -27,23 +27,27 @@
                         <thead>
                         <tr>
                             <th>Serial</th>
-                            <th>Name</th>
-                            <th>Description</th>
+                            <th>StudentName</th>
+                            <th>Mark</th>
+                            <th>Grade</th>
+                            <th>Comments</th>
                             <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <g:each in="${dataReturn}" var="className">
+                        <g:each in="${dataReturn}" var="examMark">
                             <tr>
-                                <td>${className[0]}</td>
-                                <td>${className[1]}</td>
-                                <td>${className[2]}</td>
+                                <td>${examMark[0]}</td>
+                                <td>${examMark[1]}</td>
+                                <td>${examMark[2]}</td>
+                                <td>${examMark[3]}</td>
+                                <td>${examMark[4]}</td>
                                 <td>
-                                    <sec:access controller="className" action="edit">
-                                        <span class="col-xs-6"><a href="" referenceId="${className.DT_RowId}" class="edit-reference" title="Edit"><span class="green glyphicon glyphicon-edit"></span>&nbsp;Edit&nbsp;</a></span>
+                                    <sec:access controller="examMark" action="edit">
+                                        <span class="col-xs-6"><a href="" referenceId="${examMark.DT_RowId}" class="edit-reference" title="Edit"><span class="green glyphicon glyphicon-edit"></span>&nbsp;Edit&nbsp;</a></span>
                                     </sec:access>
-                                    <sec:access controller="className" action="delete">
-                                        <span class="col-xs-6"><a href="" referenceId="${className.DT_RowId}" class="delete-reference" title="Delete"><span class="green glyphicon glyphicon-trash"></span>&nbsp;Delete&nbsp;</a></span>
+                                    <sec:access controller="examMark" action="delete">
+                                        <span class="col-xs-6"><a href="" referenceId="${examMark.DT_RowId}" class="delete-reference" title="Delete"><span class="green glyphicon glyphicon-trash"></span>&nbsp;Delete&nbsp;</a></span>
                                     </sec:access>
                                 </td>
                             </tr>
@@ -65,24 +69,26 @@
             "bAutoWidth": true,
             "bServerSide": true,
             "deferLoading": ${totalCount},
-            "sAjaxSource": "${g.createLink(controller: 'className',action: 'list')}",
+            "sAjaxSource": "${g.createLink(controller: 'examMark',action: 'list')}",
             "fnRowCallback": function (nRow, aData, iDisplayIndex) {
                 if(aData.DT_RowId ==undefined){
                     return true;
                 }
-                $('td:eq(3)', nRow).html(getActionButtons(nRow, aData));
+                $('td:eq(5)', nRow).html(getActionButtons(nRow, aData));
                 return nRow;
             },
             "aoColumns": [
                 null,
                 null,
                 { "bSortable": false },
+                { "bSortable": false },
+                { "bSortable": false },
                 { "bSortable": false }
 
             ]
         });
         $('#add-new-btn').click(function (e) {
-            $("#classNameCreate").toggle(1000);
+            $("#examMarkCreate").toggle(1000);
             e.preventDefault();
         });
         $('#list-table').on('click', 'a.edit-reference', function (e) {
@@ -91,14 +97,14 @@
             jQuery.ajax({
                 type: 'POST',
                 dataType:'JSON',
-                url: "${g.createLink(controller: 'className',action: 'edit')}?id=" + referenceId,
+                url: "${g.createLink(controller: 'examMark',action: 'edit')}?id=" + referenceId,
                 success: function (data, textStatus) {
                     if(data.isError==false){
                             clearForm('#create-form');
                             $('#id').val(data.obj.id);
                             $('#name').val(data.obj.name);
                             $('#description').val(data.obj.description);
-                            $("#classNameCreate").show(1000);
+                            $("#examMarkCreate").show(1000);
                         }else{
                             alert(data.message);
                         }
@@ -118,7 +124,7 @@
                 jQuery.ajax({
                     type: 'POST',
                     dataType:'JSON',
-                    url: "${g.createLink(controller: 'className',action: 'delete')}?id=" + referenceId,
+                    url: "${g.createLink(controller: 'examMark',action: 'delete')}?id=" + referenceId,
                     success: function (data, textStatus) {
                         if(data.isError==false){
                             $("#list-table").DataTable().row(selectRow).remove().draw();
@@ -136,10 +142,10 @@
 
     function getActionButtons(nRow, aData) {
         var actionButtons = "";
-        actionButtons += '<sec:access controller="className" action="edit"><span class="col-xs-6"><a href="" referenceId="' + aData.DT_RowId + '" class="edit-reference" title="Edit">';
+        actionButtons += '<sec:access controller="examMark" action="edit"><span class="col-xs-6"><a href="" referenceId="' + aData.DT_RowId + '" class="edit-reference" title="Edit">';
 actionButtons += '<span class="green glyphicon glyphicon-edit"></span>';
 actionButtons += '&nbsp;Edit&nbsp;</a></span></sec:access>';
-        actionButtons += '<sec:access controller="className" action="delete"><span class="col-xs-6"><a href="" referenceId="' + aData.DT_RowId + '" class="delete-reference" title="Delete">';
+        actionButtons += '<sec:access controller="examMark" action="delete"><span class="col-xs-6"><a href="" referenceId="' + aData.DT_RowId + '" class="delete-reference" title="Delete">';
 actionButtons += '<span class="red glyphicon glyphicon-trash"></span>';
 actionButtons += '&nbsp;Delete&nbsp;</a></span></sec:access>';
         return actionButtons;

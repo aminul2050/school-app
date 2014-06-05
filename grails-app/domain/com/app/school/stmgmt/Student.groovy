@@ -12,6 +12,7 @@ class Student {
     Section section
     int academicYear
     StudentDetails details
+    String studentName
     String studentNo
     Date admissionDate
     AdmissionType admissionType

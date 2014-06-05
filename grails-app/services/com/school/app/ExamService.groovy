@@ -44,7 +44,7 @@ class ExamService {
                 } else {
                     serial--
                 }
-                dataReturns.add([DT_RowId: className.id, 0: serial, 1: className.name,2:className.description, 3: ''])
+                dataReturns.add([DT_RowId: exam.id, 0: serial, 1: exam.name, 2:exam.section.name, 3: exam.examType, 4: exam.name, 5: exam.startDate, 6: exam.examStatus, 7: exam.publishedDate, 8: ''])
             }
         }
         return [totalCount:totalCount,results:dataReturns]

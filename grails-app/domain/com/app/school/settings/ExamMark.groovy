@@ -10,6 +10,7 @@ class ExamMark {
     Subject subject
     int mark
     String grade
+    String comments
 
     static constraints = {
 

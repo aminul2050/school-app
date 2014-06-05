@@ -38,7 +38,7 @@
                             <div class="col-lg-offset-3 col-lg-6">
                                 <button class="btn btn-primary" type="submit">Save</button>
                                 <g:submitButton name="reset" type="reset" value="Cancel"/>
-                                <button class="btn btn-default" type="button">Cancel</button>
+                                <button class="btn btn-default" id="cancel" onclick="" type="button">Cancel</button>
                             </div>
                         </div>
                     </form>

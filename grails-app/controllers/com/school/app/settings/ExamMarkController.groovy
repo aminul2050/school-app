@@ -156,9 +156,11 @@ class ExamMarkController {
 class ExamMarkCommand {
     Long id
     String name
+    int mark
     String description
 
     static constraints = {
         name nullable: false
+        mark nullable: false
     }
 }
