@@ -1,5 +1,5 @@
 <div class="row" id="createStudentDetails" style="display:none">
-    <div class="col-md-15">
+    <div class="col-md-12">
         <section class="panel">
             <header class="panel-heading">
                 Create Student

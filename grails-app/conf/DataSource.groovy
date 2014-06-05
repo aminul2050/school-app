@@ -29,7 +29,7 @@ environments {
             dbCreate = "update"
             url = "jdbc:mysql://mysql-portfolioapp.jelastic.servint.net/portfolio"
             username = "root"
-            password = ""
+            password = "root"
             properties {
                 jmxEnabled = true
                 initialSize = 5
