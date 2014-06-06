@@ -113,18 +113,18 @@
                                 <label for="imagePath" class="control-label col-md-5">Image Path</label>
 
                                 <div class="col-md-7">
-                                    <input type="file" id="imagePath"/>
+                                    <input class=" form-control" type="file" id="imagePath"/>
                                 </div>
                             </div>
 
                             <div class="form-group ">
-                                <label for="religion" class="control-label col-md-5">Relegion</label>
+                                <label for="religion" class="control-label col-md-5">Religion</label>
 
                                 <div class="col-md-7">
-                                    <g:select id="religion" name='type.id' value=""
-                                              noSelection="${['null': 'Select One...']}"
-                                              from=''
-                                              optionKey="id" optionValue="name"></g:select>
+                                    <g:select class=" form-control" id="religion" name='religion' value=""
+                                              noSelection="${['null':'Select One...']}"
+                                              from='${com.app.school.enums.Religion.values()}'
+                                              optionKey="key" optionValue="value"></g:select>
                                 </div>
                             </div>
 
@@ -188,7 +188,7 @@
 
 <r:script>
     $('#datepicker').datepicker({
-    format: 'mm/dd/yyyy',
+    format: 'dd/mm/yyyy',
     startDate: '-3d',
     autoclose: true
 })
@@ -210,7 +210,7 @@
         },
         messages: {
             name: {
-                required: "Class Name required"
+                required: "Student Name required"
             }
         },
         invalidHandler: function (event, validator) { //display error alert on form submit

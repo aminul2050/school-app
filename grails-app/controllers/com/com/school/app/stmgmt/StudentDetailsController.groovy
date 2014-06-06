@@ -27,6 +27,7 @@ class StudentDetailsController {
             redirect(action: 'index')
             return
         }
+        println params
         LinkedHashMap result = new LinkedHashMap()
         result.put('isError',true)
         String outPut
