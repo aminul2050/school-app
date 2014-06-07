@@ -1,4 +1,4 @@
-<%@ page import="com.app.school.settings.ClassName; com.app.school.settings.SectionName" %>
+<%@ page import="com.app.school.settings.ClassName; com.app.school.settings.Section" %>
 <div class="row" id="sectionCreate" style="display:none">
     <div class="col-lg-12">
         <section class="panel">
@@ -37,11 +37,11 @@
                         <div class="form-group">
                             <div class="col-lg-offset-3 col-lg-6">
                                 <button class="btn btn-primary" type="submit">Save</button>
-                                <g:submitButton name="reset" type="reset" value="Cancel"/>
-                                <button class="btn btn-default" id="cancel" onclick="" type="button">Cancel</button>
+                                <button class="btn btn-default" type="button">Cancel</button>
                             </div>
                         </div>
                     </form>
+
                 </div>
             </div>
         </section>
@@ -51,7 +51,7 @@
 <r:script>
     $('#create-form').validate({
         errorElement: 'small',
-        errorSection: 'help-block',
+        errorClass: 'help-block',
         focusInvalid: false,
         rules: {
             name: {
@@ -74,11 +74,11 @@
         },
 
         highlight: function (e) {
-            $(e).closest('.form-group').removeSection('has-info').addSection('has-error');
+            $(e).closest('.form-group').removeClass('has-info').addClass('has-error');
         },
 
         success: function (e) {
-            $(e).closest('.form-group').removeSection('has-error').addSection('has-info');
+            $(e).closest('.form-group').removeClass('has-error').addClass('has-info');
             $(e).remove();
         },
         submitHandler: function (form) {
@@ -88,7 +88,7 @@
                 dataType: "json",
                 data: $("#create-form").serialize(),
                 success: function (data) {
-                    clearSectionform(form);
+                    clearForm(form);
                     var table = $('#list-table').DataTable();
                     table.ajax.reload();
                 },
@@ -97,8 +97,4 @@
             })
         }
     });
-//    function clearSectionform(form){
-//        clearForm(form);
-//        $('#className').prop('selectedIndex',0);
-//    }
 </r:script>

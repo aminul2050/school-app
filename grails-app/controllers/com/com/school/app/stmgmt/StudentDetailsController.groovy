@@ -23,6 +23,7 @@ class StudentDetailsController {
     }
 
     def save(StudentDetailsCommand studentDetailsCommand) {
+
         if (!request.method == 'POST') {
             redirect(action: 'index')
             return
@@ -179,5 +180,21 @@ class StudentDetailsCommand {
         studentID nullable: false
         firstName nullable: false
         lastName nullable: false
+
+        fatherAvgIncome nullable: true
+        mothersProfession nullable: true
+        fathersProfession nullable: true
+        permanentAddress nullable: true
+        presentAddress nullable: true
+        religion nullable: true
+        imagePath nullable: true
+        cardNo nullable: true
+        mobileNo nullable: true
+        bloodGroup nullable: true
+        birthDate nullable: true
+        motherName nullable: true
+        fatherName nullable: true
+        email nullable: true
+        nickName nullable: true
     }
 }

@@ -5,6 +5,7 @@
     <title>Create Section</title>
 
 </head>
+
 <body>
 <g:render template="createSection"/>
 
@@ -13,7 +14,7 @@
     <div class="col-sm-12">
         <section class="panel">
             <header class="panel-heading">
-                Class Name List
+                Section List
                 <span class="tools pull-right">
                     <div class="btn-group">
                         <button id="add-new-btn" class="btn btn-primary">
@@ -22,6 +23,7 @@
                     </div>
                 </span>
             </header>
+
             <div class="panel-body">
                 <div class="table-responsive">
                     <table class="table table-striped table-hover table-bordered" id="list-table">
@@ -43,10 +45,16 @@
                                 <td>${section[3]}</td>
                                 <td>
                                     <sec:access controller="section" action="edit">
-                                        <span class="col-xs-6"><a href="" referenceId="${section.DT_RowId}" class="edit-reference" title="Edit"><span class="green glyphicon glyphicon-edit"></span>&nbsp;Edit&nbsp;</a></span>
+                                        <span class="col-xs-6"><a href="" referenceId="${section.DT_RowId}"
+                                                                  class="edit-reference" title="Edit"><span
+                                                    class="green glyphicon glyphicon-edit"></span>&nbsp;Edit&nbsp;</a>
+                                        </span>
                                     </sec:access>
                                     <sec:access controller="section" action="delete">
-                                        <span class="col-xs-6"><a href="" referenceId="${section.DT_RowId}" class="delete-reference" title="Delete"><span class="green glyphicon glyphicon-trash"></span>&nbsp;Delete&nbsp;</a></span>
+                                        <span class="col-xs-6"><a href="" referenceId="${section.DT_RowId}"
+                                                                  class="delete-reference" title="Delete"><span
+                                                    class="green glyphicon glyphicon-trash"></span>&nbsp;Delete&nbsp;
+                                        </a></span>
                                     </sec:access>
                                 </td>
                             </tr>
@@ -68,7 +76,7 @@
             "bAutoWidth": true,
             "bServerSide": true,
             "deferLoading": ${totalCount},
-            "sAjaxSource": "${g.createLink(controller: 'section',action: 'list')}",
+            "sAjaxSource": "${g.createLink(controller: 'section', action: 'list')}",
             "fnRowCallback": function (nRow, aData, iDisplayIndex) {
                 if(aData.DT_RowId ==undefined){
                     return true;
@@ -95,14 +103,14 @@
             jQuery.ajax({
                 type: 'POST',
                 dataType:'JSON',
-                url: "${g.createLink(controller: 'section',action: 'edit')}?id=" + referenceId,
+                url: "${g.createLink(controller: 'section', action: 'edit')}?id=" + referenceId,
                 success: function (data, textStatus) {
                     if(data.isError==false){
                             clearForm('#create-form');
                             $('#id').val(data.obj.id);
                             $('#name').val(data.obj.name);
-                            $('#className').val(data.obj.className.id);
-                            $('#classDuration').val(data.obj.classDuration);
+                            $('#className').val(data.obj.className.name);
+                            $('#description').val(data.obj.description);
                             $("#sectionCreate").show(1000);
                         }else{
                             alert(data.message);
@@ -137,6 +145,7 @@
             }
             e.preventDefault();
         });
+
     });
 
     function getActionButtons(nRow, aData) {
@@ -149,6 +158,7 @@ actionButtons += '<span class="red glyphicon glyphicon-trash"></span>';
 actionButtons += '&nbsp;Delete&nbsp;</a></span></sec:access>';
         return actionButtons;
     }
+
 </r:script>
 
 </body>

@@ -5,6 +5,7 @@ class Section {
     String name
     ClassName className
     String description
+
     static constraints = {
         name nullable: false, unique: true
         className nullable: true
@@ -23,6 +24,7 @@ class Section {
     Date createdOn
     String lastUpdatedBy
     Date lastUpdatedOn
+
     def beforeInsert(){
         schoolId=10000
         createdBy = springSecurityService?.principal? springSecurityService.principal.username:'SystemUser'

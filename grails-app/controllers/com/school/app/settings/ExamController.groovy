@@ -1,5 +1,10 @@
 package com.school.app.settings
+
+import com.app.school.enums.ExamStatus
+import com.app.school.enums.ExamType
+import com.app.school.settings.ClassName
 import com.app.school.settings.Exam
+import com.app.school.settings.Section
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
 
@@ -108,7 +113,13 @@ class ExamController {
 class ExamCommand {
     Long id
     String name
-    String description
+    Date startDate
+    Date endDate
+    Date publishedDate
+    ExamStatus examStatus = ExamStatus.MARKENTRY
+    ClassName className
+    Section section
+    ExamType examType
 
     static constraints = {
         name nullable: false
