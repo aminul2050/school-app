@@ -2,7 +2,7 @@
     <div class="col-lg-12">
         <section class="panel">
             <header class="panel-heading">
-                Create Class
+                Create Subject
                 <span class="tools pull-right">
                     <a class="fa fa-chevron-down" href="javascript:;"></a>
                 </span>
@@ -12,7 +12,7 @@
                     <form class="cmxform form-horizontal " id="create-form">
                         <g:hiddenField name="id"/>
                         <div class="form-group ">
-                            <label for="name" class="control-label col-lg-3">Class Name</label>
+                            <label for="name" class="control-label col-lg-3">Subject Name</label>
                             <div class="col-lg-6">
                                 <g:textField class="form-control" id="name" name="name"/>
                             </div>
@@ -25,7 +25,7 @@
                         </div>
 
                         <div class="form-group ">
-                            <label for="ctMark" class="control-label col-lg-3">Class Test Mark.</label>
+                            <label for="ctMark" class="control-label col-lg-3">Subject Test Mark.</label>
                             <div class="col-lg-6">
                                 <g:textField class="form-control" id="ctMark" name="ctMark"/>
                             </div>
@@ -40,7 +40,7 @@
                         <div class="form-group ">
                             <label for="compulsory" class="control-label col-lg-3">Compulsory</label>
                             <div class="col-lg-6">
-                                <input class=" form-control" id="compulsory" name="compulsory" type="checkbox" />
+                                <input class=" form-control" id="compulsory" name="compulsory" type="checkbox" checked/>
                             </div>
                         </div>
 
@@ -75,7 +75,7 @@
         },
         messages: {
             name: {
-                required: "Class Name required"
+                required: "Subject Name required"
             }
         },
         invalidHandler: function (event, validator) { //display error alert on form submit

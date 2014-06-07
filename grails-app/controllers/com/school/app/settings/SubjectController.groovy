@@ -9,7 +9,6 @@ class SubjectController {
     def subjectService
 
     def index() {
-        print("params----------"+params)
         LinkedHashMap resultMap = subjectService.subjectPaginateList(params)
 
         if (!resultMap || resultMap.totalCount == 0) {
@@ -20,21 +19,12 @@ class SubjectController {
         render(view: 'subject', model: [dataReturn: resultMap.results, totalCount: totalCount])
     }
 
-//    def index() {
-//
-//        print("params-------------------"+params)
-//        print("params-------------------"+params.name)
-//        LinkedHashMap resultMap = subjectService.subjectPaginateList(params)
-//
-//        if (!resultMap || resultMap.totalCount == 0) {
-//            render(view: 'subject', model: [dataReturn: null, totalCount: 0])
-//            return
-//        }
-//        int totalCount = resultMap.totalCount
-//        render(view: 'subject', model: [dataReturn: resultMap.results, totalCount: totalCount])
-//    }
 
-    def save(ClassNameCommand subjectCommand) {
+    def save(SubjectCommand subjectCommand) {
+
+        print("params------Save---------"+params)
+
+
         if (!request.method == 'POST') {
             redirect(action: 'index')
             return
@@ -85,6 +75,8 @@ class SubjectController {
             render outPut
             return
         }
+
+
         result.put('isError',false)
         result.put('message','Subject updated successfully')
         outPut=result as JSON
@@ -124,6 +116,8 @@ class SubjectController {
     }
 
     def edit(Long id) {
+        print("params----Update----"+params)
+
         if (!request.method == 'POST') {
             redirect(action: 'index')
             return

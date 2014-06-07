@@ -4,11 +4,11 @@ class Section {
     transient springSecurityService
     String name
     ClassName className
-    String classDuration
+    String description
     static constraints = {
         name nullable: false, unique: true
-        classDuration nullable: false
-
+        className nullable: true
+        description nullable: true
         //System inserted data
         schoolId nullable: true
         createdBy nullable: true

@@ -30,7 +30,7 @@
                             <th>Serial</th>
                             <th>Class Name</th>
                             <th>Section Name</th>
-                            <th>Section Time</th>
+                            <th>Section Description</th>
                             <th>Action</th>
                         </tr>
                         </thead>

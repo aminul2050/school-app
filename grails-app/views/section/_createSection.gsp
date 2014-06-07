@@ -1,9 +1,9 @@
-<%@ page import="com.app.school.settings.ClassName" %>
+<%@ page import="com.app.school.settings.ClassName; com.app.school.settings.SectionName" %>
 <div class="row" id="sectionCreate" style="display:none">
     <div class="col-lg-12">
         <section class="panel">
             <header class="panel-heading">
-                Create Class
+                Create Section
                 <span class="tools pull-right">
                     <a class="fa fa-chevron-down" href="javascript:;"></a>
                 </span>
@@ -13,9 +13,9 @@
                     <form class="cmxform form-horizontal " id="create-form">
                         <g:hiddenField name="id"/>
                         <div class="form-group ">
-                        <label for="name" class="control-label col-lg-3">Class Name</label>
+                        <label for="className" class="control-label col-lg-3">Class Name</label>
                         <div class="col-lg-6">
-                            <g:select class="form-control input-sm" id="className" name='className' value="${classSubject?.id}"
+                            <g:select class="form-control input-sm" id="className" name='className' value=""
                                       noSelection="${['null':'Select One...']}"
                                       from='${ClassName.list()}'
                                       optionKey="id" optionValue="name"></g:select>
@@ -28,9 +28,9 @@
                             </div>
                         </div>
                         <div class="form-group ">
-                            <label for="classDuration" class="control-label col-lg-3">Section Time</label>
+                            <label for="description" class="control-label col-lg-3">Section description</label>
                             <div class="col-lg-6">
-                                <g:textField class=" form-control" id="classDuration" name="classDuration"  />
+                                <g:textField class=" form-control" id="description" name="description"  />
                             </div>
                         </div>
 
@@ -51,17 +51,12 @@
 <r:script>
     $('#create-form').validate({
         errorElement: 'small',
-        errorClass: 'help-block',
+        errorSection: 'help-block',
         focusInvalid: false,
         rules: {
             name: {
                 required: true,
                 minlength: 4,
-                maxlength: 15
-            },
-             classDuration: {
-                required: true,
-                minlength: 5,
                 maxlength: 15
             },
             description: {
@@ -71,7 +66,7 @@
         },
         messages: {
             name: {
-                required: "Class Name required"
+                required: "Section Name required"
             }
         },
         invalidHandler: function (event, validator) { //display error alert on form submit
@@ -79,11 +74,11 @@
         },
 
         highlight: function (e) {
-            $(e).closest('.form-group').removeClass('has-info').addClass('has-error');
+            $(e).closest('.form-group').removeSection('has-info').addSection('has-error');
         },
 
         success: function (e) {
-            $(e).closest('.form-group').removeClass('has-error').addClass('has-info');
+            $(e).closest('.form-group').removeSection('has-error').addSection('has-info');
             $(e).remove();
         },
         submitHandler: function (form) {
@@ -102,8 +97,8 @@
             })
         }
     });
-    function clearSectionform(form){
-        clearForm(form);
-        $('#className').prop('selectedIndex',0);
-    }
+//    function clearSectionform(form){
+//        clearForm(form);
+//        $('#className').prop('selectedIndex',0);
+//    }
 </r:script>

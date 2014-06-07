@@ -1,6 +1,7 @@
 package com.school.app.settings
 
 import com.app.school.settings.Section
+import com.app.school.settings.ClassName
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.dao.DataIntegrityViolationException
@@ -39,7 +40,7 @@ class SectionController {
         if (params.id) { //update Currency
             section = Section.get(sectionCommand.id)
             if (!section) {
-                result.put('message','Class not found')
+                result.put('message','Section not found')
                 outPut=result as JSON
                 render outPut
                 return
@@ -51,9 +52,9 @@ class SectionController {
                 render outPut
                 return
             }
-            Section savedClass =section.save()
+            Section savedSection =section.save()
             result.put('isError',false)
-            result.put('message','Class Updated successfully')
+            result.put('message','Section Updated successfully')
             outPut=result as JSON
             render outPut
             return
@@ -73,7 +74,7 @@ class SectionController {
             return
         }
         result.put('isError',false)
-        result.put('message','Class updated successfully')
+        result.put('message','Section updated successfully')
         outPut=result as JSON
         render outPut
 
@@ -86,10 +87,9 @@ class SectionController {
         Section section = Section.get(id)
         if(section) {
             try {
-                println "+++++++++++++++++++++++++"
                 section.delete(flush:true)
                 result.put('isError',false)
-                result.put('message',"Class deleted successfully.")
+                result.put('message',"Section deleted successfully.")
                 outPut = result as JSON
                 render outPut
                 return
@@ -98,7 +98,7 @@ class SectionController {
 
             catch(DataIntegrityViolationException e) {
                 result.put('isError',true)
-                result.put('message',"Class could not deleted. Already in use.")
+                result.put('message',"Section could not deleted. Already in use.")
                 outPut = result as JSON
                 render outPut
                 return
@@ -106,7 +106,7 @@ class SectionController {
 
         }
         result.put('isError',true)
-        result.put('message',"Class not found")
+        result.put('message',"Section not found")
         outPut = result as JSON
         render outPut
         return
@@ -140,7 +140,7 @@ class SectionController {
         String outPut
         Section section = Section.read(id)
         if (!section) {
-            result.put('message','Class name not found')
+            result.put('message','Section name not found')
             outPut = result as JSON
             render outPut
             return
@@ -155,12 +155,13 @@ class SectionController {
 
 class SectionCommand {
     Long id
-    String className
+    ClassName className
     String name
-    String classDuration
+    String description
 
     static constraints = {
         name nullable: false
-        className nullable: false
+        className nullable: true
+        description nullable: true
     }
 }

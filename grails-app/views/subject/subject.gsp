@@ -106,6 +106,7 @@
                             clearForm('#create-form');
                             $('#id').val(data.obj.id);
                             $('#name').val(data.obj.name);
+                            $('#description').val(data.obj.description);
                             $('#ctMark').val(data.obj.ctMark);
                             $('#hallMark').val(data.obj.hallMark);
                             $('#compulsory').val(data.obj.compulsory);
