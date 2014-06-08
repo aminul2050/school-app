@@ -38,7 +38,7 @@
 <div class="brand">
 
     <a href="${g.createLink(controller: 'home', action: 'index')}" class="logo">
-        <img src="${resource(dir: 'images', file: 'edupal.png')}" alt="Edupal" width="100px">
+        <img src="${resource(dir: 'images/theme', file: 'aab.png')}" alt="Baily School" width="100px">
     </a>
 
     <div class="sidebar-toggle-box">
