@@ -15,7 +15,7 @@
                         <div class="form-group ">
                         <label for="className" class="control-label col-lg-3">Class Name</label>
                         <div class="col-lg-6">
-                            <g:select class="form-control input-sm" id="className" name='className' value=""
+                            <g:select class="form-control input-sm" id="className" name='className'
                                       noSelection="${['null':'Select One...']}"
                                       from='${ClassName.list()}'
                                       optionKey="id" optionValue="name"></g:select>

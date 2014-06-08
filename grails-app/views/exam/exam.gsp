@@ -123,7 +123,7 @@
             var referenceId = $(control).attr('referenceId');
             jQuery.ajax({
                 type: 'POST',
-                url: "${g.createLink(controller: 'currency', action: 'update')}?id=" + referenceId,
+                url: "${g.createLink(controller: 'exam', action: 'update')}?id=" + referenceId,
                 success: function (data, textStatus) {
                     $('#page-content').html(data);
                 },
@@ -142,7 +142,7 @@
                 jQuery.ajax({
                     type: 'POST',
                     dataType:'JSON',
-                    url: "${g.createLink(controller: 'currency', action: 'delete')}?id=" + referenceId,
+                    url: "${g.createLink(controller: 'exam', action: 'delete')}?id=" + referenceId,
                     success: function (data, textStatus) {
                         if(data.isError==false){
                             $("#sample-table-2").DataTable().row(selectRow).remove().draw();
@@ -159,18 +159,12 @@
 
     function getActionButtons(nRow, aData) {
         var actionButtons = "";
-        actionButtons += '<sec:access controller="exam" action="edit"><span class="col-xs-6"><a href=""
-                                                                                                referenceId="' + aData.DT_RowId + '"
-                                                                                                class="edit-reference"
-                                                                                                title="Edit">';
-    actionButtons += '<span class="green glyphicon glyphicon-edit"></span>';
-    actionButtons += '</a></span></sec:access>';
-        actionButtons += '<sec:access controller="exam" action="delete"><span class="col-xs-6"><a href=""
-                                                                                                  referenceId="' + aData.DT_RowId + '"
-                                                                                                  class="delete-reference"
-                                                                                                  title="Delete">';
-    actionButtons += '<span class="red glyphicon glyphicon-trash"></span>';
-    actionButtons += '</a></span></sec:access>';
+        actionButtons += '<sec:access controller="exam" action="edit"><span class="col-xs-6"><a href="" referenceId="' + aData.DT_RowId + '" class="edit-reference" title="Edit">';
+actionButtons += '<span class="green glyphicon glyphicon-edit"></span>';
+actionButtons += '&nbsp;Edit&nbsp;</a></span></sec:access>';
+        actionButtons += '<sec:access controller="exam" action="delete"><span class="col-xs-6"><a href="" referenceId="' + aData.DT_RowId + '" class="delete-reference" title="Delete">';
+actionButtons += '<span class="red glyphicon glyphicon-trash"></span>';
+actionButtons += '&nbsp;Delete&nbsp;</a></span></sec:access>';
         return actionButtons;
     }
 </r:script>

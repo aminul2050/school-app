@@ -8,13 +8,13 @@ import com.app.school.settings.Section
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
 
+@Secured(['ROLE_SUPER_ADMIN'])
 class ExamController {
 
-    def ExamService
+    def examService
 
-    @Secured(['ROLE_SUPER_ADMIN'])
     def index() {
-        LinkedHashMap resultMap =ExamService.ExamPaginateList(params)
+        LinkedHashMap resultMap =examService.ExamPaginateList(params)
 
         if (!resultMap || resultMap.totalCount == 0) {
             render(view: 'exam', model: [dataReturn: null, totalCount: 0])
@@ -25,6 +25,8 @@ class ExamController {
     }
 
     def save(ExamCommand examCommand) {
+
+        print("Params-----------"+params)
         if (!request.method == 'POST') {
             //return json message
             return

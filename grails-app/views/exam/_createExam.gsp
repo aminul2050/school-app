@@ -14,7 +14,7 @@
                         <div class="form-group ">
                             <label for="className" class="control-label col-lg-3">Class Name.</label>
                             <div class="col-lg-6">
-                                <g:select id="type" name='className' value="${person?.type?.id}" class="form-control m-bot15"
+                                <g:select id="type" name='className' class="form-control m-bot15"
                                           noSelection="${['null':'Select One...']}"
                                           from='${com.app.school.settings.ClassName.list()}'
                                           optionKey="id" optionValue="name"></g:select>
@@ -23,7 +23,7 @@
                         <div class="form-group ">
                             <label for="section" class="control-label col-lg-3">Section.</label>
                             <div class="col-lg-6">
-                                <g:select id="section" name='section' value="${person?.type?.id}" class="form-control m-bot15"
+                                <g:select id="section" name='section' class="form-control m-bot15"
                                           noSelection="${['null':'Select One...']}"
                                           from='${com.app.school.settings.Section.list()}'
                                           optionKey="id" optionValue="name"></g:select>
@@ -37,10 +37,6 @@
                                           noSelection="${['null':'Select One...']}"
                                           from='${com.app.school.enums.ExamType.values()}'
                                           optionKey="key" optionValue="value"></g:select>
-                                %{--<g:select id="type" name='examType' value="${person?.type?.id}" class="form-control m-bot15"--}%
-                                %{--noSelection="${['null':'Select One...']}"--}%
-                                %{--from='${com.app.school.settings.ExamType.list()}'--}%
-                                %{--optionKey="id" optionValue="name"></g:select>--}%
                             </div>
                         </div>
 
@@ -62,23 +58,23 @@
                         </div>
 
                         <div class="form-group ">
-                            <label for="beginingDate" class="control-label col-lg-3">Begaining Date.</label>
+                            <label for="datepicker" class="control-label col-lg-3">Begaining Date.</label>
 
                             <div class="col-lg-6">
-                                <input class=" form-control" id="beginingDate" name="beginingDate" type="text" class="form-control datepicker" data-date-format="dd/mm/yyyy"/>
+                                <input class=" form-control" id="datepicker" name="startDate" type="text" class="form-control datepicker" data-date-format="dd/mm/yyyy"/>
                                 <span class="input-group-addon add-on"><i class="icon-calendar"></i></span>
                             </div>
                         </div>
 
-                        <div class="col-md-4 col-sm-4">
-                            <div class="clearfix">
-                                <div class="input-append date input-group" id="dateBegin">
-                                    <input type="date" id="beginingDatea" name="beginingDate"
-                                           class="form-control datepicker" data-date-format="dd/mm/yyyy"/>
-                                    <span class="input-group-addon add-on"><i class="icon-calendar"></i></span>
-                                </div>
+                        <div class="form-group ">
+                            <label for="datepickerA" class="control-label col-lg-3">End Date.</label>
+
+                            <div class="col-lg-6">
+                                <input class=" form-control" id="datepickerA" name="endDate" type="text" class="form-control datepicker" data-date-format="dd/mm/yyyy"/>
+                                <span class="input-group-addon add-on"><i class="icon-calendar"></i></span>
                             </div>
                         </div>
+
 
                         <div class="form-group">
                             <div class="col-lg-offset-3 col-lg-6">
@@ -94,6 +90,19 @@
 </div>
 
 <r:script>
+
+     $('#datepicker').datepicker({
+    format: 'dd/mm/yyyy',
+    startDate: '-3d',
+    autoclose: true
+    })
+
+$('#datepickerA').datepicker({
+    format: 'dd/mm/yyyy',
+    startDate: '-3d',
+    autoclose: true
+    })
+
     $('#create-form').validate({
         errorElement: 'small',
         errorClass: 'help-block',
@@ -116,7 +125,7 @@
         },
         messages: {
             name: {
-                required: "Class Name required"
+                required: "Subject Name required"
             },
              mark: {
                 required: "Mark required"
