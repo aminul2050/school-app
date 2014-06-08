@@ -67,7 +67,7 @@
 
                                 <div class="col-md-7">
                                     <input type="date" id="datepicker" name="birthDate"
-                                           class="form-control datepicker" data-date-format="dd/mm/yyyy"/>
+                                           class="form-control datepicker"/>
                                 </div>
                             </div>
 

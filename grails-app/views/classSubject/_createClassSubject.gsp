@@ -3,13 +3,14 @@
     <div class="col-lg-12">
         <section class="panel">
             <header class="panel-heading">
-                Create Class
+                Map Subject with Class
                 <span class="tools pull-right">
                     <a class="fa fa-chevron-down" href="javascript:;"></a>
                 </span>
             </header>
             <div class="panel-body">
-                <form class="form-horizontal" id="demoform" action="#" method="post">
+                <form class="cmxform form-horizontal " id="create-form">
+                    <g:hiddenField name="id"/>
                     <div class="form-group">
                         <label for="className" class="col-lg-2 col-sm-2 control-label">Class Name</label>
 
@@ -33,7 +34,12 @@
                         </div>
                     </div>
                     <br>
-                    <button type="submit" class="btn btn-primary btn-block">Submit data</button>
+                    <div class="form-group">
+                        <div class="col-lg-offset-3 col-lg-6">
+                            <button class="btn btn-primary" type="submit">Save</button>
+                            <button class="btn btn-default" type="button">Cancel</button>
+                        </div>
+                    </div>
                 </form>
 
             </div>
@@ -43,27 +49,17 @@
 
 <r:script>
         var demo1 = $('[name="classSubjectMap[]"]').bootstrapDualListbox();
-        $("#demoform").submit(function(){
-        alert($('[name="classSubjectMap[]"]').val());
-        return false;
-        });
     $('#create-form').validate({
         errorElement: 'small',
         errorClass: 'help-block',
         focusInvalid: false,
         rules: {
-            name: {
-                required: true,
-                minlength: 4,
-                maxlength: 15
-            },
-            description: {
-                minlength: 5,
-                maxlength: 225
+            className: {
+                required: true
             }
         },
         messages: {
-            name: {
+            className: {
                 required: "Class Name required"
             }
         },
@@ -80,14 +76,24 @@
             $(e).remove();
         },
         submitHandler: function (form) {
+        var subjectIds = $('[name="classSubjectMap[]"]').val();
+        if(subjectIds==undefined || subjectIds ==null){
+        alert("Plese map subject with class");
+        return false;
+        }
             $.ajax({
-                url: "${createLink(controller: 'className', action: 'save')}",
+                url: "${createLink(controller: 'classSubject', action: 'save')}?subjectIds="+subjectIds,
                 type: 'post',
                 dataType: "json",
                 data: $("#create-form").serialize(),
                 success: function (data) {
-                    alert(data.message);
+                if(data.isError){
+                alert(data.message);
+                return false;
+                }
                     clearForm(form);
+                    var table = $('#list-table').DataTable();
+                    table.ajax.reload();
                 },
                 failure: function (data) {
                 }

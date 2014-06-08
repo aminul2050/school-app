@@ -191,7 +191,6 @@ class StudentDetailsCommand {
         cardNo nullable: true
         mobileNo nullable: true
         bloodGroup nullable: true
-        birthDate nullable: true
         motherName nullable: true
         fatherName nullable: true
         email nullable: true

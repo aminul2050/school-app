@@ -26,6 +26,7 @@ class ClassSubjectController {
     }
 
     def save(ClassSubjectCommand classSubjectCommand) {
+        println params
         if (!request.method == 'POST') {
             redirect(action: 'index')
             return
@@ -39,6 +40,7 @@ class ClassSubjectController {
             render outPut
             return
         }
+
         ClassSubject classSubject
         if (params.id) { //update Currency
             classSubject = ClassSubject.get(classSubjectCommand.id)
@@ -71,7 +73,8 @@ class ClassSubjectController {
         }
         ClassSubject savedCurr = classSubject.save(flush: true)
         if (!savedCurr) {
-            result.put('message','Please fill the form correctly')
+            result.put('isError',true)
+            result.put('message','Class mapping already exist')
             outPut=result as JSON
             render outPut
             return
@@ -163,6 +166,6 @@ class ClassSubjectCommand {
     String subjectIds
 
     static constraints = {
-        subjectIds nullable: false
+//        subjectIds nullable: false
     }
 }
