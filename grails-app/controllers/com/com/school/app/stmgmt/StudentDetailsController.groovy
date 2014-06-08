@@ -150,6 +150,7 @@ class StudentDetailsController {
         result.put('isError',false)
         result.put('obj',studentDetails)
         outPut = result as JSON
+        println(outPut);
         render outPut
     }
 

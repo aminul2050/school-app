@@ -114,7 +114,7 @@
                             $('#mobileNo').val(data.obj.mobileNo);
                             $('#cardNo').val(data.obj.cardNo);
                             $('#imagePath').val(data.obj.imagePath);
-                            $('#religion').val(data.obj.religion);
+                            $('#religion').val(data.obj.religion.name);
                             $('#presentAddress').val(data.obj.presentAddress);
                             $('#permanentAddress').val(data.obj.permanentAddress);
                             $('#fathersProfession').val(data.obj.fathersProfession);
