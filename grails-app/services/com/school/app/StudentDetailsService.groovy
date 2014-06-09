@@ -7,7 +7,7 @@ import org.codehaus.groovy.grails.web.servlet.mvc.GrailsParameterMap
 @Transactional
 class StudentDetailsService {
 
-    static final String[] sortColumns = ['id','firstName','lastName','nickName']
+    static final String[] sortColumns = ['id','studentID','fullName','email','cardNo']
     LinkedHashMap studentDetailsPaginateList(GrailsParameterMap params){
         int iDisplayStart = params.iDisplayStart ? params.getInt('iDisplayStart') : CommonUtils.DEFAULT_PAGINATION_START
         int iDisplayLength = params.iDisplayLength ? params.getInt('iDisplayLength') : CommonUtils.DEFAULT_PAGINATION_LENGTH
@@ -27,11 +27,11 @@ class StudentDetailsService {
             }
             if (sSearch) {
                 or {
-                    ilike('firstName', sSearch)
-                    ilike('lastName', sSearch)
-                    ilike('nickName', sSearch)
+                    ilike('studentID', sSearch)
                     ilike('email', sSearch)
                     ilike('cardNo', sSearch)
+                    ilike('firstName', sSearch)
+                    ilike('lastName', sSearch)
                 }
             }
 
