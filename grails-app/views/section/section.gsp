@@ -109,7 +109,7 @@
                             clearForm('#create-form');
                             $('#id').val(data.obj.id);
                             $('#name').val(data.obj.name);
-                            $('#className').val(data.obj.className.name);
+                            $('#className').val(data.obj.className.id);
                             $('#description').val(data.obj.description);
                             $("#sectionCreate").show(1000);
                         }else{
