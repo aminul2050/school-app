@@ -120,8 +120,8 @@
                                 <label for="religion" class="control-label col-md-5">Religion</label>
 
                                 <div class="col-md-7">
-                                    <g:select class=" form-control" id="religion" name='religion' value=""
-                                              noSelection="${['null':'Select One...']}"
+                                    <g:select class=" form-control" id="religion" name='religion'
+                                              noSelection="${['':'Select One...']}"
                                               from='${com.app.school.enums.Religion.values()}'
                                               optionKey="key" optionValue="value"></g:select>
                                 </div>
