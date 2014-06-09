@@ -37,7 +37,7 @@
 <!--logo start-->
 <div class="brand">
 
-    <a href="${g.createLink(controller: 'home', action: 'index')}" class="logo">
+    <a href="${g.createLink(controller: 'className',action: 'index')}" class="logo">
         <img src="${resource(dir: 'images/theme', file: 'aab.png')}" alt="Baily School" width="100px">
     </a>
 

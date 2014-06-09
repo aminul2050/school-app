@@ -27,10 +27,13 @@ environments {
     production {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:mysql://mysql-portfolioapp.jelastic.servint.net/portfolio"
+            url = "jdbc:mysql://mysql-baily.jelastic.tsukaeru.net/baily"
             username = "root"
-            password = "root"
+            password = "l6htyVoBCN"
             properties {
+                // Documentation for Tomcat JDBC Pool
+                // http://tomcat.apache.org/tomcat-7.0-doc/jdbc-pool.html#Common_Attributes
+                // https://tomcat.apache.org/tomcat-7.0-doc/api/org/apache/tomcat/jdbc/pool/PoolConfiguration.html
                 jmxEnabled = true
                 initialSize = 5
                 maxActive = 50
