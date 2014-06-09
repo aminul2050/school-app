@@ -66,8 +66,7 @@
                                 <label for="datepicker" class="control-label col-md-5">Birth Date</label>
 
                                 <div class="col-md-7">
-                                    <input type="date" id="datepicker" name="birthDate"
-                                           class="form-control datepicker"/>
+                                    <input type="date" id="datepicker" name="birthDate" class="form-control datepicker"/>
                                 </div>
                             </div>
 
