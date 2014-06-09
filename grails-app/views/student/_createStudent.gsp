@@ -79,6 +79,23 @@
 
                             </div>
                         </div>
+                        <div class="form-group ">
+                            <label for="admissionType" class="control-label col-lg-3">Subjects</label>
+                            <div class="col-lg-6">
+
+                                <select id="subjectIds" name="subjectIds" multiple="multiple" size="10" required="required" class="form-control">
+                                    <option value="101200">Imaran Hosen</option>
+                                    <option value="101201">Md. Robin</option>
+                                    <option value="101202">Mr. Rumi</option>
+                                    <option value="101203">Mr. Aminul</option>
+                                    <option value="101204">Mr. Jakir Hossain</option>
+                                    <option value="101205">Ms Sania Rahman</option>
+                                    <option value="101206">Mr. Yasin Jabed</option>
+                                    <option value="101207">Mr. Arman Shakilll</option>
+                                </select>
+
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <div class="col-lg-offset-3 col-lg-6">
@@ -94,6 +111,28 @@
 </div>
 
 <r:script>
+var warning = $(".message");
+
+    $("#subjectIds").multiselect({
+        header: "Choose only 3 clients!",
+        noneSelectedText: 'Select Clients',
+        position: {
+            my: 'center',
+            at: 'center'
+        },
+        open: function (e) {
+            $("input[type='search']:first").focus();
+        },
+        click: function (e) {
+            if ($(this).multiselect("widget").find("input:checked").length > 3) {
+                warning.addClass("error").removeClass("success").html("You can only select three clients!");
+                return false;
+            } else {
+                warning.addClass("success").removeClass("error").html("");
+            }
+        }
+    });
+
     $('#create-form').validate({
         errorElement: 'small',
         errorSchool: 'help-block',
@@ -101,11 +140,9 @@
         rules: {
             student: {
                 required: true,
-                minlength: 4,
-                maxlength: 15
+                maxlength: 100
             },
             details: {
-                minlength: 5,
                 maxlength: 225
             }
         },

@@ -194,12 +194,12 @@
 <div class="top-nav clearfix">
     <!--search & user info start-->
 <ul class="nav pull-right top-menu">
-    <li>
+    %{--<li>
         <a href="${g.createLink(controller: 'className',action: 'index')}">Settings</a>
     </li>
     <li>
         <a href="#">Student Mgmt</a>
-    </li>
+    </li>--}%
     <li>
         <input type="text" class="form-control search" placeholder=" Search">
     </li>

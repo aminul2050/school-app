@@ -2,7 +2,7 @@
 <div class="leftside-navigation">
     <ul class="sidebar-menu" id="nav-accordion">
         <li>
-            <a href="${g.createLink(controller: 'className',action: 'index')}">
+            <a href="${g.createLink(controller: 'home',action: 'index')}">
                 <i class="fa fa-dashboard"></i>
                 <span>Dashboard</span>
             </a>
