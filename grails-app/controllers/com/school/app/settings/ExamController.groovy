@@ -7,6 +7,7 @@ import com.app.school.settings.Exam
 import com.app.school.settings.Section
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
+import org.springframework.dao.DataIntegrityViolationException
 
 @Secured(['ROLE_SUPER_ADMIN'])
 class ExamController {
@@ -31,6 +32,9 @@ class ExamController {
             //return json message
             return
         }
+        LinkedHashMap result = new LinkedHashMap()
+        result.put('isError',true)
+        String outPut
         if (examCommand.hasErrors()) {
             //return json message
             return
@@ -39,12 +43,16 @@ class ExamController {
         if (params.id) { //update Currency
             exam = Exam.get(examCommand.id)
             if (!exam) {
-                //return json message
+                result.put('message','Please fill the form correctly')
+                outPut=result as JSON
+                render outPut
                 return
             }
             exam.properties = examCommand.properties
             if (!exam.validate()) {
-                //return json message
+                result.put('message','Please fill the form correctly')
+                outPut=result as JSON
+                render outPut
                 return
             }
             exam.save(flush: true)
@@ -60,33 +68,55 @@ class ExamController {
         }
         Exam savedCurr = exam.save(flush: true)
         if (!savedCurr) {
-            //render(template: '/coreBanking/settings/currency/createCurrency', model: [currencys: currencys])
+            result.put('message','Please fill the form correctly')
+            outPut=result as JSON
+            render outPut
+            return
         }
-
-//        LinkedHashMap resultMap = currencyService.currencyPaginateList(params)
-//        flash.message = "Currency created successfully"
-//        render(template: '/coreBanking/settings/currency/currencyList', model: [dataReturn: resultMap.results, totalCount: resultMap.totalCount])
-        return
+        result.put('isError',false)
+        result.put('message','exam updated successfully')
+        outPut=result as JSON
+        render outPut
 
     }
 
     def delete(Long id) {
-        Exam exam = Exam.get(id)
-        if (!exam) {
-            // flash.message = "Currency not found"
-            //render(template: '/coreBanking/settings/currency/currencyList')
-        }
-        exam.save(flush: true)
+        LinkedHashMap result = new LinkedHashMap()
+        result.put('isError',true)
+        String outPut
+        Exam exam= Exam.get(id)
+        if(exam) {
+            try {
+                println "+++++++++++++++++++++++++"
+                exam.delete(flush:true)
+                result.put('isError',false)
+                result.put('message',"Exam deleted successfully.")
+                outPut = result as JSON
+                render outPut
+                return
 
-        def result=[isError:false,message:"Exam deleted g g successfully"]
-        String outPut=result as JSON
+            }
+
+            catch(DataIntegrityViolationException e) {
+                result.put('isError',true)
+                result.put('message',"Exam could not deleted. Already in use.")
+                outPut = result as JSON
+                render outPut
+                return
+            }
+
+        }
+        result.put('isError',true)
+        result.put('message',"Class not found")
+        outPut = result as JSON
         render outPut
+        return
     }
 
     def list() {
         LinkedHashMap gridData
         String result
-        LinkedHashMap resultMap =examService.examPaginateList(params)
+        LinkedHashMap resultMap =examService.ExamPaginateList(params)
 
         if(!resultMap || resultMap.totalCount== 0){
             gridData = [iTotalRecords: 0, iTotalDisplayRecords: 0, aaData: null]
@@ -101,13 +131,25 @@ class ExamController {
 
     }
 
-    def update(Long id) {
+    def edit(Long id) {
         Exam exam = Exam.read(id)
-        if (!exam) {
-            // flash.message = "Currency not found"
-            //render(template: '/coreBanking/settings/currency/currencyList')
+        if (!request.method == 'POST') {
+            redirect(action: 'index')
+            return
         }
-        //  render(template: '/coreBanking/settings/currency/createCurrency', model: [exam: exam])
+        LinkedHashMap result = new LinkedHashMap()
+        result.put('isError',true)
+        String outPut
+        if (!exam) {
+            result.put('message','Exam  not found')
+            outPut = result as JSON
+            render outPut
+            return
+        }
+        result.put('isError',false)
+        result.put('obj',exam)
+        outPut = result as JSON
+        render outPut
     }
 
 }
@@ -124,6 +166,6 @@ class ExamCommand {
     ExamType examType
 
     static constraints = {
-        name nullable: false
+        name nullable: true
     }
 }

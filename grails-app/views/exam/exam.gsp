@@ -98,12 +98,13 @@
                 if(aData.DT_RowId ==undefined){
                     return true;
                 }
-                $('td:eq(3)', nRow).html(getActionButtons(nRow, aData));
+                $('td:eq(8)', nRow).html(getActionButtons(nRow, aData));
                 return nRow;
             },
             "aoColumns": [
                 null,
                 null,
+                { "bSortable": false },
                 { "bSortable": false },
                 { "bSortable": false },
                 { "bSortable": false },
@@ -123,7 +124,7 @@
             var referenceId = $(control).attr('referenceId');
             jQuery.ajax({
                 type: 'POST',
-                url: "${g.createLink(controller: 'exam', action: 'update')}?id=" + referenceId,
+                url: "${g.createLink(controller: 'exam', action: 'edit')}?id=" + referenceId,
                 success: function (data, textStatus) {
                     $('#page-content').html(data);
                 },
