@@ -78,7 +78,7 @@
 <script src="${resource(dir: 'bs3/js', file: 'bootstrap.min.js')}"></script>
 <script src="${resource(dir: 'js', file: 'jquery.bootstrap-duallistbox.js')}"></script>
 %{--<script src="${resource(dir: 'js', file: 'jquery.multiselect.min.js')}"></script>--}%
-%{--<script src="${resource(dir: 'js/date-time', file: 'bootstrap-datepicker.min.js')}"></script>--}%
+<script src="${resource(dir: 'js/date-time', file: 'bootstrap-datepicker.min.js')}"></script>
 <script src="${resource(dir: 'js/', file: 'jquery.dcjqaccordion.2.7.js')}"></script>
 <script src="${resource(dir: 'js/', file: 'jquery.scrollTo.min.js')}"></script>
 <script src="${resource(dir: 'js/', file: 'jquery.nicescroll.js')}"></script>
