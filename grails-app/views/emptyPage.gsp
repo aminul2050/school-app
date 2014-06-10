@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="layout" content="admin-tpl"/>
+    <meta name="layout" content="settings-tpl"/>
     <title>Empty page - Edupal.co</title>
 
 </head>

@@ -6,7 +6,8 @@ import grails.plugin.springsecurity.annotation.Secured
 class HomeController {
 
     def index() {
-        render(view: 'index')
+//        render(view: 'index')
+        render(view: 'calendar')
     }
     def calendar() {
         render(view: 'calendar')
