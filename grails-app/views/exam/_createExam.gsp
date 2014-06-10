@@ -2,15 +2,15 @@
     <div class="col-lg-12">
         <section class="panel">
             <header class="panel-heading">
-                Advanced Form validations
+                Create Class
                 <span class="tools pull-right">
                     <a class="fa fa-chevron-down" href="javascript:;"></a>
                 </span>
             </header>
             <div class="panel-body">
                 <div class="form">
-                    <form class="cmxform form-horizontal " id="create-exam">
-
+                    <form class="cmxform form-horizontal " id="create-form">
+                        <g:hiddenField name="id"/>
                         <div class="form-group ">
                             <label for="className" class="control-label col-lg-3">Class Name.</label>
                             <div class="col-lg-6">
@@ -50,10 +50,10 @@
 
 
                         <div class="form-group ">
-                            <label for="publishedDate" class="control-label col-lg-3">Subject Description.</label>
+                            <label for="description" class="control-label col-lg-3">Description.</label>
 
                             <div class="col-lg-6">
-                                <input class=" form-control" id="publishedDate" name="publishedDate" type="text"/>
+                                <input class=" form-control" id="description" name="description" type="text"/>
                             </div>
                         </div>
 
@@ -61,8 +61,7 @@
                             <label for="datepicker" class="control-label col-lg-3">Begaining Date.</label>
 
                             <div class="col-lg-6">
-                                <input class=" form-control" id="datepicker" name="startDate" type="text" class="form-control datepicker" data-date-format="dd/mm/yyyy"/>
-                                <span class="input-group-addon add-on"><i class="icon-calendar"></i></span>
+                                <input class=" form-control" id="datepicker" name="startDate" type="text" class="form-control datepicker"/>
                             </div>
                         </div>
 
@@ -70,11 +69,9 @@
                             <label for="datepickerA" class="control-label col-lg-3">End Date.</label>
 
                             <div class="col-lg-6">
-                                <input class=" form-control" id="datepickerA" name="endDate" type="text" class="form-control datepicker" data-date-format="dd/mm/yyyy"/>
-                                <span class="input-group-addon add-on"><i class="icon-calendar"></i></span>
+                                <input class=" form-control" id="datepickerA" name="endDate" type="text" class="form-control datepicker"/>
                             </div>
                         </div>
-
 
                         <div class="form-group">
                             <div class="col-lg-offset-3 col-lg-6">
@@ -90,19 +87,17 @@
 </div>
 
 <r:script>
-
      $('#datepicker').datepicker({
-    format: 'dd/mm/yyyy',
-    startDate: '-3d',
-    autoclose: true
-    })
+        format: 'dd/mm/yyyy',
+        startDate: '-3d',
+        autoclose: true
+        })
 
-$('#datepickerA').datepicker({
-    format: 'dd/mm/yyyy',
-    startDate: '-3d',
-    autoclose: true
-    })
-
+    $('#datepickerA').datepicker({
+        format: 'dd/mm/yyyy',
+        startDate: '-3d',
+        autoclose: true
+        })
     $('#create-form').validate({
         errorElement: 'small',
         errorClass: 'help-block',
@@ -113,22 +108,14 @@ $('#datepickerA').datepicker({
                 minlength: 4,
                 maxlength: 15
             },
-             mark: {
-                required: true,
-                minlength: 1,
-                maxlength: 3
-            },
             description: {
-                minlength: 0,
+                minlength: 5,
                 maxlength: 225
             }
         },
         messages: {
             name: {
-                required: "Subject Name required"
-            },
-             mark: {
-                required: "Mark required"
+                required: "Class Name required"
             }
         },
         invalidHandler: function (event, validator) { //display error alert on form submit

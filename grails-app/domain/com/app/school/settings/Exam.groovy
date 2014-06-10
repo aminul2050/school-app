@@ -17,8 +17,8 @@ class Exam {
 
     //common properties for every table
     static constraints = {
-        endDate(unique: true)
-        publishedDate(unique: true)
+        endDate(nullable: true)
+        publishedDate(nullable: true)
         //System inserted data
         schoolId nullable: true
         createdBy nullable: true
