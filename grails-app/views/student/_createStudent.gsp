@@ -11,6 +11,7 @@
                 <div class="form">
                     <form class="cmxform form-horizontal " id="create-form">
                         <g:hiddenField name="id"/>
+                        <g:hiddenField name="sectionId"/>
 
                         <div class="form-group ">
                             <label for="details" class="control-label col-lg-3">Student Name</label>

@@ -56,12 +56,10 @@
         rules: {
             name: {
                 required: true,
-                minlength: 4,
                 maxlength: 15
             },
             description: {
-                minlength: 5,
-                maxlength: 225
+                maxlength: 100
             }
         },
         messages: {

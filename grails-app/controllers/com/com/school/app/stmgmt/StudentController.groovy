@@ -1,5 +1,6 @@
 package com.com.school.app.stmgmt
 
+import com.app.school.settings.Section
 import com.app.school.stmgmt.Student
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
@@ -11,14 +12,16 @@ class StudentController {
     def studentService
 
     def index() {
-        LinkedHashMap resultMap = studentService.studentPaginateList(params)
+
+        LinkedHashMap resultMap = studentService.sectionPaginateList(params)
 
         if (!resultMap || resultMap.totalCount == 0) {
-            render(view: 'student', model: [dataReturn: null, totalCount: 0])
+            render(view: 'examInitialize', model: [dataReturn: null, totalCount: 0])
             return
         }
         int totalCount = resultMap.totalCount
-        render(view: 'student', model: [dataReturn: resultMap.results, totalCount: totalCount])
+        render(view: 'examInitialize', model: [dataReturn: resultMap.results, totalCount: totalCount])
+
     }
 
     def save(StudentCommand studentCommand) {
@@ -76,7 +79,23 @@ class StudentController {
         result.put('message','Student updated successfully')
         outPut=result as JSON
         render outPut
+    }
 
+    def admission(Long id, String type){
+        Section section = Section.read(id)
+        if(!section){
+            redirect(action: 'index')
+            return
+        }
+
+        LinkedHashMap resultMap = studentService.studentPaginateList(params)
+
+        if (!resultMap || resultMap.totalCount == 0) {
+            render(view: 'student', model: [dataReturn: null, totalCount: 0, section:section])
+            return
+        }
+        int totalCount = resultMap.totalCount
+        render(view: 'student', model: [dataReturn: resultMap.results, totalCount: totalCount, section:section])
     }
 
     def delete(Long id) {
