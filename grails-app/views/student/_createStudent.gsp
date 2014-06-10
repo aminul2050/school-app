@@ -29,8 +29,6 @@
                                           from=''
                                           optionKey="id" optionValue="name"></g:select>
 
-
-
                             </div>
                         </div>
 
