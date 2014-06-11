@@ -115,7 +115,7 @@
         },
         messages: {
             name: {
-                required: "Class Name required"
+                required: "Exam Name required"
             }
         },
         invalidHandler: function (event, validator) { //display error alert on form submit
