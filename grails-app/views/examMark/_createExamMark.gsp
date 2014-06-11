@@ -52,12 +52,12 @@
             name: {
                 required: true,
                 minlength: 0,
-                maxlength: 200
+                maxlength: 10
             },
              mark: {
                 required: true,
                 minlength: 0,
-                maxlength: 200
+                maxlength: 10
             },
             description: {
                 minlength: 0,

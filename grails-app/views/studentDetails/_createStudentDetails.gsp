@@ -250,6 +250,7 @@
                     clearForm(form);
                     var table = $('#list-table').DataTable();
                     table.ajax.reload();
+                     $.growl('Student Details Created successfully!', { type: 'success' });
                 },
                 failure: function (data) {
                 }

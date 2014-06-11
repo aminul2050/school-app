@@ -89,6 +89,7 @@
                     clearForm(form);
                     var table = $('#list-table').DataTable();
                     table.ajax.reload();
+                     $.growl('Section Created successfully!', { type: 'success' });
                 },
                 failure: function (data) {
                 }

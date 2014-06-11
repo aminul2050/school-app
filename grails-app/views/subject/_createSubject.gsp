@@ -65,11 +65,11 @@
         rules: {
             name: {
                 required: true,
-                minlength: 4,
-                maxlength: 15
+                minlength: 0,
+                maxlength: 20
             },
             description: {
-                minlength: 5,
+                minlength: 0,
                 maxlength: 225
             }
         },
@@ -100,6 +100,7 @@
                     clearForm(form);
                     var table = $('#list-table').DataTable();
                     table.ajax.reload();
+                     $.growl('Subject Created successfully!', { type: 'success' });
                 },
                 failure: function (data) {
                 }
