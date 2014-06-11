@@ -4,6 +4,7 @@ import com.app.school.settings.ExamMark
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.dao.DataIntegrityViolationException
+import sun.rmi.runtime.Log
 
 @Secured(['ROLE_SUPER_ADMIN'])
 class ExamMarkController {
@@ -11,14 +12,30 @@ class ExamMarkController {
     def examMarkService
 
     def index() {
-        LinkedHashMap resultMap = examMarkService.examMarkPaginateList(params)
+
+
+        LinkedHashMap resultMap = examMarkService.examIniPaginateList(params)
 
         if (!resultMap || resultMap.totalCount == 0) {
-            render(view: 'examMark', model: [dataReturn: null, totalCount: 0])
+            render(view: 'initializeExamMark', model: [dataReturn: null, totalCount: 0])
             return
         }
         int totalCount = resultMap.totalCount
-        render(view: 'examMark', model: [dataReturn: resultMap.results, totalCount: totalCount])
+        render(view: 'initializeExamMark', model: [dataReturn: resultMap.results, totalCount: totalCount])
+    }
+
+    def markInitial(Long id){
+
+                LinkedHashMap resultMap = examMarkService.examMarkPaginateList(params)
+
+        if (!resultMap || resultMap.totalCount == 0) {
+            render(view: 'examMark', model: [dataReturn: null, totalCount: 0, examId:id])
+            return
+        }
+        int totalCount = resultMap.totalCount
+        render(view: 'examMark', model: [dataReturn: resultMap.results, totalCount: totalCount, examId:id])
+
+
     }
 
     def save(ExamMarkCommand examMarkCommand) {

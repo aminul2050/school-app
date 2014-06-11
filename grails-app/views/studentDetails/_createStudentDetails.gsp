@@ -89,7 +89,7 @@
                             </div>
 
                             <div class="form-group ">
-                                <label for="mobileNo" class="control-label col-md-4">Fathers Name</label>
+                                <label for="mobileNo" class="control-label col-md-4">Contact Number</label>
 
                                 <div class="col-md-8">
                                     <input class=" form-control" id="mobileNo" name="mobileNo" type="text"/>
