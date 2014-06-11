@@ -2,7 +2,7 @@
     <div class="col-lg-12">
         <section class="panel">
             <header class="panel-heading">
-                Create Admission
+                Student Admission
                 <span class="tools pull-right">
                     <a class="fa fa-chevron-down" href="javascript:;"></a>
                 </span>
@@ -12,7 +12,6 @@
                     <form class="cmxform form-horizontal " id="create-form">
                         <g:hiddenField name="id"/>
                         <g:hiddenField name="sectionId"/>
-
                         <div class="form-group ">
                             <label for="details" class="control-label col-lg-3">Student Name</label>
                             <div class="col-lg-6">
@@ -62,36 +61,18 @@
                         <div class="form-group ">
                             <label for="admissionDate" class="control-label col-lg-3">Admission Date</label>
                             <div class="col-lg-6">
-                                <input type="date" id="admissionDate" name="admissionDate"
-                                       class="form-control datepicker" data-date-format="dd/mm/yyyy"/>
-                            </div>
-                        </div>
-
-                        <div class="form-group ">
-                            <label for="admissionType" class="control-label col-lg-3">Admission Type</label>
-                            <div class="col-lg-6">
-
-                                <g:select class=" form-control" id="admissionType" name='admissionType' value=""
-                                          noSelection="${['null':'Select One...']}"
-                                          from='${com.app.school.enums.AdmissionType.values()}'
-                                          optionKey="key" optionValue="value"></g:select>
-
+                                <input id="admissionDate" name="admissionDate" type="date" class="form-control datepicker"/>
                             </div>
                         </div>
                         <div class="form-group ">
-                            <label for="admissionType" class="control-label col-lg-3">Subjects</label>
+                            <label for="optionalSubjects" class="control-label col-lg-3">Optional Subjects</label>
                             <div class="col-lg-6">
-
-                                <select id="subjectIds" name="subjectIds" multiple="multiple" size="10" required="required" class="form-control">
-                                    <option value="101200">Imaran Hosen</option>
-                                    <option value="101201">Md. Robin</option>
-                                    <option value="101202">Mr. Rumi</option>
-                                    <option value="101203">Mr. Aminul</option>
-                                    <option value="101204">Mr. Jakir Hossain</option>
-                                    <option value="101205">Ms Sania Rahman</option>
-                                    <option value="101206">Mr. Yasin Jabed</option>
-                                    <option value="101207">Mr. Arman Shakilll</option>
-                                </select>
+                                <g:select name="optionalSubjects"
+                                          multiple="multiple"
+                                          optionKey="id"
+                                          optionValue="subjectName"
+                                          from="${optionalSubjects}"
+                                          value="" />
 
                             </div>
                         </div>
@@ -110,44 +91,29 @@
 </div>
 
 <r:script>
-//var warning = $(".message");
-
-    /*$("#subjectIds").multiselect({
-        header: "Choose only 3 clients!",
-        noneSelectedText: 'Select Clients',
-        position: {
-            my: 'center',
-            at: 'center'
-        },
-        open: function (e) {
-            $("input[type='search']:first").focus();
-        },
-        click: function (e) {
-            if ($(this).multiselect("widget").find("input:checked").length > 3) {
-                warning.addClass("error").removeClass("success").html("You can only select three clients!");
-                return false;
-            } else {
-                warning.addClass("success").removeClass("error").html("");
-            }
-        }
-    });*/
-
+var demo1 = $('[name="optionalSubjects"]').bootstrapDualListbox();
+    $('#admissionDate').datepicker({
+            format: 'dd/mm/yyyy',
+            startDate: '-3d',
+            autoclose: true
+            });
     $('#create-form').validate({
         errorElement: 'small',
-        errorSchool: 'help-block',
+        errorClass: 'help-block',
         focusInvalid: false,
         rules: {
-            student: {
-                required: true,
-                maxlength: 100
-            },
             details: {
-                maxlength: 225
+                required: true,
+                maxlength: 200
+            },
+            description: {
+                minlength: 0,
+                maxlength: 200
             }
         },
         messages: {
-            student: {
-                required: "School Name required"
+            name: {
+                required: "Class Name required"
             }
         },
         invalidHandler: function (event, validator) { //display error alert on form submit
@@ -155,16 +121,17 @@
         },
 
         highlight: function (e) {
-            $(e).closest('.form-group').removeSchool('has-info').addSchool('has-error');
+            $(e).closest('.form-group').removeClass('has-info').addClass('has-error');
         },
 
         success: function (e) {
-            $(e).closest('.form-group').removeSchool('has-error').addSchool('has-info');
+            $(e).closest('.form-group').removeClass('has-error').addClass('has-info');
             $(e).remove();
         },
         submitHandler: function (form) {
+            var subjectIds = $('[name="optionalSubjects"]').val();
             $.ajax({
-                url: "${createLink(controller: 'student', action: 'save')}",
+                url: "${createLink(controller: 'student', action: 'save')}?subjectIds="+subjectIds,
                 type: 'post',
                 dataType: "json",
                 data: $("#create-form").serialize(),
@@ -172,7 +139,7 @@
                     clearForm(form);
                     var table = $('#list-table').DataTable();
                     table.ajax.reload();
-                     $.growl('Student Created successfully!', { type: 'success' });
+                    $.growl('Student Created successfully!', { type: 'success' });
                 },
                 failure: function (data) {
                 }

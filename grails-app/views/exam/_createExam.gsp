@@ -67,7 +67,6 @@
 
                         <div class="form-group ">
                             <label for="datepickerA" class="control-label col-lg-3">End Date.</label>
-
                             <div class="col-lg-6">
                                 <input class=" form-control" id="datepickerA" name="endDate" type="text" class="form-control datepicker"/>
                             </div>

@@ -1,5 +1,7 @@
 package com.com.school.app.stmgmt
 
+import com.app.school.settings.ClassName
+import com.app.school.settings.ClassSubject
 import com.app.school.settings.Section
 import com.app.school.stmgmt.Student
 import grails.converters.JSON
@@ -10,6 +12,7 @@ import org.springframework.dao.DataIntegrityViolationException
 class StudentController {
 
     def studentService
+    def subjectService
 
     def index() {
 
@@ -25,6 +28,7 @@ class StudentController {
     }
 
     def save(StudentCommand studentCommand) {
+        println(params)
         if (!request.method == 'POST') {
             redirect(action: 'index')
             return
@@ -87,15 +91,18 @@ class StudentController {
             redirect(action: 'index')
             return
         }
+        ClassName className = section.className
+        ClassSubject classSubject = ClassSubject.findByClassName(className)
+        def optionalSubjects = subjectService.getOptionalSubjects(classSubject.subjectIds)
 
         LinkedHashMap resultMap = studentService.studentPaginateList(params)
 
         if (!resultMap || resultMap.totalCount == 0) {
-            render(view: 'student', model: [dataReturn: null, totalCount: 0, section:section])
+            render(view: 'student', model: [dataReturn: null, totalCount: 0, section:section,optionalSubjects:optionalSubjects])
             return
         }
         int totalCount = resultMap.totalCount
-        render(view: 'student', model: [dataReturn: resultMap.results, totalCount: totalCount, section:section])
+        render(view: 'student', model: [dataReturn: resultMap.results, totalCount: totalCount, section:section,optionalSubjects:optionalSubjects])
     }
 
     def delete(Long id) {
@@ -175,6 +182,7 @@ class StudentCommand {
     Long id
     String name
     String description
+    String subjectIds
 
     static constraints = {
         name nullable: false
