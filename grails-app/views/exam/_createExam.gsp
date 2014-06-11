@@ -98,6 +98,7 @@
         startDate: '-3d',
         autoclose: true
         })
+
     $('#create-form').validate({
         errorElement: 'small',
         errorClass: 'help-block',
