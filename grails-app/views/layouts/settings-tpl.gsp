@@ -88,6 +88,7 @@
 <script src="${resource(dir: 'js/', file: 'jquery.dataTables.min.js')}"></script>
 <script src="${resource(dir: 'js/', file: 'dataTables.bootstrap.js')}"></script>
 <script src="${resource(dir: 'js/', file: 'jquery.validate.min.js')}"></script>
+<script src="${resource(dir: 'js/', file: 'bootstrap-growl.min.js')}"></script>
 
 <g:javascript library="application"/>
 <r:layoutResources/>
