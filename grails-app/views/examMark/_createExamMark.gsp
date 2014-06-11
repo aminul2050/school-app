@@ -51,13 +51,13 @@
         rules: {
             name: {
                 required: true,
-                minlength: 4,
-                maxlength: 15
+                minlength: 0,
+                maxlength: 200
             },
              mark: {
                 required: true,
-                minlength: 1,
-                maxlength: 3
+                minlength: 0,
+                maxlength: 200
             },
             description: {
                 minlength: 0,
@@ -94,6 +94,7 @@
                     clearForm(form);
                     var table = $('#list-table').DataTable();
                     table.ajax.reload();
+                     $.growl('Exam Mark Created successfully!', { type: 'success' });
                 },
                 failure: function (data) {
                 }

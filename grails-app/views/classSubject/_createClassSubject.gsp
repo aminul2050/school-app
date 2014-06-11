@@ -60,7 +60,7 @@
         },
         messages: {
             className: {
-                required: "Class Name required"
+                required: "Class Subject required"
             }
         },
         invalidHandler: function (event, validator) { //display error alert on form submit
@@ -94,6 +94,7 @@
                     clearForm(form);
                     var table = $('#list-table').DataTable();
                     table.ajax.reload();
+                     $.growl('Class Subject Created successfully!', { type: 'success' });
                 },
                 failure: function (data) {
                 }

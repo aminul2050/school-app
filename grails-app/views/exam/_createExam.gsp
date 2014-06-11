@@ -106,12 +106,12 @@
         rules: {
             name: {
                 required: true,
-                minlength: 4,
-                maxlength: 15
+                minlength: 0,
+                maxlength: 200
             },
             description: {
-                minlength: 5,
-                maxlength: 225
+                minlength: 0,
+                maxlength: 200
             }
         },
         messages: {
@@ -141,6 +141,7 @@
                     clearForm(form);
                     var table = $('#list-table').DataTable();
                     table.ajax.reload();
+                     $.growl('Exam Created successfully!', { type: 'success' });
                 },
                 failure: function (data) {
                 }
