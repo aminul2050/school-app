@@ -110,9 +110,9 @@
 </div>
 
 <r:script>
-var warning = $(".message");
+//var warning = $(".message");
 
-    $("#subjectIds").multiselect({
+    /*$("#subjectIds").multiselect({
         header: "Choose only 3 clients!",
         noneSelectedText: 'Select Clients',
         position: {
@@ -130,7 +130,7 @@ var warning = $(".message");
                 warning.addClass("success").removeClass("error").html("");
             }
         }
-    });
+    });*/
 
     $('#create-form').validate({
         errorElement: 'small',
