@@ -4,22 +4,7 @@
     <meta name="layout" content="settings-tpl"/>
     <title>Admission Readmission</title>
 
-    <script>
-        $(function() {
-            var beginDate = "${admissionDate}";
-            $("#admissionDate").val(beginDate);
 
-//date picker object
-            $("#dateBegin").datepicker({
-                format: dateF,
-                startDate: date,
-                gotoCurrent: true,
-                stepMonths: 1,
-                minDate: new Date(),
-                autoclose: true
-            });
-        });
-    </script>
 </head>
 <body>
 <g:render template="createStudent"/>
