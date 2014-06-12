@@ -22,19 +22,26 @@
                             <th>Serial</th>
                             <th>Class</th>
                             <th>Section</th>
-                            <th>Exam Type</th>
+                            <th>Exam Name</th>
+                            <th>Subject</th>
                             <th>Start Date</th>
                             <th>Exam Status</th>
                             <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <g:each in="${dataReturn}" var="examIni">
+                        <g:each in="${dataReturn}" var="examIni" status="i">
                             <tr>
                                 <td>${examIni[0]}</td>
                                 <td>${examIni[1]}</td>
                                 <td>${examIni[2]}</td>
                                 <td>${examIni[3]}</td>
+                                <td>
+                                    <g:select class=" form-control" id="religion" name='religion'
+                                              noSelection="${['':'Select One...']}"
+                                              from='${com.app.school.enums.Religion.values()}'
+                                              optionKey="key" optionValue="value"></g:select>
+                                </td>
                                 <td>${examIni[4]}</td>
                                 <td>${examIni[5]}</td>
                                 <td>

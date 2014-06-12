@@ -45,11 +45,9 @@
         rules: {
             name: {
                 required: true,
-                minlength: 0,
                 maxlength: 200
             },
             description: {
-                minlength: 0,
                 maxlength: 200
             }
         },

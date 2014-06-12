@@ -1,5 +1,7 @@
 package com.school.app.settings
 
+import com.app.school.settings.ClassSubject
+import com.app.school.settings.Exam
 import com.app.school.settings.ExamMark
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
@@ -10,6 +12,7 @@ import sun.rmi.runtime.Log
 class ExamMarkController {
 
     def examMarkService
+    def subjectService
 
     def index() {
         LinkedHashMap resultMap = examMarkService.examIniPaginateList(params)
@@ -18,20 +21,27 @@ class ExamMarkController {
             render(view: 'initializeExamMark', model: [dataReturn: null, totalCount: 0])
             return
         }
+//        ClassSubject classSubject = ClassSubject.findByClassName(exam.className)
+//        def subjectList = subjectService.getSubjects(classSubject.subjectIds)
         int totalCount = resultMap.totalCount
         render(view: 'initializeExamMark', model: [dataReturn: resultMap.results, totalCount: totalCount])
     }
 
     def entry(Long id){
+        Exam exam = Exam.read(id);
+        if(!exam){
+            redirect(action: 'index')
+            return
+        }
 
-                LinkedHashMap resultMap = examMarkService.examMarkPaginateList(params)
+        LinkedHashMap resultMap = examMarkService.examMarkPaginateList(params)
 
         if (!resultMap || resultMap.totalCount == 0) {
-            render(view: 'examMark', model: [dataReturn: null, totalCount: 0, examId:id])
+            render(view: 'examMark', model: [dataReturn: null, totalCount: 0, exam:exam])
             return
         }
         int totalCount = resultMap.totalCount
-        render(view: 'examMark', model: [dataReturn: resultMap.results, totalCount: totalCount, examId:id])
+        render(view: 'examMark', model: [dataReturn: resultMap.results, totalCount: totalCount, exam:exam])
 
 
     }

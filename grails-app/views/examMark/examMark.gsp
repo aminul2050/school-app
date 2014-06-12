@@ -12,7 +12,7 @@
     <div class="col-sm-12">
         <section class="panel">
             <header class="panel-heading">
-                [ExamName] [SubjectName] Marks
+                Class Name: ${exam.className.name}  Section Name: ${exam.section.name} Exam: ${exam.name}
                 <span class="tools pull-right">
                     <div class="btn-group">
                         <button id="add-new-btn" class="btn btn-primary">

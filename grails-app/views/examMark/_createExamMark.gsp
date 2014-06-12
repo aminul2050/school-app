@@ -2,7 +2,7 @@
     <div class="col-lg-12">
         <section class="panel">
             <header class="panel-heading">
-                Exam Mark
+                Class Name: ${exam.className.name}  Section Name: ${exam.section.name} Exam: ${exam.name}
                 <span class="tools pull-right">
                     <a class="fa fa-chevron-down" href="javascript:;"></a>
                 </span>
