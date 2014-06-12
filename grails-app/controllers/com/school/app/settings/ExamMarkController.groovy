@@ -12,8 +12,6 @@ class ExamMarkController {
     def examMarkService
 
     def index() {
-
-
         LinkedHashMap resultMap = examMarkService.examIniPaginateList(params)
 
         if (!resultMap || resultMap.totalCount == 0) {
@@ -24,7 +22,7 @@ class ExamMarkController {
         render(view: 'initializeExamMark', model: [dataReturn: resultMap.results, totalCount: totalCount])
     }
 
-    def markInitial(Long id){
+    def entry(Long id){
 
                 LinkedHashMap resultMap = examMarkService.examMarkPaginateList(params)
 

@@ -83,7 +83,7 @@ class ExamMarkService {
                 } else {
                     serial--
                 }
-                dataReturns.add([DT_RowId: exam.id, 0: serial, 1: exam.name, 2:exam.section.name, 3: exam.examType, 4: exam.startDate, 5: exam.examStatus,  6: ''])
+                dataReturns.add([DT_RowId: exam.id, 0: serial, 1: exam.className.name, 2:exam.section.name, 3: exam.examType.value, 4: exam.startDate, 5: exam.examStatus,  6: ''])
             }
         }
         return [totalCount:totalCount,results:dataReturns]

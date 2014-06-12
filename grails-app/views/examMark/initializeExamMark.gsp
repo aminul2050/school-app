@@ -39,9 +39,9 @@
                                 <td>${examIni[5]}</td>
                                 <td>
                                     <sec:access controller="student" action="admissionSave">
-                                        <span class="col-xs-12"><a href="${g.createLink(controller: 'examMark',action: 'markInitial', params: [id:examIni.DT_RowId, type:'Class Test'])}"
+                                        <span class="col-xs-12"><a href="${g.createLink(controller: 'examMark',action: 'entry', params: [id:examIni.DT_RowId])}"
                                                                   class="edit-reference" title="Add"><span
-                                                    class="green glyphicon glyphicon-edit"></span>&nbsp;Class Test&nbsp;</a>
+                                                    class="green glyphicon glyphicon-edit"></span>&nbsp;Entry&nbsp;</a>
                                         </span>
                                     </sec:access>
                                 </td>

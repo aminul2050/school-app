@@ -52,14 +52,10 @@
                                 <td>${exam[7]}</td>
                                 <td>
                                     <sec:access controller="exam" action="edit">
-                                        <span class="col-xs-6"><a href="" referenceId="${exam.DT_RowId}"
-                                                                  class="edit-reference" title="Edit"><span
-                                                    class="green glyphicon glyphicon-edit"></span></a></span>
+                                        <span class="col-xs-6"><a href="" referenceId="${exam.DT_RowId}" class="edit-reference" title="Edit"><span class="green glyphicon glyphicon-edit"></span>&nbsp;Edit&nbsp;</a></span>
                                     </sec:access>
                                     <sec:access controller="exam" action="delete">
-                                        <span class="col-xs-6"><a href="" referenceId="${exam.DT_RowId}"
-                                                                  class="delete-reference" title="Delete"><span
-                                                    class="red glyphicon glyphicon-trash"></span></a></span>
+                                        <span class="col-xs-6"><a href="" referenceId="${exam.DT_RowId}" class="delete-reference" title="Delete"><span class="green glyphicon glyphicon-trash"></span>&nbsp;Delete&nbsp;</a></span>
                                     </sec:access>
                                 </td>
                             </tr>

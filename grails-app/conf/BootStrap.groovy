@@ -1,6 +1,7 @@
 import com.app.school.settings.ClassName
 import com.app.school.settings.ClassSubject
 import com.app.school.settings.School
+import com.app.school.settings.Section
 import com.app.school.settings.Subject
 import com.myapp.security.Role
 import com.myapp.security.User
@@ -11,6 +12,7 @@ class BootStrap {
     def init = { servletContext ->
         createUserWithRole()
         createClassName()
+        createSection()
         createSubjects()
         mapClassSubject()
     }
@@ -19,6 +21,11 @@ class BootStrap {
         ClassName.findByName('Class 2')?:new ClassName(name: 'Class 2',description: 'Eligible age limit 5 to 6 only').save()
       ClassName.findByName('Class 3')?:new ClassName(name: 'Class 3',description: 'Eligible age limit 6 to 7 only').save(flush: true)
       }
+    void createSection(){
+        ClassName className2 = ClassName.findByName('Class 2')
+        Section.findByName('Morning Glory')?: new Section(name: 'Morning Glory',description: 'Some describtion', className: className2).save()
+        Section.findByName('Blue Bird')?: new Section(name: 'Blue Bird',description: 'Some describtion', className: className2).save()
+    }
     void createSubjects(){
         Subject.findByName('Bangla')?:new Subject(name: 'Bangla',description: 'Bangla for all students',ctMark: 30,hallMark: 80,compulsory: true).save()
         Subject.findByName('English')?:new Subject(name: 'English',description: 'Bangla for all students',ctMark: 30,hallMark: 80,compulsory: true).save()
