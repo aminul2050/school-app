@@ -8,15 +8,45 @@
                     <a class="fa fa-chevron-down" href="javascript:;"></a>
                 </span>
             </header>
+
             <div class="panel-body">
                 <div class="form">
                     <form class="cmxform form-horizontal " id="create-form">
                         <g:hiddenField name="id" value="${section.id}"/>
                         <g:hiddenField name="sectionId" value="${section.className.id}"/>
+
                         <div class="form-group ">
-                            <label for="details" class="control-label col-lg-3">Student Name</label>
+                            <label for="studentName" class="control-label col-lg-3">Student Name</label>
+
                             <div class="col-lg-6">
-                                <g:textField class="form-control" id="details" name="details"/>
+                                %{--<g:textField class="form-control" id="details" name="details"/>--}%
+                                <g:select id="e1" class="populate form-control" name='studentName'
+                                          noSelection="${['': 'Select One...']}"
+                                          from='${com.app.school.stmgmt.StudentDetails.list()}'
+                                          optionKey="id" optionValue="fullName"></g:select>
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="studentNo" class="control-label col-lg-3">Student Id</label>
+
+                            <div class="col-lg-6">
+                                %{--<g:textField class="form-control" id="details" name="details"/>--}%
+                                <g:select id="e9" class="populate form-control" name='studentNo'
+                                          noSelection="${['': 'Select One...']}"
+                                          from='${com.app.school.stmgmt.StudentDetails.list()}'
+                                          optionKey="id" optionValue="studentID"></g:select>
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="studentNo" class="control-label col-lg-3">Admission Type</label>
+
+                            <div class="col-lg-6">
+                                <g:select class=" form-control" id="admissionType" name='admissionType'
+                                          noSelection="${['': 'Select One...']}"
+                                          from='${com.app.school.enums.AdmissionType.values()}'
+                                          optionKey="key" optionValue="value"></g:select>
                             </div>
                         </div>
 
@@ -24,45 +54,37 @@
                             <label for="academicYear" class="control-label col-lg-3">Academic Year</label>
 
                             <div class="col-lg-6">
-                                <input class=" form-control" id="academicYear" name="academicYear" type="text" />
+                                <input class=" form-control" id="academicYear" name="academicYear" type="text"/>
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <label class="col-lg-2 col-sm-2 control-label">Basic select </label>
-                            <div class="col-lg-6">
-                                <g:select id="e1" class="populate " style="width: 300px" name='religion'
-                                          noSelection="${['':'Select One...']}"
-                                          from='${com.app.school.stmgmt.StudentDetails.list()}'
-                                          optionKey="id" optionValue="fullName"></g:select>
-
-                            </div>
-                        </div>
-
-
 
                         <div class="form-group ">
-                            <label for="studentNo" class="control-label col-lg-3">Roll No</label>
+                            <label for="rollNumber" class="control-label col-lg-3">Roll No</label>
+
                             <div class="col-lg-6">
-                                <input class=" form-control" id="studentNo" name="studentNo" type="text" />
+                                <input class=" form-control" id="rollNumber" name="rollNumber" type="text"/>
                             </div>
                         </div>
 
                         <div class="form-group ">
                             <label for="admissionDate" class="control-label col-lg-3">Admission Date</label>
+
                             <div class="col-lg-6">
-                                <input id="admissionDate" name="admissionDate" type="date" class="form-control datepicker"/>
+                                <input id="admissionDate" name="admissionDate" type="date"
+                                       class="form-control datepicker"/>
                             </div>
                         </div>
+
                         <div class="form-group ">
                             <label for="optionalSubjects" class="control-label col-lg-3">Optional Subjects</label>
+
                             <div class="col-lg-6">
-                                <g:select name="optionalSubjects"
+                                <g:select name="optionalSubjects" id="my_multi_select2" class="multi-select"
                                           multiple="multiple"
                                           optionKey="id"
                                           optionValue="subjectName"
                                           from="${optionalSubjects}"
-                                          value="" />
+                                          value=""/>
 
                             </div>
                         </div>
@@ -92,18 +114,27 @@ var demo1 = $('[name="optionalSubjects"]').bootstrapDualListbox();
         errorClass: 'help-block',
         focusInvalid: false,
         rules: {
-            details: {
+            rollNumber: {
                 required: true,
-                maxlength: 200
+                number: true
             },
-            description: {
-                minlength: 0,
-                maxlength: 200
+            academicYear: {
+                required: true,
+                number: true
+            },
+            admissionType: {
+                required: true
             }
         },
         messages: {
-            name: {
-                required: "Class Name required"
+            rollNumber: {
+                required: "Roll Number is required"
+            },
+            academicYear: {
+                required: "Academic Year is required"
+            },
+            admissionType: {
+                required: "Admission Type is required"
             }
         },
         invalidHandler: function (event, validator) { //display error alert on form submit
