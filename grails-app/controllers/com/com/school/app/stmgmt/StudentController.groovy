@@ -1,9 +1,11 @@
 package com.com.school.app.stmgmt
 
+import com.app.school.enums.AdmissionType
 import com.app.school.settings.ClassName
 import com.app.school.settings.ClassSubject
 import com.app.school.settings.Section
 import com.app.school.stmgmt.Student
+import com.app.school.stmgmt.StudentDetails
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.dao.DataIntegrityViolationException
@@ -19,11 +21,11 @@ class StudentController {
         LinkedHashMap resultMap = studentService.sectionPaginateList(params)
 
         if (!resultMap || resultMap.totalCount == 0) {
-            render(view: 'examInitialize', model: [dataReturn: null, totalCount: 0])
+            render(view: 'studentInitialize', model: [dataReturn: null, totalCount: 0])
             return
         }
         int totalCount = resultMap.totalCount
-        render(view: 'examInitialize', model: [dataReturn: resultMap.results, totalCount: totalCount])
+        render(view: 'studentInitialize', model: [dataReturn: resultMap.results, totalCount: totalCount])
 
     }
 
@@ -176,15 +178,45 @@ class StudentController {
         render outPut
     }
 
+    def ajaxFindStudentId() {
+//        def c = com.baily.student.StudentInfo.createCriteria()
+        def c = com.app.school.stmgmt.StudentDetails.createCriteria()
+//        def studentId = com.baily.academic.setup.Admission.findAll().studentInfo.studentID
+
+//        if (studentId.size() == 0) {
+//            def foundStudent = c.list {
+//                ilike 'studentID', '%' + params.term + '%'
+//            }
+//            render(foundStudent?.'studentID' as JSON)
+//        } else {
+            def foundStudent = c.list {
+                ilike 'studentID', '%' + params.term + '%'
+                and {
+                    not {
+                        'in'('studentID', studentId)
+                    }
+                }
+            }
+            render(foundStudent?.'studentID' as JSON)
+        }
+//    }
+
+
 }
 
 class StudentCommand {
     Long id
-    String name
-    String description
+    ClassName className
+    Section section
+    int academicYear
+    Integer rollNumber
     String subjectIds
+    StudentDetails details
+    String studentNo
+    Date admissionDate
+    AdmissionType admissionType
 
     static constraints = {
-        name nullable: false
+
     }
 }

@@ -2,7 +2,8 @@
     <div class="col-lg-12">
         <section class="panel">
             <header class="panel-heading">
-                Student Admission
+                Student Admission &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Class Name: &nbsp;&nbsp;${section?.className.name} &nbsp;&nbsp;&nbsp;&nbsp; Section Name: &nbsp;&nbsp; ${section?.name}
                 <span class="tools pull-right">
                     <a class="fa fa-chevron-down" href="javascript:;"></a>
                 </span>
@@ -10,36 +11,12 @@
             <div class="panel-body">
                 <div class="form">
                     <form class="cmxform form-horizontal " id="create-form">
-                        <g:hiddenField name="id"/>
-                        <g:hiddenField name="sectionId"/>
+                        <g:hiddenField name="id" value="${section.id}"/>
+                        <g:hiddenField name="sectionId" value="${section.className.id}"/>
                         <div class="form-group ">
                             <label for="details" class="control-label col-lg-3">Student Name</label>
                             <div class="col-lg-6">
                                 <g:textField class="form-control" id="details" name="details"/>
-                            </div>
-                        </div>
-
-                        <div class="form-group ">
-                            <label for="className" class="control-label col-lg-3">Class Name</label>
-                            <div class="col-lg-6">
-
-                                <g:select class=" form-control" id="className" name='className' value=""
-                                          noSelection="${['null':'Select One...']}"
-                                          from=''
-                                          optionKey="id" optionValue="name"></g:select>
-
-                            </div>
-                        </div>
-
-                        <div class="form-group ">
-                            <label for="section" class="control-label col-lg-3">Section Name</label>
-                            <div class="col-lg-6">
-
-                                <g:select class=" form-control" id="section" name='section' value=""
-                                          noSelection="${['null':'Select One...']}"
-                                          from='${com.app.school.settings.Section.list()}'
-                                          optionKey="id" optionValue="name"></g:select>
-
                             </div>
                         </div>
 
@@ -50,6 +27,19 @@
                                 <input class=" form-control" id="academicYear" name="academicYear" type="text" />
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-2 col-sm-2 control-label">Basic select </label>
+                            <div class="col-lg-6">
+                                <g:select id="e1" class="populate " style="width: 300px" name='religion'
+                                          noSelection="${['':'Select One...']}"
+                                          from='${com.app.school.stmgmt.StudentDetails.list()}'
+                                          optionKey="id" optionValue="fullName"></g:select>
+
+                            </div>
+                        </div>
+
+
 
                         <div class="form-group ">
                             <label for="studentNo" class="control-label col-lg-3">Roll No</label>

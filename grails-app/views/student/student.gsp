@@ -106,10 +106,11 @@
                     if(data.isError==false){
                             clearForm('#create-form');
                             $('#id').val(data.obj.id);
-                            $('#details').val(data.obj.details);
-                            $('#className').val(data.obj.className);
-                            $('#studentNo').val(data.obj.studentNo);
+                            $('#className').val(data.obj.className.name);
+                            $('#section').val(data.obj.section);
                             $('#academicYear').val(data.obj.academicYear);
+                            $('#details').val(data.obj.details.fullName);
+                            $('#studentNo').val(data.obj.studentNo);
                             $('#admissionType').val(data.obj.admissionType);
                             $("#studentCreate").show(1000);
                         }else{

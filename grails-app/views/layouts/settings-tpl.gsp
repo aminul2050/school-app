@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="${resource(dir: 'css/', file: 'datepicker.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css/', file: 'DT_bootstrap.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'font-awesome/css/', file: 'font-awesome.css')}" type="text/css">
+    <link rel="stylesheet" href="${resource(dir: '/css/', file: 'select2.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css/', file: 'style.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css/', file: 'style-responsive.css')}" type="text/css">
 
@@ -89,6 +90,8 @@
 <script src="${resource(dir: 'js/', file: 'dataTables.bootstrap.js')}"></script>
 <script src="${resource(dir: 'js/', file: 'jquery.validate.min.js')}"></script>
 <script src="${resource(dir: 'js/', file: 'bootstrap-growl.min.js')}"></script>
+<script src="${resource(dir: '/js/', file: 'select2.js')}"></script>
+<script src="${resource(dir: '/js/', file: 'select-init.js')}"></script>
 
 <g:javascript library="application"/>
 <r:layoutResources/>
