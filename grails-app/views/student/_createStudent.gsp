@@ -23,30 +23,7 @@
                                 <g:select id="e1" class="populate form-control" name='studentName'
                                           noSelection="${['': 'Select One...']}"
                                           from='${com.app.school.stmgmt.StudentDetails.list()}'
-                                          optionKey="id" optionValue="fullName"></g:select>
-                            </div>
-                        </div>
-
-                        <div class="form-group ">
-                            <label for="studentNo" class="control-label col-lg-3">Student Id</label>
-
-                            <div class="col-lg-6">
-                                %{--<g:textField class="form-control" id="details" name="details"/>--}%
-                                <g:select id="e9" class="populate form-control" name='studentNo'
-                                          noSelection="${['': 'Select One...']}"
-                                          from='${com.app.school.stmgmt.StudentDetails.list()}'
-                                          optionKey="id" optionValue="studentID"></g:select>
-                            </div>
-                        </div>
-
-                        <div class="form-group ">
-                            <label for="studentNo" class="control-label col-lg-3">Admission Type</label>
-
-                            <div class="col-lg-6">
-                                <g:select class=" form-control" id="admissionType" name='admissionType'
-                                          noSelection="${['': 'Select One...']}"
-                                          from='${com.app.school.enums.AdmissionType.values()}'
-                                          optionKey="key" optionValue="value"></g:select>
+                                          optionKey="id" optionValue="nameWithId"></g:select>
                             </div>
                         </div>
 
@@ -54,7 +31,7 @@
                             <label for="academicYear" class="control-label col-lg-3">Academic Year</label>
 
                             <div class="col-lg-6">
-                                <input class=" form-control" id="academicYear" name="academicYear" type="text"/>
+                                <input class=" form-control" id="academicYear" name="academicYear" type="text" value="2014"/>
                             </div>
                         </div>
 
@@ -79,7 +56,7 @@
                             <label for="optionalSubjects" class="control-label col-lg-3">Optional Subjects</label>
 
                             <div class="col-lg-6">
-                                <g:select name="optionalSubjects" id="my_multi_select2" class="multi-select"
+                                <g:select name="optionalSubjects" id="optionalSubjects" class="multi-select"
                                           multiple="multiple"
                                           optionKey="id"
                                           optionValue="subjectName"
@@ -103,7 +80,8 @@
 </div>
 
 <r:script>
-var demo1 = $('[name="optionalSubjects"]').bootstrapDualListbox();
+$('#optionalSubjects').multiSelect();
+//var demo1 = $('[name="optionalSubjects"]').bootstrapDualListbox();
     $('#admissionDate').datepicker({
             format: 'dd/mm/yyyy',
             startDate: '-3d',

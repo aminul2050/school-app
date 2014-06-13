@@ -16,16 +16,16 @@
 
                         <div class="col-lg-6">
                             <g:select class="form-control input-sm" id="className" name='className' value="${classSubject?.id}"
-                                      noSelection="${['null':'Select One...']}"
+                                      noSelection="${['':'Select One...']}"
                                       from='${ClassName.list()}'
                                       optionKey="id" optionValue="name"></g:select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="className" class="col-lg-2 col-sm-2 control-label">Class subjects</label>
+                        <label for="classSubjectMapping" class="col-lg-2 col-sm-2 control-label">Class subjects</label>
 
                         <div class="col-lg-8">
-                            <g:select name="classSubjectMap[]"
+                            <g:select name="classSubjectMap[]" id="classSubjectMapping"
                                       multiple="multiple"
                                       optionKey="id"
                                       optionValue="subjectName"
@@ -48,7 +48,8 @@
 </div>
 
 <r:script>
-        var demo1 = $('[name="classSubjectMap[]"]').bootstrapDualListbox();
+        $('#classSubjectMapping').multiSelect();
+//        var demo1 = $('[name="classSubjectMap[]"]').bootstrapDualListbox();
     $('#create-form').validate({
         errorElement: 'small',
         errorClass: 'help-block',

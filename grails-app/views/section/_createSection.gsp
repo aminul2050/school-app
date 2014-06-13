@@ -16,7 +16,7 @@
                         <label for="className" class="control-label col-lg-3">Class Name</label>
                         <div class="col-lg-6">
                             <g:select class="form-control input-sm" id="className" name='className'
-                                      noSelection="${['null':'Select One...']}"
+                                      noSelection="${['':'Select One...']}"
                                       from='${ClassName.list()}'
                                       optionKey="id" optionValue="name"></g:select>
                         </div>
@@ -87,6 +87,7 @@
                 data: $("#create-form").serialize(),
                 success: function (data) {
                     clearForm(form);
+//                    $('#className').val('');
                     var table = $('#list-table').DataTable();
                     table.ajax.reload();
                      $.growl('Section Created successfully!', { type: 'success' });

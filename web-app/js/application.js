@@ -23,7 +23,7 @@ function clearForm(form) {
 
         // select elements need to have their 'selectedIndex' property set to -1
         else if (tag == 'select') {
-            this.value = '';
+            this.value = "";
         }
     });
 }

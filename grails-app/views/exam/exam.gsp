@@ -71,9 +71,6 @@
 <!-- page end-->
 <r:script>
     jQuery(function ($) {
-    %{--var beginDate = "${beginingDate}";--}%
-//    $("#beginingDate").val(beginDate);
-    //date picker object
      $("#dateBegin").datepicker({
     //            format: dateF,
                 startDate: new Date(),

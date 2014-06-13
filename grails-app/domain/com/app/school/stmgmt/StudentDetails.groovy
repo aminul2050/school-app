@@ -50,10 +50,11 @@ class StudentDetails {
         lastUpdatedOn nullable: true
     }
 
-    static transients = ['fullName']
+    static transients = ['fullName','nameWithId']
 
     //common properties for every table
     String fullName
+    String nameWithId
     Long schoolId
     String createdBy
     Date createdOn
@@ -74,5 +75,9 @@ class StudentDetails {
     String getFullName(){
 
         return this.firstName+" "+this.lastName
+    }
+    String getNameWithId(){
+
+        return this.firstName+" "+this.lastName+" ("+this.studentID+")"
     }
 }

@@ -15,7 +15,7 @@
                             <label for="className" class="control-label col-lg-3">Class Name.</label>
                             <div class="col-lg-6">
                                 <g:select id="type" name='className' class="form-control m-bot15"
-                                          noSelection="${['null':'Select One...']}"
+                                          noSelection="${['':'Select One...']}"
                                           from='${com.app.school.settings.ClassName.list()}'
                                           optionKey="id" optionValue="name"></g:select>
                             </div>
@@ -24,7 +24,7 @@
                             <label for="section" class="control-label col-lg-3">Section.</label>
                             <div class="col-lg-6">
                                 <g:select id="section" name='section' class="form-control m-bot15"
-                                          noSelection="${['null':'Select One...']}"
+                                          noSelection="${['':'Select One...']}"
                                           from='${com.app.school.settings.Section.list()}'
                                           optionKey="id" optionValue="name"></g:select>
                             </div>
@@ -34,7 +34,7 @@
                             <label for="examType" class="control-label col-lg-3">Exam Type.</label>
                             <div class="col-lg-6">
                                 <g:select class=" form-control" id="type" name='examType' value=""
-                                          noSelection="${['null':'Select One...']}"
+                                          noSelection="${['':'Select One...']}"
                                           from='${com.app.school.enums.ExamType.values()}'
                                           optionKey="key" optionValue="value"></g:select>
                             </div>
