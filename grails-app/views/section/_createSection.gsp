@@ -52,38 +52,6 @@
                 </div>
             </div>
 
-            %{--<div class="panel-body">--}%
-                %{--<div class="position-center">--}%
-                    %{--<form  class="form-inline cmxform" id="create-form" role="form">--}%
-
-                        %{--<div class="form-group">--}%
-                            %{--<label class="sr-only" for="className">Class Name</label>--}%
-                            %{--<g:select class="form-control input-sm" id="className" name='className'--}%
-                                      %{--noSelection="${['':'Select One...']}"--}%
-                                      %{--from='${ClassName.list()}'--}%
-                                      %{--optionKey="id" optionValue="name"></g:select>--}%
-                        %{--</div>--}%
-
-                        %{--<div class="form-group">--}%
-                            %{--<label class="sr-only" for="name">Section Name</label>--}%
-                            %{--<g:textField class="form-control" id="name" name="name" placeholder="Section Name"/>--}%
-                        %{--</div>--}%
-
-                        %{--<div class="form-group">--}%
-                            %{--<label class="sr-only" for="name">Description</label>--}%
-                            %{--<g:textField class=" form-control" id="description" name="description" placeholder="Description" />--}%
-                        %{--</div>--}%
-
-
-                        %{--<div class="form-group">--}%
-                        %{--<button class="btn btn-primary" type="submit">Save</button>--}%
-                        %{--<button class="btn btn-default" type="button">Cancel</button>--}%
-                        %{--</div>--}%
-
-                    %{--</form>--}%
-                %{--</div>--}%
-            %{--</div>--}%
-
         </section>
     </div>
 </div>

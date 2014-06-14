@@ -107,18 +107,35 @@
             ]
         });
         $('#add-new-btn').click(function (e) {
-//            document.getElementById(examCreate).style.display = 'block';
-        $("#examCreate").toggle(1000);
+            $("#examCreate").toggle(500);
+            $("#className").focus();
             e.preventDefault();
         });
-        $('#sample-table-2').on('click', 'a.edit-reference', function (e) {
+
+        $('#list-table').on('click', 'a.edit-reference', function (e) {
             var control = this;
             var referenceId = $(control).attr('referenceId');
             jQuery.ajax({
                 type: 'POST',
-                url: "${g.createLink(controller: 'exam', action: 'edit')}?id=" + referenceId,
+                dataType:'JSON',
+                url: "${g.createLink(controller: 'exam',action: 'edit')}?id=" + referenceId,
                 success: function (data, textStatus) {
-                    $('#page-content').html(data);
+                    if(data.isError==false){
+                            clearForm('#create-form');
+                            $('#id').val(data.obj.id);
+                            $('#name').val(data.obj.name);
+                            $('#description').val(data.obj.description);
+                            $('#startDate').val(data.obj.startDate);
+                            $('#endDate').val(data.obj.endDate);
+                            $('#publishedDate').val(data.obj.publishedDate);
+                            $('#className').val(data.obj.className.id);
+                            $('#section').val(data.obj.section.id);
+                            $('#examType').val(data.obj.examType.name);
+                            $("#examCreate").show(500);
+                            $("#className").focus();
+                        }else{
+                            alert(data.message);
+                        }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                 }
@@ -126,23 +143,24 @@
             e.preventDefault();
         });
 
-        $('#sample-table-2').on('click', 'a.delete-reference', function (e) {
+        $('#list-table').on('click', 'a.delete-reference', function (e) {
             var selectRow = $(this).parents('tr');
-            var confirmDel = confirm("Do You Want To Delete?");
+            var confirmDel = confirm("Are you sure?");
             if (confirmDel == true) {
                 var control = this;
                 var referenceId = $(control).attr('referenceId');
                 jQuery.ajax({
                     type: 'POST',
                     dataType:'JSON',
-                    url: "${g.createLink(controller: 'exam', action: 'delete')}?id=" + referenceId,
+                    url: "${g.createLink(controller: 'exam',action: 'delete')}?id=" + referenceId,
                     success: function (data, textStatus) {
                         if(data.isError==false){
-                            $("#sample-table-2").DataTable().row(selectRow).remove().draw();
+                            $("#list-table").DataTable().row(selectRow).remove().draw();
+                        }else{
+                            alert(data.message);
                         }
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
-// $('#'+updateDiv).html(data);
                     }
                 });
             }

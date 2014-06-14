@@ -7,6 +7,7 @@ class Exam {
     transient springSecurityService
 
     String name
+    String description
     Date startDate
     Date endDate
     Date publishedDate
@@ -19,6 +20,7 @@ class Exam {
     static constraints = {
         endDate(nullable: true)
         publishedDate(nullable: true)
+        description(nullable: false)
         //System inserted data
         schoolId nullable: true
         createdBy nullable: true

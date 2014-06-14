@@ -13,20 +13,20 @@
                         <g:hiddenField name="id"/>
 
                         <div class="form-group col-md-4">
-                          <div class="col-md-12">
-                            <label class="control-label">Class Name.</label>
-                                <g:select id="type" name='className' class="form-control m-bot15"
+                            <div class="col-md-12">
+                                <label for="className" class="control-label">* Class Name.</label>
+                                <g:select tabindex="1" id="className" name='className' class="form-control"
                                           noSelection="${['':'Select One...']}"
                                           from='${com.app.school.settings.ClassName.list()}'
                                           optionKey="id" optionValue="name"></g:select>
-                              <span for="className" class="help-block"></span>
+                                <span for="className" class="help-block"></span>
                             </div>
                         </div>
 
                         <div class="form-group col-md-4">
                             <div class="col-md-12">
-                            <label class="control-label">Section.</label>
-                                <g:select id="section" name='section' class="form-control m-bot15"
+                                <label  for="section" class="control-label">* Section.</label>
+                                <g:select tabindex="2" id="section" name='section' class="form-control"
                                           noSelection="${['':'Select One...']}"
                                           from='${com.app.school.settings.Section.list()}'
                                           optionKey="id" optionValue="name"></g:select>
@@ -34,54 +34,56 @@
                             </div>
                         </div>
 
-                        <div class="form-group ">
-                            <label for="examType" class="control-label col-lg-3">Exam Type.</label>
-                            <div class="col-lg-6">
-                                <g:select class=" form-control" id="type" name='examType' value=""
+                        <div  class="form-group col-md-4">
+                            <div class="col-md-12">
+                                <label for="examType" class="control-label">* Exam Type.</label>
+                                <g:select class=" form-control" id="examType" name='examType' tabindex="3" value=""
                                           noSelection="${['':'Select One...']}"
                                           from='${com.app.school.enums.ExamType.values()}'
                                           optionKey="key" optionValue="value"></g:select>
+                                <span for="examType" class="help-block"></span>
                             </div>
                         </div>
 
-                        <div class="form-group ">
-                            <label for="name" class="control-label col-lg-3">Exam Name.</label>
-                            <div class="col-lg-6">
-                                <input class=" form-control" id="name" name="name" type="text" />
+                        <div class="form-group col-md-4">
+                            <div class="col-md-12">
+                                <label for="name" class="control-label">* Exam Name.</label>
+                                <input class=" form-control" id="name" name="name" placeholder="Enter Exam Name" tabindex="4" type="text" />
+                                <span for="name" class="help-block"></span>
                             </div>
                         </div>
 
-
-
-                        <div class="form-group ">
-                            <label for="description" class="control-label col-lg-3">Description.</label>
-
-                            <div class="col-lg-6">
-                                <input class=" form-control" id="description" name="description" type="text"/>
+                        <div class="form-group col-md-4">
+                            <div class="col-md-12">
+                                <label for="datepicker" class="control-label">* Begaining Date.</label>
+                                <input class=" form-control" id="datepicker" name="startDate" type="text" tabindex="5" placeholder="Enter Begaining Date." class="form-control datepicker"/>
+                                <span for="datepicker" class="help-block"></span>
                             </div>
                         </div>
 
-                        <div class="form-group ">
-                            <label for="datepicker" class="control-label col-lg-3">Begaining Date.</label>
-
-                            <div class="col-lg-6">
-                                <input class=" form-control" id="datepicker" name="startDate" type="text" class="form-control datepicker"/>
+                        <div class="form-group col-md-4">
+                            <div class="col-md-12">
+                                <label for="datepickerA" class="control-label">* End Date.</label>
+                                <input class=" form-control" id="datepickerA" name="endDate" type="text" placeholder="Enter End date" tabindex="6" class="form-control datepicker"/>
+                                <span for="datepickerA" class="help-block"></span>
                             </div>
                         </div>
 
-                        <div class="form-group ">
-                            <label for="datepickerA" class="control-label col-lg-3">End Date.</label>
-                            <div class="col-lg-6">
-                                <input class=" form-control" id="datepickerA" name="endDate" type="text" class="form-control datepicker"/>
+                        <div class="form-group col-md-4">
+                            <div class="col-md-12">
+                                <label for="description" class="control-label">Description.</label>
+                                <input class=" form-control" id="description" placeholder="Enter Description." name="description" tabindex="7" type="text"/>
+                                <span for="description" class="help-block"></span>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <div class="col-lg-offset-3 col-lg-6">
+                            <div class="col-md-offset-8 col-lg-4">
                                 <button class="btn btn-primary" type="submit">Save</button>
-                                <button class="btn btn-default" type="button">Cancel</button>
+                                <button class="btn btn-default" type="reset">Cancel</button>
                             </div>
                         </div>
+
                     </form>
                 </div>
             </div>
@@ -107,19 +109,43 @@
         errorClass: 'help-block',
         focusInvalid: false,
         rules: {
-            name: {
-                required: true,
-                minlength: 0,
-                maxlength: 200
+            startDate: {
+                required: true
             },
-            description: {
-                minlength: 0,
-                maxlength: 200
+            endDate: {
+                required: true
+            },
+            className: {
+                required: true
+            },
+            section: {
+                required: true
+            },
+            examType: {
+                required: true
+            },
+            name: {
+                required: true
             }
         },
         messages: {
+            startDate: {
+                required: "Start Date required"
+            },
+            endDate: {
+                required: "End Date required"
+            },
+            className: {
+                required: "Class Name required"
+            },
+            section: {
+                required: "Section required"
+            },
+            examType: {
+                required: "Exam Type required"
+            },
             name: {
-                required: "Exam Name required"
+                required: "Exam Type required"
             }
         },
         invalidHandler: function (event, validator) { //display error alert on form submit
@@ -144,12 +170,11 @@
                     clearForm(form);
                     var table = $('#list-table').DataTable();
                     table.ajax.reload();
-                     $.growl('Exam Created successfully!', { type: 'success' });
+                    $.growl('Exam Created successfully!', { type: 'success' });
                 },
                 failure: function (data) {
                 }
             })
-
         }
     });
 </r:script>
