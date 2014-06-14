@@ -146,7 +146,7 @@ class SubjectCommand {
     String description
     Integer ctMark
     Integer hallMark
-    Boolean compulsory =true
+    Boolean isOptional =false
 
     static constraints = {
         name nullable: false

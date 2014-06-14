@@ -11,7 +11,7 @@
     <div class="col-sm-12">
         <section class="panel">
             <header class="panel-heading">
-                Class Name List
+                Create Subject List
                 <span class="tools pull-right">
                     <div class="btn-group">
                         <button id="add-new-btn" class="btn btn-primary">
@@ -109,7 +109,9 @@
                             $('#description').val(data.obj.description);
                             $('#ctMark').val(data.obj.ctMark);
                             $('#hallMark').val(data.obj.hallMark);
-                            $('#compulsory').val(data.obj.compulsory);
+                            if(data.obj.isOptional){
+                            $('#isOptional').prop('checked', true)
+                            }
                             $("#subjectCreate").show(1000);
                         }else{
                             alert(data.message);

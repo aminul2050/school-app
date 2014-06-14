@@ -82,7 +82,7 @@
             ]
         });
         $('#add-new-btn').click(function (e) {
-            $("#createClassSubject").toggle(1000);
+            $("#createClassSubject").toggle(500);
             e.preventDefault();
         });
         $('#list-table').on('click', 'a.edit-reference', function (e) {
@@ -97,7 +97,7 @@
                             clearForm('#create-form');
                             $('#id').val(data.obj.id);
                             $('#className').val(data.obj.className.id);
-                            $("#createClassSubject").show(1000);
+                            $("#createClassSubject").show(500);
                         }else{
                             alert(data.message);
                         }

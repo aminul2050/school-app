@@ -81,7 +81,6 @@
 
 <r:script>
 $('#optionalSubjects').multiSelect();
-//var demo1 = $('[name="optionalSubjects"]').bootstrapDualListbox();
     $('#admissionDate').datepicker({
             format: 'dd/mm/yyyy',
             startDate: '-3d',

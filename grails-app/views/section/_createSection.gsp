@@ -13,7 +13,7 @@
                     <form class="cmxform form-horizontal " id="create-form">
                         <g:hiddenField name="id"/>
                         <div class="form-group ">
-                        <label for="className" class="control-label col-lg-3">Class Name</label>
+                        %{--<label for="className" class="control-label col-lg-3">Class Name</label>--}%
                         <div class="col-lg-6">
                             <g:select class="form-control input-sm" id="className" name='className'
                                       noSelection="${['':'Select One...']}"
@@ -21,16 +21,22 @@
                                       optionKey="id" optionValue="name"></g:select>
                         </div>
                         </div>
+
                         <div class="form-group ">
-                            <label for="name" class="control-label col-lg-3">Section Name</label>
+
+                            %{--<label for="name" class="control-label col-lg-3">Section Name</label>--}%
                             <div class="col-lg-6">
+                            <span class="help-block" for="name">Section Name</span>
                                 <g:textField class="form-control" id="name" name="name"/>
+
                             </div>
                         </div>
+
                         <div class="form-group ">
-                            <label for="description" class="control-label col-lg-3">Section description</label>
+                            %{--<label for="description" class="control-label col-lg-3">Section description</label>--}%
                             <div class="col-lg-6">
                                 <g:textField class=" form-control" id="description" name="description"  />
+
                             </div>
                         </div>
 
@@ -40,17 +46,51 @@
                                 <button class="btn btn-default" type="button">Cancel</button>
                             </div>
                         </div>
+
                     </form>
 
                 </div>
             </div>
+
+            %{--<div class="panel-body">--}%
+                %{--<div class="position-center">--}%
+                    %{--<form  class="form-inline cmxform" id="create-form" role="form">--}%
+
+                        %{--<div class="form-group">--}%
+                            %{--<label class="sr-only" for="className">Class Name</label>--}%
+                            %{--<g:select class="form-control input-sm" id="className" name='className'--}%
+                                      %{--noSelection="${['':'Select One...']}"--}%
+                                      %{--from='${ClassName.list()}'--}%
+                                      %{--optionKey="id" optionValue="name"></g:select>--}%
+                        %{--</div>--}%
+
+                        %{--<div class="form-group">--}%
+                            %{--<label class="sr-only" for="name">Section Name</label>--}%
+                            %{--<g:textField class="form-control" id="name" name="name" placeholder="Section Name"/>--}%
+                        %{--</div>--}%
+
+                        %{--<div class="form-group">--}%
+                            %{--<label class="sr-only" for="name">Description</label>--}%
+                            %{--<g:textField class=" form-control" id="description" name="description" placeholder="Description" />--}%
+                        %{--</div>--}%
+
+
+                        %{--<div class="form-group">--}%
+                        %{--<button class="btn btn-primary" type="submit">Save</button>--}%
+                        %{--<button class="btn btn-default" type="button">Cancel</button>--}%
+                        %{--</div>--}%
+
+                    %{--</form>--}%
+                %{--</div>--}%
+            %{--</div>--}%
+
         </section>
     </div>
 </div>
 
 <r:script>
     $('#create-form').validate({
-        errorElement: 'small',
+        errorElement: 'span',
         errorClass: 'help-block',
         focusInvalid: false,
         rules: {

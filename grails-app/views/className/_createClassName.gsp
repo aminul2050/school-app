@@ -11,25 +11,28 @@
                 <div class="form">
                     <form class="cmxform form-horizontal " id="create-form">
                         <g:hiddenField name="id"/>
-                        <div class="form-group ">
-                            <label for="name" class="control-label col-lg-3">Class Name</label>
-                            <div class="col-lg-6">
-                                <g:textField class="form-control" id="name" name="name"/>
+                        <div class="form-group col-md-4">
+                            <div class="col-md-12">
+                                <label class="control-label">Rounder</label>
+                                <g:textField class="form-control" id="name" name="name" placeholder="Enter Class Name."/>
+                                <span for="name" class="help-block"></span>
                             </div>
                         </div>
-                        <div class="form-group ">
-                            <label for="description" class="control-label col-lg-3">Description</label>
-                            <div class="col-lg-6">
-                                <input class=" form-control" id="description" name="description" type="text" />
+                        <div class="form-group col-md-4">
+                            <div class="col-md-12">
+                                <label class="control-label">Rounder</label>
+                                <g:textField class="form-control" id="description" name="description" placeholder="Enter Description."/>
+                                <span class="help-block" for="description"></span>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <div class="col-lg-offset-3 col-lg-6">
-                                <button class="btn btn-primary" type="submit">Save</button>
-                                <button class="btn btn-default" type="button">Cancel</button>
-                            </div>
+                        <div class="col-md-offset-8 col-lg-4">
+                        <button class="btn btn-primary" type="submit">Save</button>
+                        <button class="btn btn-default" type="reset">Cancel</button>
                         </div>
+                        </div>
+
                     </form>
                 </div>
             </div>
@@ -39,7 +42,7 @@
 
 <r:script>
     $('#create-form').validate({
-        errorElement: 'small',
+        errorElement: 'span',
         errorClass: 'help-block',
         focusInvalid: false,
         rules: {

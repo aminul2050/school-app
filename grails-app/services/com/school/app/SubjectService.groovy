@@ -44,18 +44,18 @@ class SubjectService {
                 } else {
                     serial--
                 }
-                dataReturns.add([DT_RowId: subject.id, 0: serial, 1: subject.name,2:subject.description,3:subject.ctMark,4:subject.hallMark,5:subject.compulsory?'Compulsory':'Optional', 6: ''])
+                dataReturns.add([DT_RowId: subject.id, 0: serial, 1: subject.name,2:subject.description,3:subject.ctMark,4:subject.hallMark,5:subject.isOptional?'Optional':'Compulsory', 6: ''])
             }
         }
         return [totalCount:totalCount,results:dataReturns]
     }
     String getName(String ids){
         if(!ids){
-            return "No subject Added"
+            return null
         }
         def subjectIds = ids.split(',').collect{it as Long}
         if(!subjectIds){
-            return "No subject Added"
+            return null
         }
         def query = Subject.where {
             (schoolId == CommonUtils.DEFAULT_SCHOOL_ID && id in subjectIds)
@@ -87,7 +87,7 @@ class SubjectService {
             return null
         }
         def query = Subject.where {
-            (schoolId == CommonUtils.DEFAULT_SCHOOL_ID && id in subjectIds && compulsory==false)
+            (schoolId == CommonUtils.DEFAULT_SCHOOL_ID && id in subjectIds && isOptional==true)
         }
         def results = query.list()
         return results

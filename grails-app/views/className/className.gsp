@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="settings-tpl"/>
-    <title>Empty page - Edupal.co</title>
+    <title>Create Class Name - Baily School</title>
 
 </head>
 <body>
@@ -16,7 +16,7 @@
     <span class="tools pull-right">
         <div class="btn-group">
             <button id="add-new-btn" class="btn btn-primary">
-                Add New<i class="fa fa-plus"></i>
+                Add New&nbsp;<i class="fa fa-plus"></i>
             </button>
         </div>
     </span>
@@ -82,7 +82,7 @@
             ]
         });
         $('#add-new-btn').click(function (e) {
-            $("#classNameCreate").toggle(1000);
+            $("#classNameCreate").toggle(500);
             e.preventDefault();
         });
         $('#list-table').on('click', 'a.edit-reference', function (e) {
@@ -98,7 +98,7 @@
                             $('#id').val(data.obj.id);
                             $('#name').val(data.obj.name);
                             $('#description').val(data.obj.description);
-                            $("#classNameCreate").show(1000);
+                            $("#classNameCreate").show(500);
                         }else{
                             alert(data.message);
                         }

@@ -38,9 +38,9 @@
                         </div>
 
                         <div class="form-group ">
-                            <label for="compulsory" class="control-label col-lg-3">Compulsory</label>
-                            <div class="col-lg-6">
-                                <input class=" form-control" id="compulsory" name="compulsory" type="checkbox" checked/>
+                            <label for="isOptional" class="control-label col-lg-3">Optional</label>
+                            <div class="col-lg-1">
+                                <input class=" form-control" id="isOptional" name="isOptional" type="checkbox"/>
                             </div>
                         </div>
 
@@ -65,11 +65,9 @@
         rules: {
             name: {
                 required: true,
-                minlength: 0,
                 maxlength: 20
             },
             description: {
-                minlength: 0,
                 maxlength: 225
             }
         },

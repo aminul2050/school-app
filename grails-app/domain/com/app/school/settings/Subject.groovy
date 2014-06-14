@@ -6,7 +6,7 @@ class Subject {
     String description
     Integer ctMark
     Integer hallMark
-    Boolean compulsory =true
+    Boolean isOptional =false
 
     static constraints = {
         name nullable: false, unique: true
@@ -39,9 +39,9 @@ class Subject {
     }
     //common properties for every table
     String getSubjectName(){
-        if(this.compulsory){
-            return this.name
+        if(this.isOptional){
+            return this.name+" (Optional)"
         }
-        return this.name+" (Optional)"
+        return this.name
     }
 }
