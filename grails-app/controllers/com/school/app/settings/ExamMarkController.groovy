@@ -1,9 +1,13 @@
 package com.school.app.settings
 
+import com.app.school.settings.ClassName
 import com.app.school.settings.ClassSubject
 import com.app.school.settings.Exam
 import com.app.school.settings.ExamMark
+import com.app.school.settings.Section
 import com.app.school.settings.Subject
+import com.app.school.stmgmt.Student
+import com.school.app.CommonUtils
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.dao.DataIntegrityViolationException
@@ -39,15 +43,19 @@ class ExamMarkController {
             redirect(action: 'index')
             return
         }
+        ClassName className=exam.className
+        Section section=exam.section
+
+        def studentList = Student.findBySchoolIdAndClassNameAndSection(CommonUtils.DEFAULT_SCHOOL_ID, exam.className, exam.section)
 
         LinkedHashMap resultMap = examMarkService.examMarkPaginateList(params,exam,subject)
 
         if (!resultMap || resultMap.totalCount == 0) {
-            render(view: 'examMark', model: [dataReturn: null, totalCount: 0, exam:exam])
+            render(view: 'examMark', model: [dataReturn: null, totalCount: 0, exam:exam,studentList:studentList])
             return
         }
         int totalCount = resultMap.totalCount
-        render(view: 'examMark', model: [dataReturn: resultMap.results, totalCount: totalCount, exam:exam])
+        render(view: 'examMark', model: [dataReturn: resultMap.results, totalCount: totalCount, exam:exam,studentList:studentList])
 
 
     }
@@ -186,12 +194,12 @@ class ExamMarkController {
 
 class ExamMarkCommand {
     Long id
-    String name
+    Student student
     int mark
     String description
 
     static constraints = {
-        name nullable: false
+        student nullable: false
         mark nullable: false
     }
 }

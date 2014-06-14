@@ -19,13 +19,17 @@
                     <form class="cmxform form-horizontal " id="create-form">
                         <g:hiddenField name="id"/>
                         <div class="form-group ">
-                            <label for="name" class="control-label col-lg-3">Student Name</label>
+                            <label for="student" class="control-label col-lg-3">Student Name</label>
                             <div class="col-lg-6">
-                                <g:textField class="form-control" id="name" name="name"/>
+                                %{--<g:textField class="form-control" id="details" name="details"/>--}%
+                                <g:select id="student" class="populate form-control" name='student'
+                                          noSelection="${['': 'Select One...']}"
+                                          from='${studentList}'
+                                          optionKey="id" optionValue="studentName"></g:select>
                             </div>
                         </div>
                         <div class="form-group ">
-                            <label for="name" class="control-label col-lg-3">Mark </label>
+                            <label for="Mark" class="control-label col-lg-3">Mark </label>
                             <div class="col-lg-6">
                                 <g:textField class="form-control" id="mark" name="mark"/>
                             </div>
@@ -56,15 +60,14 @@
         errorClass: 'help-block',
         focusInvalid: false,
         rules: {
-            name: {
-                required: true,
-                minlength: 0,
-                maxlength: 10
+            student: {
+                required: true
             },
              mark: {
                 required: true,
-                minlength: 0,
-                maxlength: 10
+                digits: true,
+                min:0,
+                max:100
             },
             description: {
                 minlength: 0,
