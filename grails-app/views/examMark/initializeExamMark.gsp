@@ -22,9 +22,9 @@
                             <th>Serial</th>
                             <th>Class</th>
                             <th>Section</th>
+                            <th>Exam Type</th>
                             <th>Exam Name</th>
                             <th>Subject</th>
-                            <th>Start Date</th>
                             <th>Exam Status</th>
                             <th>Action</th>
                         </tr>
@@ -36,20 +36,17 @@
                                 <td>${examIni[1]}</td>
                                 <td>${examIni[2]}</td>
                                 <td>${examIni[3]}</td>
-                                <td>
-                                    <g:select class=" form-control" id="religion" name='religion'
-                                              noSelection="${['':'Select One...']}"
-                                              from='${com.app.school.enums.Religion.values()}'
-                                              optionKey="key" optionValue="value"></g:select>
-                                </td>
                                 <td>${examIni[4]}</td>
-                                <td>${examIni[5]}</td>
                                 <td>
-                                    <sec:access controller="student" action="admissionSave">
-                                        <span class="col-xs-12"><a href="${g.createLink(controller: 'examMark',action: 'entry', params: [id:examIni.DT_RowId])}"
-                                                                  class="edit-reference" title="Add"><span
-                                                    class="green glyphicon glyphicon-edit"></span>&nbsp;Entry&nbsp;</a>
-                                        </span>
+                                    <g:select class=" form-control" id="subjectId" name='subjectId'
+                                              noSelection="${['':'Select One...']}"
+                                              from='${examIni[5]}'
+                                              optionKey="id" optionValue="name"></g:select>
+                                </td>
+                                <td>${examIni[6]}</td>
+                                <td>
+                                    <sec:access controller="examMark" action="entry">
+                                        <span class="col-md-12"><a href="" referenceId="${examIni.DT_RowId}" class="edit-reference" title="Entry Exam Mark"><span class="green glyphicon glyphicon-edit"></span>&nbsp;Entry Mark&nbsp;</a></span>
                                     </sec:access>
                                 </td>
                             </tr>
@@ -66,10 +63,18 @@
 
 <r:script>
     jQuery(function ($) {
-
-             var oTable1 = $('#list-table').dataTable({
+             var oTable1 = $('#list-table').dataTable({});
+        $('#list-table').on('click', 'a.edit-reference', function (e) {
+            var control = this;
+            var referenceId = $(control).attr('referenceId');
+            var subjectId = $('#subjectId').val();
+            if(subjectId ==null || subjectId ==''){
+                alert("Select subject to entry mark");
+                return false;
+            }
+            window.location.href = '${g.createLink(controller: "examMark",action: 'entry')}?id='+referenceId+'&subjectId='+subjectId;
+            e.preventDefault();
         });
-
     });
 
 </r:script>

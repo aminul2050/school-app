@@ -80,8 +80,8 @@
             "aoColumns": [
                 null,
                 null,
-                { "bSortable": false },
-                { "bSortable": false },
+                null,
+                null,
                 { "bSortable": false },
                 { "bSortable": false }
 

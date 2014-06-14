@@ -1,15 +1,19 @@
 package com.school.app
 
+import com.app.school.settings.ClassSubject
 import com.app.school.settings.Exam
 import com.app.school.settings.ExamMark
+import com.app.school.settings.Subject
 import grails.transaction.Transactional
 import org.codehaus.groovy.grails.web.servlet.mvc.GrailsParameterMap
 
 @Transactional
 class ExamMarkService {
+    def subjectService
 
-    static final String[] sortColumns = ['id','name']
-    LinkedHashMap examMarkPaginateList(GrailsParameterMap params){
+    static final String[] sortColumns = ['id','student','mark','mark']
+    LinkedHashMap examMarkPaginateList(GrailsParameterMap params, Exam exam, Subject subject){
+        println(params)
         int iDisplayStart = params.iDisplayStart ? params.getInt('iDisplayStart') : CommonUtils.DEFAULT_PAGINATION_START
         int iDisplayLength = params.iDisplayLength ? params.getInt('iDisplayLength') : CommonUtils.DEFAULT_PAGINATION_LENGTH
         String sSortDir = params.sSortDir_0 ? params.sSortDir_0 : CommonUtils.DEFAULT_PAGINATION_SORT_ORDER
@@ -25,10 +29,12 @@ class ExamMarkService {
         def results = c.list(max: iDisplayLength, offset: iDisplayStart) {
             and {
                 eq("schoolId", CommonUtils.DEFAULT_SCHOOL_ID)
+                eq("exam",exam)
+                eq("subject",subject)
             }
             if (sSearch) {
                 or {
-                    ilike('name', sSearch)
+                    ilike('student.studentName', sSearch)
                 }
             }
             order(sortColumn, sSortDir)
@@ -77,13 +83,17 @@ class ExamMarkService {
             if (sSortDir.equals(CommonUtils.SORT_ORDER_DESC)) {
                 serial = (totalCount + 1) - iDisplayStart
             }
+            ClassSubject classSubject
+            def subjectList
             results.each { Exam exam ->
                 if (sSortDir.equals(CommonUtils.SORT_ORDER_ASC)) {
                     serial++
                 } else {
                     serial--
                 }
-                dataReturns.add([DT_RowId: exam.id, 0: serial, 1: exam.className.name, 2:exam.section.name, 3: exam.examType.value, 4: exam.startDate, 5: exam.examStatus,  6: ''])
+                classSubject = ClassSubject.findByClassName(exam.className)
+                subjectList =subjectService.getSubjects(classSubject.subjectIds)
+                dataReturns.add([DT_RowId: exam.id, 0: serial, 1: exam.className.name, 2:exam.section.name, 3: exam.examType.value, 4: exam.name,5:subjectList, 6: exam.examStatus])
             }
         }
         return [totalCount:totalCount,results:dataReturns]

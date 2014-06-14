@@ -3,6 +3,7 @@ package com.school.app.settings
 import com.app.school.settings.ClassSubject
 import com.app.school.settings.Exam
 import com.app.school.settings.ExamMark
+import com.app.school.settings.Subject
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.dao.DataIntegrityViolationException
@@ -27,14 +28,19 @@ class ExamMarkController {
         render(view: 'initializeExamMark', model: [dataReturn: resultMap.results, totalCount: totalCount])
     }
 
-    def entry(Long id){
+    def entry(Long id,Long subjectId){
         Exam exam = Exam.read(id);
         if(!exam){
             redirect(action: 'index')
             return
         }
+        Subject subject = Subject.read(subjectId)
+        if(!subject){
+            redirect(action: 'index')
+            return
+        }
 
-        LinkedHashMap resultMap = examMarkService.examMarkPaginateList(params)
+        LinkedHashMap resultMap = examMarkService.examMarkPaginateList(params,exam,subject)
 
         if (!resultMap || resultMap.totalCount == 0) {
             render(view: 'examMark', model: [dataReturn: null, totalCount: 0, exam:exam])

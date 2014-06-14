@@ -12,6 +12,7 @@ class Student {
     int academicYear
     String subjectIds
     StudentDetails details
+    String studentName
     String studentNo
     Integer rollNumber
     Date admissionDate
