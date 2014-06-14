@@ -7,6 +7,7 @@
                     <a class="fa fa-chevron-down" href="javascript:;"></a>
                 </span>
             </header>
+
             <div class="panel-body">
                 <div class="form">
                     <form class="cmxform form-horizontal " id="create-form">
@@ -14,8 +15,9 @@
 
                         <div class="form-group col-md-4">
                             <div class="col-md-12">
-                                <label for="studentID" class="control-label4">* Student ID</label>
-                                <g:textField class="form-control" id="studentID" tabindex="1" name="studentID" placeholder="Enter Student Name."/>
+                                <label for="studentID" class="control-label4">Student ID *</label>
+                                <g:textField class="form-control" id="studentID" tabindex="1" name="studentID"
+                                             placeholder="Enter Student ID."/>
                                 <span for="studentID" class="help-block"></span>
                             </div>
                         </div>
@@ -23,162 +25,174 @@
                         <div class="form-group col-md-4">
                             <div class="col-md-12">
                                 <label for="firstName" class="control-label">First Name *</label>
-
-                                <div class="col-md-8">
-                                    <input class=" form-control" id="firstName" name="firstName" type="text"/>
-                                </div>
-                            </div>
-
-                            <div class="form-group ">
-                                <label for="lastName" class="control-label col-md-4">Last Name *</label>
-
-                                <div class="col-md-8">
-                                    <input class=" form-control" id="lastName" name="lastName" type="text"/>
-                                </div>
-                            </div>
-
-                            <div class="form-group ">
-                                <label for="nickName" class="control-label col-md-4">Nic Name</label>
-
-                                <div class="col-md-8">
-                                    <input class=" form-control" id="nickName" name="nickName" type="text"/>
-                                </div>
-                            </div>
-
-                            <div class="form-group ">
-                                <label for="fatherName" class="control-label col-md-4">Fathers Name</label>
-
-                                <div class="col-md-8">
-                                    <input class=" form-control" id="fatherName" name="fatherName" type="text"/>
-                                </div>
-                            </div>
-
-                            <div class="form-group ">
-                                <label for="motherName" class="control-label col-md-4">Mothers Name</label>
-
-                                <div class="col-md-8">
-                                    <input class=" form-control" id="motherName" name="motherName" type="text"/>
-                                </div>
-                            </div>
-
-                            <div class="form-group ">
-                                <label for="datepicker" class="control-label col-md-4">Birth Date</label>
-
-                                <div class="col-md-8">
-                                    <input type="date" id="datepicker" name="birthDate" class="form-control datepicker"/>
-                                </div>
-                            </div>
-
-
-
-                            <div class="form-group ">
-                                <label for="bloodGroup" class="control-label col-md-4">Blood Group</label>
-
-                                <div class="col-md-8">
-                                    <input class=" form-control" id="bloodGroup" name="bloodGroup" type="text"/>
-                                </div>
-                            </div>
-
-                            <div class="form-group ">
-                                <label for="email" class="control-label col-md-4">Email</label>
-
-                                <div class="col-md-8">
-                                    <input class=" form-control" id="email" name="email" type="text"/>
-                                </div>
-                            </div>
-
-                            <div class="form-group ">
-                                <label for="mobileNo" class="control-label col-md-4">Contact Number</label>
-
-                                <div class="col-md-8">
-                                    <input class=" form-control" id="mobileNo" name="mobileNo" type="text"/>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="col-md-6">
-
-                            <div class="form-group ">
-                                <label for="cardNo" class="control-label col-md-4">Card Number</label>
-
-                                <div class="col-md-8">
-                                    <input class=" form-control" id="cardNo" name="cardNo" type="text"/>
-                                </div>
-                            </div>
-
-                            <div class="form-group ">
-                                <label for="imagePath" class="control-label col-md-4">Image Path</label>
-
-                                <div class="col-md-8">
-                                    <input class=" form-control" type="file" id="imagePath"/>
-                                </div>
-                            </div>
-
-                            <div class="form-group ">
-                                <label for="religion" class="control-label col-md-4">Religion</label>
-
-                                <div class="col-md-8">
-                                    <g:select class=" form-control" id="religion" name='religion'
-                                              noSelection="${['':'Select One...']}"
-                                              from='${com.app.school.enums.Religion.values()}'
-                                              optionKey="key" optionValue="value"></g:select>
-                                </div>
-                            </div>
-
-                            <div class="form-group ">
-                                <label for="presentAddress" class="control-label col-md-4">Present Address</label>
-
-                                <div class="col-md-8">
-                                    <textarea class=" form-control" id="presentAddress" name="presentAddress"></textarea>
-                                </div>
-                            </div>
-
-                            <div class="form-group ">
-                                <label for="permanentAddress" class="control-label col-md-4">Permanent Address</label>
-
-                                <div class="col-md-8">
-                                    <textarea class=" form-control" id="permanentAddress"
-                                              name="permanentAddress"></textarea>
-                                </div>
-                            </div>
-
-                            <div class="form-group ">
-                                <label for="fathersProfession" class="control-label col-md-4">Fathers Profession</label>
-
-                                <div class="col-md-8">
-                                    <input class=" form-control" id="fathersProfession" name="fathersProfession"
-                                           type="text"/>
-                                </div>
-                            </div>
-
-                            <div class="form-group ">
-                                <label for="mothersProfession" class="control-label col-md-4">Mothers Profession</label>
-
-                                <div class="col-md-8">
-                                    <input class=" form-control" id="mothersProfession" name="mothersProfession"
-                                           type="text"/>
-                                </div>
-                            </div>
-
-                            <div class="form-group ">
-                                <label for="fatherAvgIncome" class="control-label col-md-4">Fathers Average Income</label>
-
-                                <div class="col-md-8">
-                                    <input class=" form-control" id="fatherAvgIncome" name="fatherAvgIncome" type="text"/>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-lg-offset-3 col-lg-6">
-                                <button class="btn btn-primary" type="submit">Save</button>
-                                <button class="btn btn-default" type="button">Cancel</button>
+                                <g:textField class="form-control" id="firstName" tabindex="2" name="firstName"
+                                             placeholder="Enter First Name."/>
+                                <span for="studentID" class="help-block"></span>
                             </div>
                         </div>
-                    </form>
+
+                        <div class="form-group col-md-4">
+                            <div class="col-md-12">
+                                <label for="lastName" class="control-label">Last Name *</label>
+                                <g:textField class="form-control" id="lastName" tabindex="3" name="lastName"
+                                             placeholder="Enter Last Name."/>
+                                <span for="lastName" class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <div class="col-md-12">
+                                <label for="nickName" class="control-label">Nic Name</label>
+                                <g:textField class="form-control" id="nickName" tabindex="4" name="nickName"
+                                             placeholder="Enter Nick Name."/>
+                                <span for="nickName" class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <div class="col-md-12">
+                                <label for="fatherName" class="control-label">Fathers Name</label>
+                                <g:textField class="form-control" id="fatherName" tabindex="5" name="fatherName"
+                                             placeholder="Enter Fathers Name."/>
+                                <span for="nickName" class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <div class="col-md-12">
+                                <label for="motherName" class="control-label">Mothers Name</label>
+                                <g:textField class="form-control" id="motherName" tabindex="6" name="motherName"
+                                             placeholder="Enter Mothers Name."/>
+                                <span for="nickName" class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <div class="col-md-12">
+                                <label for="datepicker" class="control-label">Birth Date</label>
+                                <g:textField class="form-control" id="datepicker" tabindex="7" name="birthDate"
+                                             placeholder="Enter Birth Date."/>
+                                <span for="datepicker" class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <div class="col-md-12">
+                                <label for="bloodGroup" class="control-label">Blood Group</label>
+                                <g:textField class="form-control" id="bloodGroup" tabindex="8" name="bloodGroup"
+                                             placeholder="Enter Blood Group."/>
+                                <span for="bloodGroup" class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <div class="col-md-12">
+                                <label for="email" class="control-label ">Email</label>
+                                <g:textField class="form-control" id="email" tabindex="9" name="email"
+                                             placeholder="Enter Email."/>
+                                <span for="email" class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <div class="col-md-12">
+                                <label for="mobileNo" class="control-label">Contact Number</label>
+                                <g:textField class="form-control" id="mobileNo" tabindex="10" name="mobileNo"
+                                             placeholder="Enter Email."/>
+                                <span for="mobileNo" class="help-block"></span>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group col-md-4">
+                            <div class="col-md-12">
+                                <label for="cardNo" class="control-label">Card Number</label>
+                                <g:textField class="form-control" id="cardNo" tabindex="11" name="cardNo"
+                                             placeholder="Enter Card Number."/>
+                                <span for="cardNo" class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <div class="col-md-12">
+                                <label for="imagePath" class="control-label">Image Path</label>
+
+                                <g:textField class="form-control" id="imagePath" tabindex="12" name="imagePath"
+                                             placeholder="Enter Image Path."/>
+                                <span for="imagePath" class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <div class="col-md-12">
+                                <label for="religion" class="control-label">Religion</label>
+                                <g:select class=" form-control" id="religion" name='religion' tabindex="13"
+                                          noSelection="${['': 'Select One...']}"
+                                          from='${com.app.school.enums.Religion.values()}'
+                                          optionKey="key" optionValue="value"></g:select>
+                                <span for="imagePath" class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <div class="col-md-12">
+                                <label for="fathersProfession" class="control-label">Fathers Profession</label>
+                                <g:textField class="form-control" id="fathersProfession" tabindex="16"
+                                             name="fathersProfession"
+                                             placeholder="Enter Fathers Profession."/>
+                                <span for="fathersProfession" class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <div class="col-md-12">
+                                <label for="mothersProfession" class="control-label">Mothers Profession</label>
+                                <g:textField class="form-control" id="mothersProfession" tabindex="17"
+                                             name="mothersProfession"
+                                             placeholder="Enter Mothers Profession."/>
+                                <span for="mothersProfession" class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <div class="col-md-12">
+                                <label for="fatherAvgIncome" class="control-label">Fathers Average Income</label>
+
+                                <g:textField class="form-control" id="fatherAvgIncome" tabindex="17"
+                                             name="fatherAvgIncome"
+                                             placeholder="Enter Father AvgIncome."/>
+                                <span for="fatherAvgIncome" class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <div class="col-md-12">
+                                <label for="presentAddress" class="control-label">Present Address</label>
+                                <g:textArea class="form-control" id="presentAddress" tabindex="14" name="presentAddress"
+                                            placeholder="Enter Present Address."/>
+                                <span for="presentAddress" class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <div class="col-md-12">
+                                <label for="permanentAddress" class="control-label">Permanent Address</label>
+                                <g:textArea class="form-control" id="permanentAddress" tabindex="15"
+                                            name="permanentAddress"
+                                            placeholder="Enter Permanent Address."/>
+                                <span for="presentAddress" class="help-block"></span>
+                            </div>
+                        </div>
                 </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-8 col-lg-4">
+                        <button class="btn btn-primary" tabindex="3" type="submit">Save</button>
+                        <button class="btn btn-default" tabindex="4" type="reset">Cancel</button>
+                    </div>
+                </div>
+
+            </form>
             </div>
         </section>
     </div>
