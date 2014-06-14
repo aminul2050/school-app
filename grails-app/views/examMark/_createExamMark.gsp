@@ -18,6 +18,8 @@
                 <div class="form">
                     <form class="cmxform form-horizontal " id="create-form">
                         <g:hiddenField name="id"/>
+                        <g:hiddenField name="exam" value="${exam}"/>
+                        <g:hiddenField name="subject" value="${subject}"/>
                         <div class="form-group ">
                             <label for="student" class="control-label col-lg-3">Student Name</label>
                             <div class="col-lg-6">
@@ -75,8 +77,8 @@
             }
         },
         messages: {
-            name: {
-                required: "Class Name required"
+            student: {
+                required: "Please select a student"
             },
              mark: {
                 required: "Mark required"

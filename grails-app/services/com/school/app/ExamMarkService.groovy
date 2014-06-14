@@ -51,7 +51,7 @@ class ExamMarkService {
                 } else {
                     serial--
                 }
-                dataReturns.add([DT_RowId: examMark.id, 0: serial, 1: examMark.student.studentName,2:examMark.student.studentNo, 3:examMark.mark,4:'A+', 5: ''])
+                dataReturns.add([DT_RowId: examMark.id, 0: serial, 1: examMark.student.studentName,2:examMark.mark, 3:examMark.gpa,4:examMark.grade,5:examMark.description, 6: ''])
             }
         }
         return [totalCount:totalCount,results:dataReturns]

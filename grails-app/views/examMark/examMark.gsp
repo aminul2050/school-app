@@ -36,6 +36,7 @@
                             <th>Serial</th>
                             <th>StudentName</th>
                             <th>Mark</th>
+                            <th>GPA</th>
                             <th>Grade</th>
                             <th>Comments</th>
                             <th>Action</th>
@@ -49,6 +50,7 @@
                                 <td>${examMark[2]}</td>
                                 <td>${examMark[3]}</td>
                                 <td>${examMark[4]}</td>
+                                <td>${examMark[5]}</td>
                                 <td>
                                     <sec:access controller="examMark" action="edit">
                                         <span class="col-xs-6"><a href="" referenceId="${examMark.DT_RowId}" class="edit-reference" title="Edit"><span class="green glyphicon glyphicon-edit"></span>&nbsp;Edit&nbsp;</a></span>
@@ -70,6 +72,7 @@
 <!-- page end-->
 <r:script>
     jQuery(function ($) {
+        $("#student").select2()
         var oTable1 = $('#list-table').dataTable({
 //            "sDom": "<'row'<'col-md-4'><'col-md-4'><'col-md-4'f>r>t<'row'<'col-md-4'l><'col-md-4'i><'col-md-4'p>>",
 //            "bProcessing": true,
@@ -89,6 +92,7 @@
                 null,
                 null,
                 null,
+                { "bSortable": false },
                 { "bSortable": false },
                 { "bSortable": false }
 
