@@ -9,11 +9,12 @@ class ExamMark {
     Student student
     Subject subject
     int mark
+    int gpa
     String grade
     String comments
 
     static constraints = {
-
+        comments nullable: true
         //System inserted data
         schoolId nullable: true
         createdBy nullable: true
@@ -38,4 +39,25 @@ class ExamMark {
         lastUpdatedOn = new Date()
     }
     //common properties for every table
+    def beforeValidate() {
+        if(this.mark>=90){
+            this.gpa=5;
+            this.grade='A+'
+        }else if(this.mark>=80 && this.mark<90){
+            this.gpa=4
+            this.grade='A'
+        }else if(this.mark>=70 && this.mark<80){
+            this.gpa=3
+            this.grade='A-'
+        }else if(this.mark>=60 && this.mark<70){
+            this.gpa=2
+            this.grade='B'
+        }else if(this.mark>=50 && this.mark<60){
+            this.gpa=1
+            this.grade='C'
+        }else {
+            this.gpa=0
+            this.grade='F'
+        }
+    }
 }
