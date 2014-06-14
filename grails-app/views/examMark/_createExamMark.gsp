@@ -3,11 +3,11 @@
         <section class="panel">
             <header class="panel-heading">
                 <span class="label label-default">Class:</span>
-                <span class="label label-primary">${exam.className.name}</span>
+                <span class="label label-primary">${exam.className.name}</span>&nbsp;&nbsp;
                 <span class="label label-default">Section:</span>
-                <span class="label label-primary">${exam.section.name}</span>
+                <span class="label label-primary">${exam.section.name}</span>&nbsp;&nbsp;
                 <span class="label label-default">Exam:</span>
-                <span class="label label-primary">${exam.name}</span>
+                <span class="label label-primary">${exam.name}</span>&nbsp;&nbsp;
                 <span class="label label-default">Subject</span>
                 <span class="label label-primary">name</span>
                 <span class="tools pull-right">
