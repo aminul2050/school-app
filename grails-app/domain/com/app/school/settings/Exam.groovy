@@ -20,7 +20,7 @@ class Exam {
     static constraints = {
         endDate(nullable: true)
         publishedDate(nullable: true)
-        description(nullable: false)
+        description(nullable: true)
         //System inserted data
         schoolId nullable: true
         createdBy nullable: true

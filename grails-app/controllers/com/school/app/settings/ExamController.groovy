@@ -220,10 +220,10 @@ class ExamController {
 class ExamCommand {
     Long id
     String name
+    String description
     Date startDate
     Date endDate
     Date publishedDate
-    ExamStatus examStatus = ExamStatus.MARKENTRY
     ClassName className
     Section section
     ExamType examType
