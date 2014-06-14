@@ -119,6 +119,7 @@ class ExamController {
         }
 
         exam = new Exam(examCommand.properties)
+        exam.examStatus=ExamStatus.MARKENTRY
         if (!examCommand.validate()) {
             result.put('message','Please fill the form correctly')
             outPut=result as JSON

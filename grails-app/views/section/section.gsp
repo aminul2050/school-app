@@ -94,7 +94,8 @@
             ]
         });
         $('#add-new-btn').click(function (e) {
-            $("#sectionCreate").toggle(1000);
+            $("#sectionCreate").toggle(500);
+            $("#className").focus();
             e.preventDefault();
         });
         $('#list-table').on('click', 'a.edit-reference', function (e) {
@@ -111,7 +112,9 @@
                             $('#name').val(data.obj.name);
                             $('#className').val(data.obj.className.id);
                             $('#description').val(data.obj.description);
-                            $("#sectionCreate").show(1000);
+                            $("#sectionCreate").show(500);
+                            $("#className").focus();
+
                         }else{
                             alert(data.message);
                         }

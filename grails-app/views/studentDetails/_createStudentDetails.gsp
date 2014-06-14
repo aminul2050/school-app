@@ -12,18 +12,17 @@
                     <form class="cmxform form-horizontal " id="create-form">
                         <g:hiddenField name="id"/>
 
-                        <div class="col-md-6">
-
-                            <div class="form-group ">
-                                <label for="studentID" class="control-label col-md-4">Student ID *</label>
-
-                                <div class="col-md-8">
-                                    <input class=" form-control" id="studentID" name="studentID" type="text"/>
-                                </div>
+                        <div class="form-group col-md-4">
+                            <div class="col-md-12">
+                                <label for="studentID" class="control-label4">* Student ID</label>
+                                <g:textField class="form-control" id="studentID" tabindex="1" name="studentID" placeholder="Enter Student Name."/>
+                                <span for="studentID" class="help-block"></span>
                             </div>
+                        </div>
 
-                            <div class="form-group ">
-                                <label for="firstName" class="control-label col-md-4">First Name *</label>
+                        <div class="form-group col-md-4">
+                            <div class="col-md-12">
+                                <label for="firstName" class="control-label">First Name *</label>
 
                                 <div class="col-md-8">
                                     <input class=" form-control" id="firstName" name="firstName" type="text"/>
