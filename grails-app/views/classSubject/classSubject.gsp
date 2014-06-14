@@ -83,6 +83,7 @@
         });
         $('#add-new-btn').click(function (e) {
             $("#createClassSubject").toggle(500);
+            $('#className').focus();
             e.preventDefault();
         });
         $('#list-table').on('click', 'a.edit-reference', function (e) {
@@ -98,6 +99,8 @@
                             $('#id').val(data.obj.id);
                             $('#className').val(data.obj.className.id);
                             $("#createClassSubject").show(500);
+                            $('#className').focus();
+
                         }else{
                             alert(data.message);
                         }

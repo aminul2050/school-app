@@ -11,22 +11,26 @@
                 <div class="form">
                     <form class="cmxform form-horizontal " id="create-form">
                         <g:hiddenField name="id"/>
-                        <div class="form-group ">
-                            <label for="className" class="control-label col-lg-3">Class Name.</label>
-                            <div class="col-lg-6">
+
+                        <div class="form-group col-md-4">
+                          <div class="col-md-12">
+                            <label class="control-label">Class Name.</label>
                                 <g:select id="type" name='className' class="form-control m-bot15"
                                           noSelection="${['':'Select One...']}"
                                           from='${com.app.school.settings.ClassName.list()}'
                                           optionKey="id" optionValue="name"></g:select>
+                              <span for="className" class="help-block"></span>
                             </div>
                         </div>
-                        <div class="form-group ">
-                            <label for="section" class="control-label col-lg-3">Section.</label>
-                            <div class="col-lg-6">
+
+                        <div class="form-group col-md-4">
+                            <div class="col-md-12">
+                            <label class="control-label">Section.</label>
                                 <g:select id="section" name='section' class="form-control m-bot15"
                                           noSelection="${['':'Select One...']}"
                                           from='${com.app.school.settings.Section.list()}'
                                           optionKey="id" optionValue="name"></g:select>
+                                <span for="section" class="help-block"></span>
                             </div>
                         </div>
 

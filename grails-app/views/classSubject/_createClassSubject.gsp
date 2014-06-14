@@ -11,37 +11,35 @@
             <div class="panel-body">
                 <form class="cmxform form-horizontal " id="create-form">
                     <g:hiddenField name="id"/>
-                    <div class="form-group col-md-4">
-                    <div class="col-md-12">
-                        <label class="control-label">Class Name</label>
+                    <div class="form-group">
+                        <label for="className" class="col-lg-2 col-sm-2 control-label">Class Name</label>
+
+                        <div class="col-lg-6">
                             <g:select class="form-control input-sm" id="className" name='className' value="${classSubject?.id}"
                                       noSelection="${['':'Select One...']}"
                                       from='${ClassName.list()}'
                                       optionKey="id" optionValue="name"></g:select>
-                        <span for="name" class="help-block"></span>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="classSubjectMapping" class="col-lg-2 col-sm-2 control-label">Class subjects</label>
 
-                    <div class="form-group col-md-4">
-                        <div class="col-md-12">
-                        <label class="control-label">Class subjects</label>
+                        <div class="col-lg-8">
                             <g:select name="classSubjectMap[]" id="classSubjectMapping"
                                       multiple="multiple"
                                       optionKey="id"
                                       optionValue="subjectName"
                                       from="${subjectList}"
                                       value="${selectedSubjects}" />
-                            <span class="help-block" for="classSubjectMapping"></span>
                         </div>
                     </div>
-
+                    <br>
                     <div class="form-group">
-                        <div class="col-md-offset-8 col-lg-4">
+                        <div class="col-lg-offset-3 col-lg-6">
                             <button class="btn btn-primary" type="submit">Save</button>
-                            <button class="btn btn-default" type="reset">Cancel</button>
+                            <button class="btn btn-default" type="button">Cancel</button>
                         </div>
                     </div>
-
                 </form>
 
             </div>
@@ -95,7 +93,6 @@
                 return false;
                 }
                     clearForm(form);
-                    $("#classSubjectMapping").removeAttr("selected");
                     var table = $('#list-table').DataTable();
                     table.ajax.reload();
                      $.growl('Class Subject Created successfully!', { type: 'success' });
