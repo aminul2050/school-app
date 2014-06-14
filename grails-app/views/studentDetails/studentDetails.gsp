@@ -88,7 +88,8 @@
             ]
         });
         $('#add-new-btn').click(function (e) {
-            $("#createStudentDetails").toggle(1000);
+            $("#createStudentDetails").toggle(500);
+            $("#studentID").focus();
             e.preventDefault();
         });
         $('#list-table').on('click', 'a.edit-reference', function (e) {
@@ -120,7 +121,8 @@
                             $('#fathersProfession').val(data.obj.fathersProfession);
                             $('#mothersProfession').val(data.obj.mothersProfession);
                             $('#fatherAvgIncome').val(data.obj.fatherAvgIncome);
-                            $("#createStudentDetails").show(1000);
+                            $("#createStudentDetails").show(500);
+                            $("#studentID").focus();
                         }else{
                             alert(data.message);
                         }
