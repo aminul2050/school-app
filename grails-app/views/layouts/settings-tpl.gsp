@@ -73,7 +73,7 @@
 
 <!--Bootstrap js-->
 <!--Core js-->
-<script src="${resource(dir: 'js/', file: 'jquery.js')}"></script>
+%{--<script src="${resource(dir: 'js/', file: 'jquery.js')}"></script>--}%
 <script src="${resource(dir: 'js/', file: 'jquery-ui-1.9.2.custom.min.js')}"></script>
 <script src="${resource(dir: 'js/', file: 'fullcalendar.min.js')}"></script>
 <script src="${resource(dir: 'js/', file: 'external-dragging-calendar.js')}"></script>
@@ -82,7 +82,10 @@
 %{--<script src="${resource(dir: 'js', file: 'jquery.bootstrap-duallistbox.js')}"></script>--}%
 %{--<script src="${resource(dir: 'js', file: 'jquery.multiselect.min.js')}"></script>--}%
 <script src="${resource(dir: 'js/date-time', file: 'bootstrap-datepicker.min.js')}"></script>
-<script src="${resource(dir: 'js/', file: 'jquery.dcjqaccordion.2.7.js')}"></script>
+%{--<script src="${resource(dir: 'js/', file: 'jquery.dcjqaccordion.2.7.js')}"></script>--}%
+<script src="${resource(dir: 'js/vertical-menu', file: 'jquery.cookie.js')}"></script>
+<script src="${resource(dir: 'js/vertical-menu', file: 'jquery.hoverIntent.minified.js')}"></script>
+<script src="${resource(dir: 'js/vertical-menu', file: 'jquery.dcjqaccordion.2.7.min.js')}"></script>
 <script src="${resource(dir: 'js/', file: 'jquery.scrollTo.min.js')}"></script>
 <script src="${resource(dir: 'js/', file: 'jquery.nicescroll.js')}"></script>
 <script src="${resource(dir: 'js/', file: 'jquery.nicescroll.js')}"></script>

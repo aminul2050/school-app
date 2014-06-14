@@ -2,7 +2,7 @@
     "use strict";
     $(document).ready(function () {
         /*==Left Navigation Accordion ==*/
-        if ($.fn.dcAccordion) {
+        /*if ($.fn.dcAccordion) {
             $('#nav-accordion').dcAccordion({
                 eventType: 'click',
                 autoClose: true,
@@ -13,7 +13,7 @@
                 autoExpand: true,
                 classExpand: 'dcjq-current-parent'
             });
-        }
+        }*/
         /*==Slim Scroll ==*/
         if ($.fn.slimScroll) {
             $('.event-list').slimscroll({
