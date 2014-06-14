@@ -11,10 +11,10 @@ class ExamMark {
     int mark
     int gpa
     String grade
-    String comments
+    String description
 
     static constraints = {
-        comments nullable: true
+        description nullable: true
         //System inserted data
         schoolId nullable: true
         createdBy nullable: true
