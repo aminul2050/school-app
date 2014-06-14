@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="settings-tpl"/>
-    <title>Admission Readmission</title>
+    <title>Student Admission - Baily School</title>
 
 
 </head>
@@ -105,14 +105,19 @@
                 success: function (data, textStatus) {
                     if(data.isError==false){
                             clearForm('#create-form');
+                            $('#optionalSubjects').multiSelect('deselect_all');
                             $('#id').val(data.obj.id);
                             $('#className').val(data.obj.className.name);
                             $('#section').val(data.obj.section);
                             $('#academicYear').val(data.obj.academicYear);
                             $('#details').val(data.obj.details.fullName);
                             $('#studentNo').val(data.obj.studentNo);
-                            $('#admissionType').val(data.obj.admissionType);
-                            $("#studentCreate").show(1000);
+
+                            var subjectIds =data.obj.subjectIds;
+                            var numbersArray = subjectIds.split(',');
+                            $('#optionalSubjects').multiSelect('select',numbersArray);
+                            $('#optionalSubjects').multiSelect('refresh');
+                            $("#studentCreate").show(500);
                         }else{
                             alert(data.message);
                         }

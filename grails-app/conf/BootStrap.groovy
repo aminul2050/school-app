@@ -27,11 +27,11 @@ class BootStrap {
         Section.findByName('Blue Bird')?: new Section(name: 'Blue Bird',description: 'Some describtion', className: className2).save()
     }
     void createSubjects(){
-        Subject.findByName('Bangla')?:new Subject(name: 'Bangla',description: 'Bangla for all students',ctMark: 30,hallMark: 80,compulsory: true).save()
-        Subject.findByName('English')?:new Subject(name: 'English',description: 'Bangla for all students',ctMark: 30,hallMark: 80,compulsory: true).save()
-        Subject.findByName('Mathematics')?:new Subject(name: 'Mathematics',description: 'Bangla for all students',ctMark: 30,hallMark: 80,compulsory: true).save()
-        Subject.findByName('Physics')?:new Subject(name: 'Physics',description: 'Bangla for all students',ctMark: 30,hallMark: 80,compulsory: false).save()
-        Subject.findByName('Biology')?:new Subject(name: 'Biology',description: 'Bangla for all students',ctMark: 30,hallMark: 80,compulsory: false).save()
+        Subject.findByName('Bangla')?:new Subject(name: 'Bangla',description: 'Bangla for all students',ctMark: 30,hallMark: 80).save()
+        Subject.findByName('English')?:new Subject(name: 'English',description: 'Bangla for all students',ctMark: 30,hallMark: 80).save()
+        Subject.findByName('Mathematics')?:new Subject(name: 'Mathematics',description: 'Bangla for all students',ctMark: 30,hallMark: 80).save()
+        Subject.findByName('Physics')?:new Subject(name: 'Physics',description: 'Bangla for all students',ctMark: 30,hallMark: 80,isOptional: true).save()
+        Subject.findByName('Biology')?:new Subject(name: 'Biology',description: 'Bangla for all students',ctMark: 30,hallMark: 80,isOptional: true).save()
     }
     void mapClassSubject(){
         Subject bangla = Subject.findByName('Bangla')

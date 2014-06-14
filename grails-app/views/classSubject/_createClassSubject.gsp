@@ -29,8 +29,7 @@
                                       multiple="multiple"
                                       optionKey="id"
                                       optionValue="subjectName"
-                                      from="${subjectList}"
-                                      value="${selectedSubjects}" />
+                                      from="${subjectList}"/>
                         </div>
                     </div>
                     <br>
@@ -93,6 +92,8 @@
                 return false;
                 }
                     clearForm(form);
+                    $('#classSubjectMapping').multiSelect('deselect_all');
+                    $('#classSubjectMapping').multiSelect('refresh');
                     var table = $('#list-table').DataTable();
                     table.ajax.reload();
                      $.growl('Class Subject Created successfully!', { type: 'success' });

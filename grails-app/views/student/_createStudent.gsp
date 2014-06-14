@@ -51,20 +51,21 @@
                                        class="form-control datepicker"/>
                             </div>
                         </div>
+                        <g:if test="${optionalSubjects}">
+                            <div class="form-group ">
+                                <label for="optionalSubjects" class="control-label col-lg-3">Optional Subjects</label>
 
-                        <div class="form-group ">
-                            <label for="optionalSubjects" class="control-label col-lg-3">Optional Subjects</label>
+                                <div class="col-lg-6">
+                                    <g:select name="optionalSubjects" id="optionalSubjects" class="multi-select"
+                                              multiple="multiple"
+                                              optionKey="id"
+                                              optionValue="subjectName"
+                                              from="${optionalSubjects}"/>
 
-                            <div class="col-lg-6">
-                                <g:select name="optionalSubjects" id="optionalSubjects" class="multi-select"
-                                          multiple="multiple"
-                                          optionKey="id"
-                                          optionValue="subjectName"
-                                          from="${optionalSubjects}"
-                                          value=""/>
-
+                                </div>
                             </div>
-                        </div>
+                        </g:if>
+
 
                         <div class="form-group">
                             <div class="col-lg-offset-3 col-lg-6">
@@ -135,6 +136,8 @@ $('#optionalSubjects').multiSelect();
                 data: $("#create-form").serialize(),
                 success: function (data) {
                     clearForm(form);
+                    $('#optionalSubjects').multiSelect('deselect_all');
+                    $('#optionalSubjects').multiSelect('refresh');
                     var table = $('#list-table').DataTable();
                     table.ajax.reload();
                     $.growl('Student Created successfully!', { type: 'success' });

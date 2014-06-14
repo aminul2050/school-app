@@ -98,6 +98,11 @@
                             clearForm('#create-form');
                             $('#id').val(data.obj.id);
                             $('#className').val(data.obj.className.id);
+                            $('#classSubjectMapping').multiSelect('deselect_all');
+                            var subjectIds =data.obj.subjectIds;
+                            var numbersArray = subjectIds.split(',');
+                            $('#classSubjectMapping').multiSelect('select',numbersArray);
+                            $('#classSubjectMapping').multiSelect('refresh');
                             $("#createClassSubject").show(500);
                             $('#className').focus();
 
