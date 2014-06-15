@@ -91,7 +91,8 @@
             });
 
      $('#add-new-btn').click(function (e) {
-            $("#subjectCreate").toggle(1000);
+            $("#subjectCreate").toggle(500);
+            $("#name").focus();
             e.preventDefault();
         });
         $('#list-table').on('click', 'a.edit-reference', function (e) {
@@ -112,7 +113,8 @@
                             if(data.obj.isOptional){
                             $('#isOptional').prop('checked', true)
                             }
-                            $("#subjectCreate").show(1000);
+                            $("#subjectCreate").show(500);
+                            $("#name").focus();
                         }else{
                             alert(data.message);
                         }

@@ -30,6 +30,7 @@ class StudentController {
     }
 
     def save(StudentCommand studentCommand) {
+
         println(params)
         if (!request.method == 'POST') {
             redirect(action: 'index')
@@ -54,6 +55,7 @@ class StudentController {
                 return
             }
             student.properties = studentCommand.properties
+            student.studentName=student.details.fullName
             if (!student.validate()) {
                 result.put('message','Please fill the form correctly')
                 outPut=result as JSON
@@ -68,6 +70,7 @@ class StudentController {
             return
         }
         student = new Student(studentCommand.properties)
+        student.studentName=studentCommand.details.fullName
         if (!studentCommand.validate()) {
             result.put('message','Please fill the form correctly')
             outPut=result as JSON
@@ -97,14 +100,14 @@ class StudentController {
         ClassSubject classSubject = ClassSubject.findByClassName(className)
         def optionalSubjects = subjectService.getOptionalSubjects(classSubject.subjectIds)
 
-        LinkedHashMap resultMap = studentService.studentPaginateList(params)
+        LinkedHashMap resultMap = studentService.studentPaginateList(params,className,section)
 
         if (!resultMap || resultMap.totalCount == 0) {
-            render(view: 'student', model: [dataReturn: null, totalCount: 0, section:section,optionalSubjects:optionalSubjects])
+            render(view: 'student', model: [dataReturn: null, totalCount: 0,className:className, section:section,optionalSubjects:optionalSubjects])
             return
         }
         int totalCount = resultMap.totalCount
-        render(view: 'student', model: [dataReturn: resultMap.results, totalCount: totalCount, section:section,optionalSubjects:optionalSubjects])
+        render(view: 'student', model: [dataReturn: resultMap.results, totalCount: totalCount, className:className, section:section,optionalSubjects:optionalSubjects])
     }
 
     def delete(Long id) {
@@ -139,10 +142,12 @@ class StudentController {
         return
     }
 
-    def list() {
+    def list(Long classId, Long sectionId) {
+        ClassName className = ClassName.read(classId)
+        Section section = Section.read(sectionId)
         LinkedHashMap gridData
         String result
-        LinkedHashMap resultMap =studentService.studentPaginateList(params)
+        LinkedHashMap resultMap =studentService.studentPaginateList(params,className,section)
 
         if(!resultMap || resultMap.totalCount== 0){
             gridData = [iTotalRecords: 0, iTotalDisplayRecords: 0, aaData: null]
@@ -212,9 +217,7 @@ class StudentCommand {
     Integer rollNumber
     String subjectIds
     StudentDetails details
-    String studentNo
     Date admissionDate
-    AdmissionType admissionType
 
     static constraints = {
 

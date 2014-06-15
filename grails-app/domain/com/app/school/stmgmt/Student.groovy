@@ -13,12 +13,12 @@ class Student {
     String subjectIds
     StudentDetails details
     String studentName
-    String studentNo
     Integer rollNumber
     Date admissionDate
-    AdmissionType admissionType
+    AdmissionType admissionType = AdmissionType.NEWADMISSION
 
     static constraints = {
+        subjectIds nullable: true
 
         //System inserted data
         schoolId nullable: true
