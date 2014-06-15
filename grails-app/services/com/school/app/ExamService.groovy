@@ -38,13 +38,18 @@ class ExamService {
             if (sSortDir.equals(CommonUtils.SORT_ORDER_DESC)) {
                 serial = (totalCount + 1) - iDisplayStart
             }
+            String startDateStr
+            String publishDateStr
+
             results.each { Exam exam ->
                 if (sSortDir.equals(CommonUtils.SORT_ORDER_ASC)) {
                     serial++
                 } else {
                     serial--
                 }
-                dataReturns.add([DT_RowId: exam.id, 0: serial, 1: exam.className.name, 2:exam.section.name, 3: exam.examType.value, 4: exam.name, 5: exam.startDate, 6: exam.examStatus.value, 7: exam.publishedDate, 8: ''])
+                startDateStr =exam.startDate? CommonUtils.getUiDateStr(exam.startDate):''
+                publishDateStr =exam.publishedDate? CommonUtils.getUiDateStr(exam.publishedDate):'Not Published'
+                dataReturns.add([DT_RowId: exam.id, 0: serial, 1: exam.className.name, 2:exam.section? exam.section.name:"All Section", 3: exam.examType.value, 4: exam.name, 5: startDateStr, 6: exam.examStatus.value, 7: publishDateStr, 8: ''])
             }
         }
         return [totalCount:totalCount,results:dataReturns]

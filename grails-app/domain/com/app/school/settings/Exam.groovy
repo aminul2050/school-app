@@ -21,6 +21,7 @@ class Exam {
         endDate(nullable: true)
         publishedDate(nullable: true)
         description(nullable: true)
+        section nullable: true
         //System inserted data
         schoolId nullable: true
         createdBy nullable: true

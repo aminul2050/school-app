@@ -129,7 +129,7 @@
                             $('#endDate').val(data.obj.endDate);
                             $('#publishedDate').val(data.obj.publishedDate);
                             $('#className').val(data.obj.className.id);
-                            $('#section').val(data.obj.section.id);
+                            $('#section').val(data.obj.section? data.obj.section.id:'');
                             $('#examType').val(data.obj.examType.name);
                             $("#examCreate").show(500);
                             $("#className").focus();

@@ -230,5 +230,6 @@ class ExamCommand {
 
     static constraints = {
         name nullable: true
+        section nullable: true
     }
 }

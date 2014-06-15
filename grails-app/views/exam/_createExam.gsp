@@ -27,7 +27,7 @@
                             <div class="col-md-12">
                                 <label  for="section" class="control-label">* Section.</label>
                                 <g:select tabindex="2" id="section" name='section' class="form-control"
-                                          noSelection="${['':'Select One...']}"
+                                          noSelection="${['':'All Section..']}"
                                           from='${com.app.school.settings.Section.list()}'
                                           optionKey="id" optionValue="name"></g:select>
                                 <span for="section" class="help-block"></span>
@@ -118,10 +118,7 @@
             className: {
                 required: true
             },
-            section: {
-                required: true
-            },
-            examType: {
+             examType: {
                 required: true
             },
             name: {
