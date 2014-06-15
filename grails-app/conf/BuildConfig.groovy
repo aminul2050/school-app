@@ -53,6 +53,7 @@ grails.project.dependency.resolution = {
         runtime 'mysql:mysql-connector-java:5.1.27'
         // runtime 'org.postgresql:postgresql:9.3-1100-jdbc41'
         compile 'org.apache.commons:commons-lang3:3.1'
+        build 'com.lowagie:itext:2.1.7'
     }
 
     plugins {
@@ -82,6 +83,6 @@ grails.project.dependency.resolution = {
         //compile ":coffee-asset-pipeline:1.5.0"
         //compile ":handlebars-asset-pipeline:1.3.0.1"
         compile ":spring-security-core:2.0-RC3"
-//        compile ":active-link:1.0"
+        compile ":jasper:1.8.0"
     }
 }
