@@ -43,8 +43,12 @@ class ExamMarkController {
             redirect(action: 'index')
             return
         }
-        def studentList = Student.findBySchoolIdAndClassNameAndSection(CommonUtils.DEFAULT_SCHOOL_ID, exam.className, exam.section)
-
+        def studentList
+        if(exam.section){
+            studentList = Student.findBySchoolIdAndClassNameAndSection(CommonUtils.DEFAULT_SCHOOL_ID, exam.className,exam.section)
+        }else {
+           studentList = Student.findBySchoolIdAndClassName(CommonUtils.DEFAULT_SCHOOL_ID,exam.className)
+        }
         LinkedHashMap resultMap = examMarkService.examMarkPaginateList(params,exam,subject)
 
         if (!resultMap || resultMap.totalCount == 0) {
@@ -58,6 +62,8 @@ class ExamMarkController {
     }
 
     def save(ExamMarkCommand examMarkCommand) {
+
+        print("params------------"+params)
         if (!request.method == 'POST') {
             redirect(action: 'index')
             return
@@ -148,10 +154,13 @@ class ExamMarkController {
         return
     }
 
-    def list() {
+    def list(Long examId, Long subjectId) {
+        Exam exam = Exam.read(examId)
+        Subject subject = Subject.read(subjectId)
+
         LinkedHashMap gridData
         String result
-        LinkedHashMap resultMap =examMarkService.examMarkPaginateList(params)
+        LinkedHashMap resultMap =examMarkService.examMarkPaginateList(params, exam, subject)
 
         if(!resultMap || resultMap.totalCount== 0){
             gridData = [iTotalRecords: 0, iTotalDisplayRecords: 0, aaData: null]

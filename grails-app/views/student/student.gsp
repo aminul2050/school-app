@@ -3,8 +3,6 @@
 <head>
     <meta name="layout" content="settings-tpl"/>
     <title>Student Admission - Baily School</title>
-
-
 </head>
 <body>
 <g:render template="createStudent"/>
