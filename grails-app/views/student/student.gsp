@@ -30,9 +30,9 @@
                             <th>Serial</th>
                             <th>Student Name</th>
                             <th>Class Name</th>
-                            <th>Roll Number</th>
+                            <th>Section Name</th>
                             <th>Academic Year</th>
-                            <th>Admission Type </th>
+                            <th>Roll Number</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -65,19 +65,22 @@
 </div>
 <!-- page end-->
 <r:script>
+    var className, section;
     jQuery(function ($) {
+    className=${className.id};
+    section = ${section.id};
         var oTable1 = $('#list-table').dataTable({
 //            "sDom": "<'row'<'col-md-4'><'col-md-4'><'col-md-4'f>r>t<'row'<'col-md-4'l><'col-md-4'i><'col-md-4'p>>",
 //            "bProcessing": true,
             "bAutoWidth": true,
             "bServerSide": true,
             "deferLoading": ${totalCount},
-            "sAjaxSource": "${g.createLink(controller: 'student',action: 'list')}",
+            "sAjaxSource": "${g.createLink(controller: 'student',action: 'list')}?classId="+className+"&sectionId="+section,
             "fnRowCallback": function (nRow, aData, iDisplayIndex) {
                 if(aData.DT_RowId ==undefined){
                     return true;
                 }
-                $('td:eq(3)', nRow).html(getActionButtons(nRow, aData));
+                $('td:eq(6)', nRow).html(getActionButtons(nRow, aData));
                 return nRow;
             },
             "aoColumns": [
@@ -92,7 +95,7 @@
             ]
         });
         $('#add-new-btn').click(function (e) {
-            $("#studentCreate").toggle(1000);
+            $("#studentCreate").toggle(500);
             e.preventDefault();
         });
         $('#list-table').on('click', 'a.edit-reference', function (e) {

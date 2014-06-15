@@ -10,30 +10,32 @@
             <div class="panel-body">
                 <div class="form">
                     <form class="cmxform form-horizontal " id="create-form">
-                        <g:hiddenField name="id"/>
-                        <div class="form-group col-md-4">
-                            <div class="col-md-12">
-                                <label class="control-label">Class Name</label>
-                                <g:textField class="form-control" id="name" tabindex="1" name="name" placeholder="Enter Class Name."/>
-                                <span for="name" class="help-block"></span>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <div class="col-md-12">
-                                <label class="control-label">Description</label>
-                                <g:textField class="form-control" id="description" tabindex="2" name="description" placeholder="Enter Description."/>
-                                <span class="help-block" for="description"></span>
-                            </div>
-                        </div>
+                    <g:hiddenField name="id"/>
 
-                        <div class="form-group">
+                    <div class="form-group col-md-4">
+                        <div class="col-md-12">
+                            <label class="control-label">Class Name</label>
+                            <g:textField class="form-control" id="name" tabindex="1" name="name" placeholder="Enter Class Name."/>
+                            <span for="name" class="help-block"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <div class="col-md-12">
+                            <label class="control-label">Description</label>
+                            <g:textField class="form-control" id="description" tabindex="2" name="description" placeholder="Enter Description."/>
+                            <span class="help-block" for="description"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <div class="col-md-offset-8 col-lg-4">
-                        <button class="btn btn-primary" tabindex="3" type="submit">Save</button>
-                        <button class="btn btn-default" tabindex="4" type="reset">Cancel</button>
+                            <button class="btn btn-primary" tabindex="3" type="submit">Save</button>
+                            <button class="btn btn-default" tabindex="4" type="reset">Cancel</button>
                         </div>
-                        </div>
+                    </div>
 
-                    </form>
+                </form>
                 </div>
             </div>
         </section>
