@@ -15,6 +15,8 @@ class Exam {
     ClassName className
     Section section
     ExamType examType
+    String examSubjectIds
+    String completedSubjectIds
 
     //common properties for every table
     static constraints = {
@@ -22,6 +24,7 @@ class Exam {
         publishedDate(nullable: true)
         description(nullable: true)
         section nullable: true
+        completedSubjectIds nullable: true
         //System inserted data
         schoolId nullable: true
         createdBy nullable: true

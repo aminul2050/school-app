@@ -201,7 +201,7 @@
 <r:script>
     $('#datepicker').datepicker({
     format: 'dd/mm/yyyy',
-    startDate: '-3d',
+    startDate: '01/01/1995',
     autoclose: true
 })
 

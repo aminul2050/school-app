@@ -224,6 +224,7 @@ class ExamCommand {
     Date startDate
     Date endDate
     Date publishedDate
+    String examSubjectIds
     ClassName className
     Section section
     ExamType examType
