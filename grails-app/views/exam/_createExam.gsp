@@ -77,6 +77,20 @@
                             </div>
                         </div>
 
+                        <g:if test="${optionalSubjects}">
+                            <div class="form-group ">
+                                <label for="optionalSubjects" class="control-label col-md-3">Optional Subjects</label>
+
+                                <div class="col-md-6">
+                                    <g:select name="optionalSubjects" id="optionalSubjects" class="multi-select"
+                                              multiple="multiple"
+                                              optionKey="id"
+                                              optionValue="subjectName"
+                                              from="${optionalSubjects}"/>
+                                </div>
+                            </div>
+                        </g:if>
+
                         <div class="form-group">
                             <div class="col-md-offset-8 col-lg-4">
                                 <button class="btn btn-primary" type="submit">Save</button>
