@@ -43,24 +43,27 @@ class ExamMarkController {
             redirect(action: 'index')
             return
         }
-        ClassName className=exam.className
-        Section section=exam.section
-
-        def studentList = Student.findBySchoolIdAndClassNameAndSection(CommonUtils.DEFAULT_SCHOOL_ID, exam.className, exam.section)
-
+        def studentList
+        if(exam.section){
+            studentList = Student.findBySchoolIdAndClassNameAndSection(CommonUtils.DEFAULT_SCHOOL_ID, exam.className,exam.section)
+        }else {
+           studentList = Student.findBySchoolIdAndClassName(CommonUtils.DEFAULT_SCHOOL_ID,exam.className)
+        }
         LinkedHashMap resultMap = examMarkService.examMarkPaginateList(params,exam,subject)
 
         if (!resultMap || resultMap.totalCount == 0) {
-            render(view: 'examMark', model: [dataReturn: null, totalCount: 0, exam:exam,studentList:studentList])
+            render(view: 'examMark', model: [dataReturn: null, totalCount: 0, exam:exam,subject:subject, studentList:studentList])
             return
         }
         int totalCount = resultMap.totalCount
-        render(view: 'examMark', model: [dataReturn: resultMap.results, totalCount: totalCount, exam:exam,studentList:studentList])
+        render(view: 'examMark', model: [dataReturn: resultMap.results, totalCount: totalCount,exam:exam,subject:subject, studentList:studentList])
 
 
     }
 
     def save(ExamMarkCommand examMarkCommand) {
+
+        print("params------------"+params)
         if (!request.method == 'POST') {
             redirect(action: 'index')
             return
@@ -151,10 +154,13 @@ class ExamMarkController {
         return
     }
 
-    def list() {
+    def list(Long examId, Long subjectId) {
+        Exam exam = Exam.read(examId)
+        Subject subject = Subject.read(subjectId)
+
         LinkedHashMap gridData
         String result
-        LinkedHashMap resultMap =examMarkService.examMarkPaginateList(params)
+        LinkedHashMap resultMap =examMarkService.examMarkPaginateList(params, exam, subject)
 
         if(!resultMap || resultMap.totalCount== 0){
             gridData = [iTotalRecords: 0, iTotalDisplayRecords: 0, aaData: null]
@@ -194,11 +200,15 @@ class ExamMarkController {
 
 class ExamMarkCommand {
     Long id
+    Exam exam
     Student student
+    Subject subject
     int mark
     String description
 
     static constraints = {
+        exam nullable: false
+        subject nullable: false
         student nullable: false
         mark nullable: false
     }

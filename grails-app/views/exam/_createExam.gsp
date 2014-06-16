@@ -27,7 +27,7 @@
                             <div class="col-md-12">
                                 <label  for="section" class="control-label">* Section.</label>
                                 <g:select tabindex="2" id="section" name='section' class="form-control"
-                                          noSelection="${['':'Select One...']}"
+                                          noSelection="${['':'All Section..']}"
                                           from='${com.app.school.settings.Section.list()}'
                                           optionKey="id" optionValue="name"></g:select>
                                 <span for="section" class="help-block"></span>
@@ -77,6 +77,20 @@
                             </div>
                         </div>
 
+                        <g:if test="${optionalSubjects}">
+                            <div class="form-group ">
+                                <label for="optionalSubjects" class="control-label col-md-3">Optional Subjects</label>
+
+                                <div class="col-md-6">
+                                    <g:select name="optionalSubjects" id="optionalSubjects" class="multi-select"
+                                              multiple="multiple"
+                                              optionKey="id"
+                                              optionValue="subjectName"
+                                              from="${optionalSubjects}"/>
+                                </div>
+                            </div>
+                        </g:if>
+
                         <div class="form-group">
                             <div class="col-md-offset-8 col-lg-4">
                                 <button class="btn btn-primary" type="submit">Save</button>
@@ -118,10 +132,7 @@
             className: {
                 required: true
             },
-            section: {
-                required: true
-            },
-            examType: {
+             examType: {
                 required: true
             },
             name: {

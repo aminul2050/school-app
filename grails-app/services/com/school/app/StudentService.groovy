@@ -1,5 +1,6 @@
 package com.school.app
 
+import com.app.school.settings.ClassName
 import com.app.school.settings.Section
 import com.app.school.stmgmt.Student
 import grails.transaction.Transactional
@@ -9,7 +10,7 @@ import org.codehaus.groovy.grails.web.servlet.mvc.GrailsParameterMap
 class StudentService {
 
     static final String[] sortColumns = ['id','className','section','academicYear','admissionDate']
-    LinkedHashMap studentPaginateList(GrailsParameterMap params){
+    LinkedHashMap studentPaginateList(GrailsParameterMap params, ClassName className, Section section){
         int iDisplayStart = params.iDisplayStart ? params.getInt('iDisplayStart') : CommonUtils.DEFAULT_PAGINATION_START
         int iDisplayLength = params.iDisplayLength ? params.getInt('iDisplayLength') : CommonUtils.DEFAULT_PAGINATION_LENGTH
         String sSortDir = params.sSortDir_0 ? params.sSortDir_0 : CommonUtils.DEFAULT_PAGINATION_SORT_ORDER
@@ -25,13 +26,14 @@ class StudentService {
         def results = c.list(max: iDisplayLength, offset: iDisplayStart) {
             and {
                 eq("schoolId", CommonUtils.DEFAULT_SCHOOL_ID)
+                eq("className", className)
+                eq("section", section)
             }
             if (sSearch) {
                 or {
                     ilike('className', sSearch)
                     ilike('section', sSearch)
                     ilike('academicYear', sSearch)
-                    ilike('admissionDate', sSearch)
                 }
             }
             order(sortColumn, sSortDir)
@@ -48,7 +50,7 @@ class StudentService {
                 } else {
                     serial--
                 }
-                dataReturns.add([DT_RowId: student.id, 0: serial, 1: student.details.fullName,2: student.className.name,3:student.section.name,4:student.academicYear, 5: student.admissionType, 6: ''])
+                dataReturns.add([DT_RowId: student.id, 0: serial, 1: student.details.fullName,2: student.className.name,3:student.section.name,4:student.academicYear, 5: student.rollNumber, 6: ''])
             }
         }
         return [totalCount:totalCount,results:dataReturns]

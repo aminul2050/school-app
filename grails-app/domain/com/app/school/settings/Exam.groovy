@@ -15,12 +15,16 @@ class Exam {
     ClassName className
     Section section
     ExamType examType
+    String examSubjectIds
+    String notCompletedYet
 
     //common properties for every table
     static constraints = {
         endDate(nullable: true)
         publishedDate(nullable: true)
         description(nullable: true)
+        section nullable: true
+        notCompletedYet nullable: true
         //System inserted data
         schoolId nullable: true
         createdBy nullable: true

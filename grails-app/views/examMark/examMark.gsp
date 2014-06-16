@@ -12,14 +12,7 @@
     <div class="col-sm-12">
         <section class="panel">
             <header class="panel-heading">
-                <span class="label label-default">Class:</span>
-                <span class="label label-primary">${exam.className.name}</span>&nbsp;&nbsp;
-                <span class="label label-default">Section:</span>
-                <span class="label label-primary">${exam.section.name}</span>&nbsp;&nbsp;
-                <span class="label label-default">Exam:</span>
-                <span class="label label-primary">${exam.name}</span>&nbsp;&nbsp;
-                <span class="label label-default">Subject</span>
-                <span class="label label-primary">name</span>
+                Add Mark
                 <span class="tools pull-right">
                     <div class="btn-group">
                         <button id="add-new-btn" class="btn btn-primary">
@@ -36,6 +29,7 @@
                             <th>Serial</th>
                             <th>StudentName</th>
                             <th>Mark</th>
+                            <th>GPA</th>
                             <th>Grade</th>
                             <th>Comments</th>
                             <th>Action</th>
@@ -49,6 +43,7 @@
                                 <td>${examMark[2]}</td>
                                 <td>${examMark[3]}</td>
                                 <td>${examMark[4]}</td>
+                                <td>${examMark[5]}</td>
                                 <td>
                                     <sec:access controller="examMark" action="edit">
                                         <span class="col-xs-6"><a href="" referenceId="${examMark.DT_RowId}" class="edit-reference" title="Edit"><span class="green glyphicon glyphicon-edit"></span>&nbsp;Edit&nbsp;</a></span>
@@ -69,19 +64,23 @@
 </div>
 <!-- page end-->
 <r:script>
+   var exam, subject;
     jQuery(function ($) {
+        exam=${exam.id};
+        subject = ${subject.id};
+        $("#student").select2()
         var oTable1 = $('#list-table').dataTable({
 //            "sDom": "<'row'<'col-md-4'><'col-md-4'><'col-md-4'f>r>t<'row'<'col-md-4'l><'col-md-4'i><'col-md-4'p>>",
 //            "bProcessing": true,
             "bAutoWidth": true,
             "bServerSide": true,
             "deferLoading": ${totalCount},
-            "sAjaxSource": "${g.createLink(controller: 'examMark',action: 'list')}",
+            "sAjaxSource": "${g.createLink(controller: 'examMark',action: 'list')}?examId="+exam+"&subjectId="+subject,
             "fnRowCallback": function (nRow, aData, iDisplayIndex) {
                 if(aData.DT_RowId ==undefined){
                     return true;
                 }
-                $('td:eq(5)', nRow).html(getActionButtons(nRow, aData));
+                $('td:eq(6)', nRow).html(getActionButtons(nRow, aData));
                 return nRow;
             },
             "aoColumns": [
@@ -90,12 +89,13 @@
                 null,
                 null,
                 { "bSortable": false },
+                { "bSortable": false },
                 { "bSortable": false }
 
             ]
         });
         $('#add-new-btn').click(function (e) {
-            $("#examMarkCreate").toggle(1000);
+            $("#examMarkCreate").toggle(500);
             e.preventDefault();
         });
         $('#list-table').on('click', 'a.edit-reference', function (e) {
@@ -110,8 +110,9 @@
                             clearForm('#create-form');
                             $('#id').val(data.obj.id);
                             $('#name').val(data.obj.name);
+                            $('#mark').val(data.obj.mark);
                             $('#description').val(data.obj.description);
-                            $("#examMarkCreate").show(1000);
+                            $("#examMarkCreate").show(500);
                         }else{
                             alert(data.message);
                         }

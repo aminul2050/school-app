@@ -51,7 +51,7 @@ class ExamMarkService {
                 } else {
                     serial--
                 }
-                dataReturns.add([DT_RowId: examMark.id, 0: serial, 1: examMark.student.studentName,2:examMark.student.studentNo, 3:examMark.mark,4:'A+', 5: ''])
+                dataReturns.add([DT_RowId: examMark.id, 0: serial, 1: examMark.student.studentName,2:examMark.mark, 3:examMark.gpa,4:examMark.grade,5:examMark.description, 6: ''])
             }
         }
         return [totalCount:totalCount,results:dataReturns]
@@ -93,7 +93,7 @@ class ExamMarkService {
                 }
                 classSubject = ClassSubject.findByClassName(exam.className)
                 subjectList =subjectService.getSubjects(classSubject.subjectIds)
-                dataReturns.add([DT_RowId: exam.id, 0: serial, 1: exam.className.name, 2:exam.section.name, 3: exam.examType.value, 4: exam.name,5:subjectList, 6: exam.examStatus])
+                dataReturns.add([DT_RowId: exam.id, 0: serial, 1: exam.className.name, 2:exam.section? exam.section.name:"All Section", 3: exam.examType.value, 4: exam.name,5:subjectList, 6: exam.examStatus])
             }
         }
         return [totalCount:totalCount,results:dataReturns]

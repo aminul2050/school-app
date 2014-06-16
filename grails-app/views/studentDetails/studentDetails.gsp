@@ -102,6 +102,8 @@
                 success: function (data, textStatus) {
                     if(data.isError==false){
                             clearForm('#create-form');
+                            var datee=data.obj.birthDate;
+                            alert(datee)
                             $('#id').val(data.obj.id);
                             $('#studentID').val(data.obj.studentID);
                             $('#firstName').val(data.obj.firstName);
@@ -109,7 +111,7 @@
                             $('#nickName').val(data.obj.nickName);
                             $('#fatherName').val(data.obj.fatherName);
                             $('#motherName').val(data.obj.motherName);
-                            $('#birthDate').val(data.obj.birthDate);
+                            $('#datepicker').datepicker('setDate', new Date(datee));
                             $('#bloodGroup').val(data.obj.bloodGroup);
                             $('#email').val(data.obj.email);
                             $('#mobileNo').val(data.obj.mobileNo);

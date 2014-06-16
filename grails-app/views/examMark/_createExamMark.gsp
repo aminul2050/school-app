@@ -5,11 +5,11 @@
                 <span class="label label-default">Class:</span>
                 <span class="label label-primary">${exam.className.name}</span>&nbsp;&nbsp;
                 <span class="label label-default">Section:</span>
-                <span class="label label-primary">${exam.section.name}</span>&nbsp;&nbsp;
+                <span class="label label-primary">${exam.section? exam.section.name:"All Section"}</span>
                 <span class="label label-default">Exam:</span>
                 <span class="label label-primary">${exam.name}</span>&nbsp;&nbsp;
                 <span class="label label-default">Subject</span>
-                <span class="label label-primary">name</span>
+                <span class="label label-primary">${subject.name}</span>
                 <span class="tools pull-right">
                     <a class="fa fa-chevron-down" href="javascript:;"></a>
                 </span>
@@ -18,6 +18,7 @@
                 <div class="form">
                     <form class="cmxform form-horizontal " id="create-form">
                         <g:hiddenField name="id"/>
+
                         <div class="form-group ">
                             <label for="student" class="control-label col-lg-3">Student Name</label>
                             <div class="col-lg-6">
@@ -75,8 +76,8 @@
             }
         },
         messages: {
-            name: {
-                required: "Class Name required"
+            student: {
+                required: "Please select a student"
             },
              mark: {
                 required: "Mark required"
@@ -96,7 +97,7 @@
         },
         submitHandler: function (form) {
             $.ajax({
-                url: "${createLink(controller: 'examMark', action: 'save')}",
+                url: "${createLink(controller: 'examMark', action: 'save')}?exam="+exam+"&subject="+subject,
                 type: 'post',
                 dataType: "json",
                 data: $("#create-form").serialize(),
