@@ -83,7 +83,6 @@ class ExamMarkService {
             if (sSortDir.equals(CommonUtils.SORT_ORDER_DESC)) {
                 serial = (totalCount + 1) - iDisplayStart
             }
-            ClassSubject classSubject
             def subjectList
             results.each { Exam exam ->
                 if (sSortDir.equals(CommonUtils.SORT_ORDER_ASC)) {
@@ -91,8 +90,7 @@ class ExamMarkService {
                 } else {
                     serial--
                 }
-                classSubject = ClassSubject.findByClassName(exam.className)
-                subjectList =subjectService.getSubjects(classSubject.subjectIds)
+                subjectList =subjectService.getSubjects(exam.notCompletedYet)
                 dataReturns.add([DT_RowId: exam.id, 0: serial, 1: exam.className.name, 2:exam.section? exam.section.name:"All Section", 3: exam.examType.value, 4: exam.name,5:subjectList, 6: exam.examStatus])
             }
         }
