@@ -63,6 +63,7 @@
 <!-- page end-->
 <r:script>
     jQuery(function ($) {
+    alert()
         var oTable1 = $('#list-table').dataTable({
 //            "sDom": "<'row'<'col-md-4'><'col-md-4'><'col-md-4'f>r>t<'row'<'col-md-4'l><'col-md-4'i><'col-md-4'p>>",
 //            "bProcessing": true,
@@ -115,7 +116,8 @@
                             $('#bloodGroup').val(data.obj.bloodGroup);
                             $('#email').val(data.obj.email);
                             $('#mobileNo').val(data.obj.mobileNo);
-                            $('#cardNo').val(data.obj.cardNo);
+//                            $('#cardNo').val(data.obj.cardNo);
+                            $('#cardNo').val(data.obj.birthDate);
                             $('#imagePath').val(data.obj.imagePath);
                             $('#religion').val(data.obj.religion ? data.obj.religion.name:'');
                             $('#presentAddress').val(data.obj.presentAddress);
