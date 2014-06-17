@@ -11,12 +11,13 @@
                 <div class="form">
                     <form class="cmxform form-horizontal " id="create-form">
                         <g:hiddenField name="id"/>
+                        <div class="row">
 
                         <div class="form-group col-md-4">
                             <div class="col-md-12">
                                 <label for="className" class="control-label">* Class Name.</label>
                                 <g:select tabindex="1" id="className" name='className' class="form-control"
-                                          noSelection="${['':'Select One...']}"
+                                          noSelection="${['':'Select One..']}"
                                           from='${com.app.school.settings.ClassName.list()}'
                                           optionKey="id" optionValue="name"></g:select>
                                 <span for="className" class="help-block"></span>
@@ -38,12 +39,16 @@
                             <div class="col-md-12">
                                 <label for="examType" class="control-label">* Exam Type.</label>
                                 <g:select class=" form-control" id="examType" name='examType' tabindex="3" value=""
-                                          noSelection="${['':'Select One...']}"
+                                          noSelection="${['':'Select One..']}"
                                           from='${com.app.school.enums.ExamType.values()}'
                                           optionKey="key" optionValue="value"></g:select>
                                 <span for="examType" class="help-block"></span>
                             </div>
                         </div>
+
+                        </div>
+
+                        <div class="row">
 
                         <div class="form-group col-md-4">
                             <div class="col-md-12">
@@ -69,6 +74,10 @@
                             </div>
                         </div>
 
+                        </div>
+
+                        <div class="row">
+
                         <div class="form-group col-md-4">
                             <div class="col-md-12">
                                 <label for="description" class="control-label">Description.</label>
@@ -90,6 +99,8 @@
                                 </div>
                             </div>
                         </g:if>
+
+                        </div>
 
                         <div class="form-group">
                             <div class="col-md-offset-8 col-lg-4">
@@ -123,30 +134,30 @@
         errorClass: 'help-block',
         focusInvalid: false,
         rules: {
-            startDate: {
-                required: true
-            },
-            endDate: {
-                required: true
-            },
             className: {
                 required: true
             },
+            section:{
+            required:true
+            },
+
              examType: {
                 required: true
             },
             name: {
                 required: true
-            }
-        },
-        messages: {
+            },
+
             startDate: {
-                required: "Start Date required"
+                required: true
             },
             endDate: {
-                required: "End Date required"
-            },
-            className: {
+                required: true
+            }
+
+        },
+        messages: {
+             className: {
                 required: "Class Name required"
             },
             section: {
@@ -156,8 +167,15 @@
                 required: "Exam Type required"
             },
             name: {
-                required: "Exam Type required"
+                required: "Exam Name required"
+            },
+            startDate: {
+                required: "Start Date required"
+            },
+            endDate: {
+                required: "End Date required"
             }
+
         },
         invalidHandler: function (event, validator) { //display error alert on form submit
             $('.alert-danger', $('#currencyForm')).show();
