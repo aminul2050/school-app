@@ -65,15 +65,18 @@
         rules: {
             name: {
                 required: true,
-                maxlength: 15
+                maxlength: 25
             },
-            description: {
-                maxlength: 100
+            className: {
+              required: true
             }
         },
         messages: {
             name: {
-                required: "Section Name required"
+             required: "Section Name required"
+            },
+             className: {
+                required: "Class Name is required"
             }
         },
         invalidHandler: function (event, validator) { //display error alert on form submit

@@ -8,7 +8,6 @@ class Section {
 
     static constraints = {
         name nullable: false, unique: true
-        className nullable: true
         description nullable: true
         //System inserted data
         schoolId nullable: true

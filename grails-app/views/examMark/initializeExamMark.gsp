@@ -12,7 +12,7 @@
     <div class="col-sm-12">
         <section class="panel">
             <header class="panel-heading">
-                Exam List
+                Exam Mark Entry List
             </header>
             <div class="panel-body">
                 <div class="table-responsive">

@@ -12,7 +12,7 @@
                     <form class="cmxform form-horizontal " id="create-form">
                         <g:hiddenField name="id"/>
                         <div class="form-group ">
-                            <label for="name" class="control-label col-lg-3">Subject Name</label>
+                            <label for="name" class="control-label col-lg-3">Subject Name *</label>
                             <div class="col-lg-6">
                                 <g:textField class="form-control" id="name" name="name"/>
                             </div>
@@ -20,27 +20,27 @@
                         <div class="form-group ">
                             <label for="description" class="control-label col-lg-3">Description</label>
                             <div class="col-lg-6">
-                                <input class=" form-control" id="description" name="description" type="text" />
+                                <g:textField class=" form-control" id="description" name="description"/>
                             </div>
                         </div>
 
                         <div class="form-group ">
-                            <label for="ctMark" class="control-label col-lg-3">Subject Test Mark.</label>
+                            <label for="ctMark" class="control-label col-lg-3">Subject Test Mark. *</label>
                             <div class="col-lg-6">
                                 <g:textField class="form-control" id="ctMark" name="ctMark"/>
                             </div>
                         </div>
                         <div class="form-group ">
-                            <label for="hallMark" class="control-label col-lg-3">Hall Exam Mark</label>
+                            <label for="hallMark" class="control-label col-lg-3">Hall Exam Mark *</label>
                             <div class="col-lg-6">
-                                <input class=" form-control" id="hallMark" name="hallMark" type="text"/>
+                                <g:textField class=" form-control" id="hallMark" name="hallMark"/>
                             </div>
                         </div>
 
                         <div class="form-group ">
                             <label for="isOptional" class="control-label col-lg-3">Optional</label>
                             <div class="col-lg-1">
-                                <input class=" form-control" id="isOptional" name="isOptional" type="checkbox"/>
+                                <input class="form-control" id="isOptional" name="isOptional" type="checkbox"/>
                             </div>
                         </div>
 
@@ -65,15 +65,26 @@
         rules: {
             name: {
                 required: true,
-                maxlength: 20
+                maxlength: 50
             },
-            description: {
-                maxlength: 225
+            ctMark: {
+            required: true,
+                number: true
+            },
+            hallMark: {
+                required: true,
+                number: true
             }
         },
         messages: {
             name: {
                 required: "Subject Name required"
+            },
+            ctMark: {
+                required: "Class Test Mark Name required"
+            },
+            hallMark: {
+                required: "Hall Test Mark Is required"
             }
         },
         invalidHandler: function (event, validator) { //display error alert on form submit
