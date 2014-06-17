@@ -3,6 +3,7 @@ package com.school.app.settings
 import com.app.school.enums.ExamStatus
 import com.app.school.enums.ExamType
 import com.app.school.settings.ClassName
+import com.app.school.settings.ClassSubject
 import com.app.school.settings.Exam
 import com.app.school.settings.Section
 import grails.converters.JSON
@@ -13,9 +14,11 @@ import org.springframework.dao.DataIntegrityViolationException
 class ExamController {
 
     def examService
+    def subjectService
 
     def index() {
         LinkedHashMap resultMap =examService.ExamPaginateList(params)
+//        def subjects = subjectService.getSubjects(classSubject.subjectIds)
 
         if (!resultMap || resultMap.totalCount == 0) {
             render(view: 'exam', model: [dataReturn: null, totalCount: 0])
@@ -120,6 +123,11 @@ class ExamController {
 
         exam = new Exam(examCommand.properties)
         exam.examStatus=ExamStatus.MARKENTRY
+        //@todos- add mapping in UI on next delivery
+        ClassSubject classSubject = ClassSubject.findByClassName(examCommand.className)
+
+        exam.examSubjectIds=classSubject.subjectIds
+        exam.notCompletedYet=classSubject.subjectIds
         if (!examCommand.validate()) {
             result.put('message','Please fill the form correctly')
             outPut=result as JSON
@@ -224,7 +232,6 @@ class ExamCommand {
     Date startDate
     Date endDate
     Date publishedDate
-    String examSubjectIds
     ClassName className
     Section section
     ExamType examType

@@ -84,7 +84,7 @@
 <script src="${resource(dir: 'js/date-time', file: 'bootstrap-datepicker.min.js')}"></script>
 %{--<script src="${resource(dir: 'js/', file: 'jquery.dcjqaccordion.2.7.js')}"></script>--}%
 <script src="${resource(dir: 'js/vertical-menu', file: 'jquery.cookie.js')}"></script>
-<script src="${resource(dir: 'js/vertical-menu', file: 'jquery.hoverIntent.minified.js')}"></script>
+%{--<script src="${resource(dir: 'js/vertical-menu', file: 'jquery.hoverIntent.minified.js')}"></script>--}%
 <script src="${resource(dir: 'js/vertical-menu', file: 'jquery.dcjqaccordion.2.7.min.js')}"></script>
 <script src="${resource(dir: 'js/', file: 'jquery.scrollTo.min.js')}"></script>
 <script src="${resource(dir: 'js/', file: 'jquery.nicescroll.js')}"></script>
