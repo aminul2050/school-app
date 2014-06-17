@@ -14,19 +14,25 @@
             <header class="panel-heading">
                 Add Mark
                 <span class="tools pull-right">
-                    <div class="btn-group">
+                    <div class="form-group">
 
-                        <button id="add-new-btna" class="btn btn-primary">
-                            Add Newa<i class="fa fa-plus"></i>
-                        </button> &nbsp; &nbsp;
+                        <button id="mark-complete" class="btn btn-primary">
+                            Mark Complete<i class="fa fa-compress"></i>
+                        </button>&nbsp;&nbsp;
 
-                        <button id="add-new-btnb" class="btn btn-primary">
-                            Add Newb<i class="fa fa-plus"></i>
-                        </button> &nbsp; &nbsp;
+                        <div class="btn-group">
+                            <button id="download-mark" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Download Mark <i class="fa fa-angle-down"></i>
+                         </button>&nbsp;&nbsp;
+                            <ul class="dropdown-menu pull-right">
+                                <li><a href="#">Print</a></li>
+                                <li><a href="#">Save as PDF</a></li>
+                                <li><a href="#">Export to Excel</a></li>
+                            </ul>
+                        </div>
 
                         <button id="add-new-btn" class="btn btn-primary">
-                        Add New<i class="fa fa-plus"></i>
-                        </button>
+                            Add New<i class="fa fa-plus"></i>
+                        </button>&nbsp;&nbsp;
 
                     </div>
                 </span>
@@ -108,6 +114,12 @@
             $("#examMarkCreate").toggle(500);
             e.preventDefault();
         });
+
+        $('#mark-complete').click(function (e) {
+            window.location.href = '${g.createLink(controller: "examMark",action: 'markComplete')}?id='+exam+'&subjectId='+subject;
+            e.preventDefault();
+        });
+
         $('#list-table').on('click', 'a.edit-reference', function (e) {
             var control = this;
             var referenceId = $(control).attr('referenceId');
