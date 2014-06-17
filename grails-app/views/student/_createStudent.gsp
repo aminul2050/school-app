@@ -16,7 +16,7 @@
                         <div class="form-group ">
                             <label for="details" class="control-label col-md-3">Student Name</label>
                             <div class="col-md-6">
-                                <g:select id="e1" class="populate form-control" name='details'
+                                <g:select id="details" class="populate form-control" name='details'
                                           noSelection="${['': 'Select One...']}"
                                           from='${com.app.school.stmgmt.StudentDetails.list()}'
                                           optionKey="id" optionValue="nameWithId"></g:select>

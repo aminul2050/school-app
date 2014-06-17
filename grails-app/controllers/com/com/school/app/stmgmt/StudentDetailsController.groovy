@@ -180,7 +180,7 @@ class StudentDetailsCommand {
     static constraints = {
         studentID nullable: false
         firstName nullable: false
-        lastName nullable: false
+        lastName nullable: true
 
         fatherAvgIncome nullable: true
         mothersProfession nullable: true

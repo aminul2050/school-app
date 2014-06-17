@@ -225,9 +225,6 @@
             },
             firstName:{
             required: true
-            },
-            lastName:{
-            required: true
             }
         },
         messages: {
@@ -236,9 +233,6 @@
             },
             firstName: {
                 required: "Student First Name required"
-            },
-            lastName: {
-                required: "Student Last Name required"
             }
         },
         invalidHandler: function (event, validator) { //display error alert on form submit

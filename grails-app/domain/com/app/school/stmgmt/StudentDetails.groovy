@@ -26,6 +26,7 @@ class StudentDetails {
 
     static constraints = {
 
+        lastName nullable: true
         fatherAvgIncome nullable: true
         mothersProfession nullable: true
         fathersProfession nullable: true

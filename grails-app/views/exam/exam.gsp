@@ -125,8 +125,10 @@
                             $('#id').val(data.obj.id);
                             $('#name').val(data.obj.name);
                             $('#description').val(data.obj.description);
-                            $('#startDate').val(data.obj.startDate);
-                            $('#endDate').val(data.obj.endDate);
+//                            $('#startDate').val(data.obj.startDate);
+                            $('#datepicker').datepicker('setDate', new Date(data.obj.startDate));
+                            $('#datepickerA').datepicker('setDate', new Date(data.obj.endDate));
+//                            $('#endDate').val(data.obj.endDate);
                             $('#publishedDate').val(data.obj.publishedDate);
                             $('#className').val(data.obj.className.id);
                             $('#section').val(data.obj.section? data.obj.section.id:'');

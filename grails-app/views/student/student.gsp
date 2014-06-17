@@ -111,9 +111,10 @@
                             $('#className').val(data.obj.className.name);
                             $('#section').val(data.obj.section);
                             $('#academicYear').val(data.obj.academicYear);
-                            $('#details').val(data.obj.details.fullName);
+                            $('#details').val(data.obj.details.id);
                             $('#studentNo').val(data.obj.studentNo);
-
+                            $('#admissionDate').datepicker('setDate', new Date(data.obj.admissionDate));
+                            $('#rollNumber').val(data.obj.rollNumber);
                             var subjectIds =data.obj.subjectIds;
                             var numbersArray = subjectIds.split(',');
                             $('#optionalSubjects').multiSelect('select',numbersArray);
