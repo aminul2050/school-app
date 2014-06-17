@@ -10,6 +10,9 @@ import com.app.school.stmgmt.Student
 import com.school.app.CommonUtils
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
+import org.codehaus.groovy.grails.commons.ApplicationHolder
+import org.codehaus.groovy.grails.plugins.jasper.JasperExportFormat
+import org.codehaus.groovy.grails.plugins.jasper.JasperReportDef
 import org.springframework.dao.DataIntegrityViolationException
 import sun.rmi.runtime.Log
 
@@ -18,6 +21,7 @@ class ExamMarkController {
 
     def examMarkService
     def subjectService
+    def jasperService
 
     def index() {
         LinkedHashMap resultMap = examMarkService.examIniPaginateList(params)
@@ -119,6 +123,44 @@ class ExamMarkController {
         outPut=result as JSON
         render outPut
 
+    }
+    def markComplete(Long id, Long subjectId){
+        Exam exam = Exam.get(id)
+        if(!exam){
+            redirect(action: 'index')
+            return
+        }
+        Subject subject = Subject.read(subjectId)
+        if(!subject){
+            redirect(action: 'index')
+            return
+        }
+        exam.notCompletedYet = CommonUtils.handleMarkComplete(exam.notCompletedYet, subject.id)
+        exam.save()
+        redirect(action: 'index')
+    }
+    def download(Long id, Long subjectId, String exportFormat){
+        /*Exam exam = Exam.read(id)
+        if(!exam){
+            redirect(action: 'index')
+            return
+        }*/
+        //check export format is valid [pdf, excel,csv]
+        Map reportMap = new LinkedHashMap()
+        reportMap.put("examId","1")
+        reportMap.put("sectionId","1")
+        reportMap.put("subjectId","1")
+
+        File reportFolder = ApplicationHolder.application.parentContext.getResource("/reports").file;
+        String reportDir = reportFolder.absolutePath;
+        println "reportDir " + reportDir
+        JasperReportDef reportDef = new JasperReportDef(name: 'sample-jasper-plugin.jrxml', fileFormat: JasperExportFormat.PDF_FORMAT,
+                parameters: reportMap, folder: reportDir)
+        ByteArrayOutputStream report = jasperService.generateReport(reportDef) // generate report
+
+        response.contentType = 'pdf' /*ConfigurationHolder.config.grails.mime.types[REPORT_FILE_FORMAT]*/
+        response.setHeader("Content-disposition", "inline;filename=subjectNumbers.pdf")
+        response.outputStream << report.toByteArray()
     }
 
     def delete(Long id) {
