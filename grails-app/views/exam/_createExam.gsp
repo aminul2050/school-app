@@ -11,12 +11,13 @@
                 <div class="form">
                     <form class="cmxform form-horizontal " id="create-form">
                         <g:hiddenField name="id"/>
+                        <div class="row">
 
                         <div class="form-group col-md-4">
                             <div class="col-md-12">
-                                <label for="className" class="control-label">* Class Name.</label>
+                                <label for="className" class="control-label">Class Name<span class="required-indicator">*</span></label>
                                 <g:select tabindex="1" id="className" name='className' class="form-control"
-                                          noSelection="${['':'Select One...']}"
+                                          noSelection="${['':'Select One..']}"
                                           from='${com.app.school.settings.ClassName.list()}'
                                           optionKey="id" optionValue="name"></g:select>
                                 <span for="className" class="help-block"></span>
@@ -25,7 +26,7 @@
 
                         <div class="form-group col-md-4">
                             <div class="col-md-12">
-                                <label  for="section" class="control-label">* Section.</label>
+                                <label  for="section" class="control-label">Section<span class="required-indicator">*</span></label>
                                 <g:select tabindex="2" id="section" name='section' class="form-control"
                                           noSelection="${['':'All Section..']}"
                                           from='${com.app.school.settings.Section.list()}'
@@ -36,18 +37,22 @@
 
                         <div  class="form-group col-md-4">
                             <div class="col-md-12">
-                                <label for="examType" class="control-label">* Exam Type.</label>
+                                <label for="examType" class="control-label">Exam Type<span class="required-indicator">*</span></label>
                                 <g:select class=" form-control" id="examType" name='examType' tabindex="3" value=""
-                                          noSelection="${['':'Select One...']}"
+                                          noSelection="${['':'Select One..']}"
                                           from='${com.app.school.enums.ExamType.values()}'
                                           optionKey="key" optionValue="value"></g:select>
                                 <span for="examType" class="help-block"></span>
                             </div>
                         </div>
 
+                        </div>
+
+                        <div class="row">
+
                         <div class="form-group col-md-4">
                             <div class="col-md-12">
-                                <label for="name" class="control-label">* Exam Name.</label>
+                                <label for="name" class="control-label">Exam Name<span class="required-indicator">*</span> </label>
                                 <input class=" form-control" id="name" name="name" placeholder="Enter Exam Name" tabindex="4" type="text" />
                                 <span for="name" class="help-block"></span>
                             </div>
@@ -55,7 +60,7 @@
 
                         <div class="form-group col-md-4">
                             <div class="col-md-12">
-                                <label for="datepicker" class="control-label">* Begaining Date.</label>
+                                <label for="datepicker" class="control-label">Begaining Date <span class="required-indicator">*</span></label>
                                 <input class=" form-control" id="datepicker" name="startDate" type="text" tabindex="5" placeholder="Enter Begaining Date." class="form-control datepicker"/>
                                 <span for="datepicker" class="help-block"></span>
                             </div>
@@ -63,11 +68,15 @@
 
                         <div class="form-group col-md-4">
                             <div class="col-md-12">
-                                <label for="datepickerA" class="control-label">* End Date.</label>
+                                <label for="datepickerA" class="control-label">End Date <span class="required-indicator">*</span></label>
                                 <input class=" form-control" id="datepickerA" name="endDate" type="text" placeholder="Enter End date" tabindex="6" class="form-control datepicker"/>
                                 <span for="datepickerA" class="help-block"></span>
                             </div>
                         </div>
+
+                        </div>
+
+                        <div class="row">
 
                         <div class="form-group col-md-4">
                             <div class="col-md-12">
@@ -90,6 +99,8 @@
                                 </div>
                             </div>
                         </g:if>
+
+                        </div>
 
                         <div class="form-group">
                             <div class="col-md-offset-8 col-lg-4">
@@ -123,30 +134,30 @@
         errorClass: 'help-block',
         focusInvalid: false,
         rules: {
-            startDate: {
-                required: true
-            },
-            endDate: {
-                required: true
-            },
             className: {
                 required: true
             },
+            section:{
+            required:true
+            },
+
              examType: {
                 required: true
             },
             name: {
                 required: true
-            }
-        },
-        messages: {
+            },
+
             startDate: {
-                required: "Start Date required"
+                required: true
             },
             endDate: {
-                required: "End Date required"
-            },
-            className: {
+                required: true
+            }
+
+        },
+        messages: {
+             className: {
                 required: "Class Name required"
             },
             section: {
@@ -156,8 +167,15 @@
                 required: "Exam Type required"
             },
             name: {
-                required: "Exam Type required"
+                required: "Exam Name required"
+            },
+            startDate: {
+                required: "Start Date required"
+            },
+            endDate: {
+                required: "End Date required"
             }
+
         },
         invalidHandler: function (event, validator) { //display error alert on form submit
             $('.alert-danger', $('#currencyForm')).show();

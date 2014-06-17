@@ -1,5 +1,8 @@
 package com.school.app
 
+import org.apache.commons.lang3.ArrayUtils
+import org.apache.commons.lang3.StringUtils
+
 /**
  * Created by aminul on 5/29/2014.
  */
@@ -29,5 +32,21 @@ class CommonUtils {
         if(!oldDate) return ''
         String newDate = oldDate.format(UI_DATE_FORMAT)
         return newDate
+    }
+
+    public static String handleMarkComplete(String original, Long subjectId){
+        String returnStr = null
+        String[] returnArray = null
+        try{
+            String[] arrayFromOriginal = StringUtils.split(original,",")
+            returnArray = ArrayUtils.removeElement(arrayFromOriginal,subjectId)
+
+            if(returnArray !=null && returnArray.length>0){
+                returnStr = StringUtils.join(returnArray,",")
+            }
+        }catch(Exception ex){
+            println(ex.message)
+        }
+        return returnStr
     }
 }

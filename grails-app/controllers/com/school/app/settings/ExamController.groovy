@@ -25,7 +25,7 @@ class ExamController {
             return
         }
         int totalCount = resultMap.totalCount
-        render(view: 'exam', model: [dataReturn: resultMap.results, totalCount: totalCount, subjects:subjects])
+        render(view: 'exam', model: [dataReturn: resultMap.results, totalCount: totalCount])
     }
 
 //    def save(ExamCommand examCommand) {
@@ -232,7 +232,6 @@ class ExamCommand {
     Date startDate
     Date endDate
     Date publishedDate
-    String examSubjectIds
     ClassName className
     Section section
     ExamType examType
