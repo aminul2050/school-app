@@ -15,9 +15,19 @@
                 Add Mark
                 <span class="tools pull-right">
                     <div class="btn-group">
+
+                        <button id="add-new-btna" class="btn btn-primary">
+                            Add Newa<i class="fa fa-plus"></i>
+                        </button> &nbsp; &nbsp;
+
+                        <button id="add-new-btnb" class="btn btn-primary">
+                            Add Newb<i class="fa fa-plus"></i>
+                        </button> &nbsp; &nbsp;
+
                         <button id="add-new-btn" class="btn btn-primary">
-                            Add New<i class="fa fa-plus"></i>
+                        Add New<i class="fa fa-plus"></i>
                         </button>
+
                     </div>
                 </span>
             </header>
