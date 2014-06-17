@@ -15,7 +15,7 @@
 
                         <div class="form-group col-md-4">
                             <div class="col-md-12">
-                                <label for="className" class="control-label">* Class Name.</label>
+                                <label for="className" class="control-label">Class Name<span class="required-indicator">*</span></label>
                                 <g:select tabindex="1" id="className" name='className' class="form-control"
                                           noSelection="${['':'Select One..']}"
                                           from='${com.app.school.settings.ClassName.list()}'
@@ -26,7 +26,7 @@
 
                         <div class="form-group col-md-4">
                             <div class="col-md-12">
-                                <label  for="section" class="control-label">* Section.</label>
+                                <label  for="section" class="control-label">Section<span class="required-indicator">*</span></label>
                                 <g:select tabindex="2" id="section" name='section' class="form-control"
                                           noSelection="${['':'All Section..']}"
                                           from='${com.app.school.settings.Section.list()}'
@@ -37,7 +37,7 @@
 
                         <div  class="form-group col-md-4">
                             <div class="col-md-12">
-                                <label for="examType" class="control-label">* Exam Type.</label>
+                                <label for="examType" class="control-label">Exam Type<span class="required-indicator">*</span></label>
                                 <g:select class=" form-control" id="examType" name='examType' tabindex="3" value=""
                                           noSelection="${['':'Select One..']}"
                                           from='${com.app.school.enums.ExamType.values()}'
@@ -52,7 +52,7 @@
 
                         <div class="form-group col-md-4">
                             <div class="col-md-12">
-                                <label for="name" class="control-label">* Exam Name.</label>
+                                <label for="name" class="control-label">Exam Name<span class="required-indicator">*</span> </label>
                                 <input class=" form-control" id="name" name="name" placeholder="Enter Exam Name" tabindex="4" type="text" />
                                 <span for="name" class="help-block"></span>
                             </div>
@@ -60,7 +60,7 @@
 
                         <div class="form-group col-md-4">
                             <div class="col-md-12">
-                                <label for="datepicker" class="control-label">* Begaining Date.</label>
+                                <label for="datepicker" class="control-label">Begaining Date <span class="required-indicator">*</span></label>
                                 <input class=" form-control" id="datepicker" name="startDate" type="text" tabindex="5" placeholder="Enter Begaining Date." class="form-control datepicker"/>
                                 <span for="datepicker" class="help-block"></span>
                             </div>
@@ -68,7 +68,7 @@
 
                         <div class="form-group col-md-4">
                             <div class="col-md-12">
-                                <label for="datepickerA" class="control-label">* End Date.</label>
+                                <label for="datepickerA" class="control-label">End Date <span class="required-indicator">*</span></label>
                                 <input class=" form-control" id="datepickerA" name="endDate" type="text" placeholder="Enter End date" tabindex="6" class="form-control datepicker"/>
                                 <span for="datepickerA" class="help-block"></span>
                             </div>
