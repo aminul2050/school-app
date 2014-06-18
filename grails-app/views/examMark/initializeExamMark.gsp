@@ -38,7 +38,7 @@
                                 <td>${examIni[3]}</td>
                                 <td>${examIni[4]}</td>
                                 <td>
-                                    <g:select class=" form-control" id="subjectId" name='subjectId'
+                                    <g:select class="form-control" id="subjectId${examIni.DT_RowId}" name='subjectId'
                                               noSelection="${['':'Select One...']}"
                                               from='${examIni[5]}'
                                               optionKey="id" optionValue="name"></g:select>
@@ -67,7 +67,7 @@
         $('#list-table').on('click', 'a.edit-reference', function (e) {
             var control = this;
             var referenceId = $(control).attr('referenceId');
-            var subjectId = $('#subjectId').val();
+            var subjectId = $('#subjectId'+referenceId).val();
             if(subjectId ==null || subjectId ==''){
                 alert("Select subject to entry mark");
                 return false;

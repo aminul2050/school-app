@@ -26,7 +26,7 @@
 
                         <div class="form-group col-md-4">
                             <div class="col-md-12">
-                                <label  for="section" class="control-label">Section<span class="required-indicator">*</span></label>
+                                <label  for="section" class="control-label">Section<span class="required-indicator"></span></label>
                                 <g:select tabindex="2" id="section" name='section' class="form-control"
                                           noSelection="${['':'All Section..']}"
                                           from='${com.app.school.settings.Section.list()}'
@@ -137,10 +137,6 @@
             className: {
                 required: true
             },
-            section:{
-            required:true
-            },
-
              examType: {
                 required: true
             },
@@ -159,9 +155,6 @@
         messages: {
              className: {
                 required: "Class Name required"
-            },
-            section: {
-                required: "Section required"
             },
             examType: {
                 required: "Exam Type required"

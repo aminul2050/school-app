@@ -56,6 +56,13 @@
 </div>
 
 <r:script>
+
+jQuery(function ($) {
+$("#student").select2({
+        placeholder: "Select a State",
+        allowClear: true
+    });
+   });
     $('#create-form').validate({
         errorElement: 'small',
         errorClass: 'help-block',

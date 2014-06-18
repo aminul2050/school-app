@@ -23,12 +23,12 @@
                             </div>
                         </div>
 
-                        <div class="form-group ">
-                            <label for="academicYear" class="control-label col-md-3">Academic Year</label>
-                            <div class="col-md-6">
-                                <input class=" form-control" id="academicYear" name="academicYear" type="text" value="2014"/>
-                            </div>
-                        </div>
+                        %{--<div class="form-group ">--}%
+                            %{--<label for="academicYear" class="control-label col-md-3">Academic Year</label>--}%
+                            %{--<div class="col-md-6">--}%
+                                %{--<input class=" form-control" id="academicYear" name="academicYear" type="text" value="2014"/>--}%
+                            %{--</div>--}%
+                        %{--</div>--}%
 
                         <div class="form-group ">
                             <label for="rollNumber" class="control-label col-md-3">Roll No</label>
@@ -73,6 +73,12 @@
 </div>
 
 <r:script>
+jQuery(function ($) {
+$("#details").select2({
+        placeholder: "Select a State",
+        allowClear: true
+    });
+   });
 $('#optionalSubjects').multiSelect();
     $('#admissionDate').datepicker({
             format: 'dd/mm/yyyy',
