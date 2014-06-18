@@ -47,7 +47,9 @@
 </div>
 
 <r:script>
-        $('#classSubjectMapping').multiSelect();
+        $('#classSubjectMapping').multiSelect({
+            keepOrder: true
+        });
 //        var demo1 = $('[name="classSubjectMap[]"]').bootstrapDualListbox();
     $('#create-form').validate({
         errorElement: 'small',
@@ -76,10 +78,10 @@
             $(e).remove();
         },
         submitHandler: function (form) {
-        var subjectIds = $('[name="classSubjectMap[]"]').val();
-        if(subjectIds==undefined || subjectIds ==null){
-        alert("Plese map subject with class");
-        return false;
+        var subjectIds = $('#classSubjectMapping').val();
+        if(subjectIds==undefined || subjectIds ==null || subjectIds ==''){
+            alert("Plese map subject with class");
+            return false;
         }
             $.ajax({
                 url: "${createLink(controller: 'classSubject', action: 'save')}?subjectIds="+subjectIds,

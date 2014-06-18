@@ -34,7 +34,7 @@ class CommonUtils {
         return newDate
     }
 
-    public static String handleMarkComplete(String original, Long subjectId){
+    public static String handleMarkComplete(String original, String subjectId){
         String returnStr = null
         String[] returnArray = null
         try{

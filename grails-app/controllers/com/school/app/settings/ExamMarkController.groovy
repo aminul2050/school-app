@@ -135,7 +135,8 @@ class ExamMarkController {
             redirect(action: 'index')
             return
         }
-        exam.notCompletedYet = CommonUtils.handleMarkComplete(exam.notCompletedYet, subject.id)
+
+        exam.notCompletedYet = CommonUtils.handleMarkComplete(exam.notCompletedYet, subject.id.toString())
         exam.save()
         redirect(action: 'index')
     }
