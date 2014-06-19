@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subjectMark" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="84823e60-20c8-418e-ad0d-e2a70588b1f3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="exam" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="subject" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="subjectName" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fieldNames" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="condition" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[Select student.student_name, em.mark, em.grade, em.gpa FROM exam_mark em join student ON em.student_id = student.id where exam_id=$P{exam} and subject_id=$P{subject}]]>
+	</queryString>
+	<field name="student_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mark" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="grade" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gpa" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement uuid="df830d66-71f4-4182-b8fa-137e1d34c463" x="0" y="0" width="229" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA["Subject Name :"+$P{subjectName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="584e80de-df80-4e0a-9354-33a96f1aa0e4" x="10" y="0" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[student_name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="85c4003b-d2ce-40fd-8039-094aa828f05c" x="110" y="0" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[mark]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fc47aa49-ddb8-482c-b0e6-6e80757405b7" x="210" y="0" width="100" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[false]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<text><![CDATA[grade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e03e27a0-07fe-42c5-9089-a5054e010ba0" x="310" y="0" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[gpa]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="63bc863d-55ce-4d50-83ce-414370e47531" x="10" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{student_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="bc4b6190-8684-40fb-a81b-5a0e3ba825e1" x="110" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{mark}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="65f1dc43-1b71-44ce-b071-09b90734b50b" stretchType="RelativeToTallestObject" x="210" y="0" width="100" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[false]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{grade}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="54334dbd-64f1-4bf5-9b53-eb50504771e2" x="310" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{gpa}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

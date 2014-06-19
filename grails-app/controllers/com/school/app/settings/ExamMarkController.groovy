@@ -147,15 +147,16 @@ class ExamMarkController {
             return
         }*/
         //check export format is valid [pdf, excel,csv]
+
         Map reportMap = new LinkedHashMap()
-        reportMap.put("examId","1")
-        reportMap.put("sectionId","1")
-        reportMap.put("subjectId","1")
+        reportMap.put("exam",Long.valueOf(1))
+        reportMap.put("subject",Long.valueOf(1))
+        reportMap.put("subjectName","Social Secience")
 
         File reportFolder = ApplicationHolder.application.parentContext.getResource("/reports").file;
         String reportDir = reportFolder.absolutePath;
         println "reportDir " + reportDir
-        JasperReportDef reportDef = new JasperReportDef(name: 'sample-jasper-plugin.jrxml', fileFormat: JasperExportFormat.PDF_FORMAT,
+        JasperReportDef reportDef = new JasperReportDef(name: 'subjectMark.jasper', fileFormat: JasperExportFormat.PDF_FORMAT,
                 parameters: reportMap, folder: reportDir)
         ByteArrayOutputStream report = jasperService.generateReport(reportDef) // generate report
 
