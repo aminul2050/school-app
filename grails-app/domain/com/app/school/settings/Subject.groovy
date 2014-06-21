@@ -11,6 +11,7 @@ class Subject {
     static constraints = {
         name nullable: false, unique: true
         description nullable: true
+        ctMark nullable: true
 
         //System inserted data
         schoolId nullable: true
