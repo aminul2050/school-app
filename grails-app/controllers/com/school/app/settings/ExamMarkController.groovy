@@ -47,12 +47,18 @@ class ExamMarkController {
             redirect(action: 'index')
             return
         }
+        print("exam.className-----"+exam.className)
+        print("exam.section-------"+exam.section)
         def studentList
         if(exam.section){
-            studentList = Student.findBySchoolIdAndClassNameAndSection(CommonUtils.DEFAULT_SCHOOL_ID, exam.className,exam.section)
+//            studentList = Student.findBySchoolIdAndClassNameAndSection(CommonUtils.DEFAULT_SCHOOL_ID, exam.className,exam.section)
+            studentList = Student.findAllBySchoolIdAndClassNameAndSection(CommonUtils.DEFAULT_SCHOOL_ID, exam.className,exam.section)
+
         }else {
-           studentList = Student.findBySchoolIdAndClassName(CommonUtils.DEFAULT_SCHOOL_ID,exam.className)
+//           studentList = Student.findBySchoolIdAndClassName(CommDonUtils.DEFAULT_SCHOOL_ID,exam.className)
+           studentList = Student.findAllBySchoolIdAndClassNameAndSection(CommDonUtils.DEFAULT_SCHOOL_ID,exam.className)
         }
+        print("studentList------------------"+studentList)
         LinkedHashMap resultMap = examMarkService.examMarkPaginateList(params,exam,subject)
 
         if (!resultMap || resultMap.totalCount == 0) {
@@ -138,6 +144,9 @@ class ExamMarkController {
 
         exam.notCompletedYet = CommonUtils.handleMarkComplete(exam.notCompletedYet, subject.id.toString())
         exam.save()
+
+//        def examMark=ExamMark.findAllBySchoolIdAndExamAndSubject(CommonUtils.DEFAULT_SCHOOL_ID, exam.className,exam.section)
+//        studentList = Student.findAllBySchoolIdAndClassNameAndSection(CommonUtils.DEFAULT_SCHOOL_ID, exam.className,exam.section)
         redirect(action: 'index')
     }
     def download(Long id, Long subjectId, String exportFormat){

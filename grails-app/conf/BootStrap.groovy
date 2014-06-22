@@ -17,11 +17,24 @@ class BootStrap {
         mapClassSubject()
     }
     void createClassName(){
+        ClassName.findByName('Pre Nursery')?:new ClassName(name: 'Pre Nursery',description: 'Eligible age limit 3 to 5 only').save()
+        ClassName.findByName('Nursery')?:new ClassName(name: 'Nursery',description: 'Eligible age limit 3 to 5 only').save()
+        ClassName.findByName('Pre One')?:new ClassName(name: 'Pre One',description: 'Eligible age limit 3 to 5 only').save()
+        ClassName.findByName('Class 1')?:new ClassName(name: 'Class 1',description: 'Eligible age limit 3 to 5 only').save()
         ClassName.findByName('Class 1')?:new ClassName(name: 'Class 1',description: 'Eligible age limit 3 to 5 only').save()
         ClassName.findByName('Class 2')?:new ClassName(name: 'Class 2',description: 'Eligible age limit 5 to 6 only').save()
       ClassName.findByName('Class 3')?:new ClassName(name: 'Class 3',description: 'Eligible age limit 6 to 7 only').save(flush: true)
       }
     void createSection(){
+        ClassName PreNursery = ClassName.findByName('Pre Nursery')
+        Section.findByName('Renaissance')?: new Section(name: 'Renaissance',description: 'Some describtion', className: PreNursery).save()
+        Section.findByName('Revolation')?: new Section(name: 'Revolation',description: 'Some describtion', className: PreNursery).save()
+        ClassName Nursery = ClassName.findByName('Nursery')
+        Section.findByName('Amazan')?: new Section(name: 'Amazan',description: 'Some describtion', className: Nursery).save()
+        Section.findByName('Mississipi')?: new Section(name: 'Mississipi',description: 'Some describtion', className: Nursery).save()
+        ClassName PreOne = ClassName.findByName('Pre One')
+        Section.findByName('Pre One')?: new Section(name: 'PreOne',description: 'Some describtion', className: PreOne).save()
+        Section.findByName('Pre One')?: new Section(name: 'PreOne',description: 'Some describtion', className: PreOne).save()
         ClassName className2 = ClassName.findByName('Class 2')
         Section.findByName('Morning Glory')?: new Section(name: 'Morning Glory',description: 'Some describtion', className: className2).save()
         Section.findByName('Blue Bird')?: new Section(name: 'Blue Bird',description: 'Some describtion', className: className2).save()
@@ -32,6 +45,9 @@ class BootStrap {
         Subject.findByName('Mathematics')?:new Subject(name: 'Mathematics',description: 'Bangla for all students',ctMark: 30,hallMark: 80).save()
         Subject.findByName('Physics')?:new Subject(name: 'Physics',description: 'Bangla for all students',ctMark: 30,hallMark: 80,isOptional: true).save()
         Subject.findByName('Biology')?:new Subject(name: 'Biology',description: 'Bangla for all students',ctMark: 30,hallMark: 80,isOptional: true).save()
+        Subject.findByName('General Knowledge')?:new Subject(name: 'General Knowledge',description: 'General Knowledge for all students',ctMark: 30,hallMark: 80).save()
+        Subject.findByName('Arts & Design')?:new Subject(name: 'Arts & Design',description: 'Arts & Design for all students',ctMark: 30,hallMark: 80).save()
+        Subject.findByName('10% of EXBP')?:new Subject(name: '10% of EXBP',description: '10% of EXBP for all students',ctMark: 30,hallMark: 80).save()
     }
     void mapClassSubject(){
         Subject bangla = Subject.findByName('Bangla')
