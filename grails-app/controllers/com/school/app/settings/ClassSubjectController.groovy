@@ -5,6 +5,7 @@ import com.app.school.settings.ClassSubject
 import com.app.school.settings.Subject
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
+import org.apache.commons.lang3.StringUtils
 import org.springframework.dao.DataIntegrityViolationException
 
 @Secured(['ROLE_SUPER_ADMIN'])
@@ -39,6 +40,8 @@ class ClassSubjectController {
             render outPut
             return
         }
+        String[] arrayFromOriginal = StringUtils.split(classSubjectCommand.subjectIds,",")
+        int numOfSubject = arrayFromOriginal.length
 
         ClassSubject classSubject
         if (params.id) { //update Currency
@@ -50,6 +53,7 @@ class ClassSubjectController {
                 return
             }
             classSubject.properties = classSubjectCommand.properties
+            classSubject.numberOfSubject=numOfSubject
             if (!classSubject.validate()) {
                 result.put('message','Please fill the form correctly')
                 outPut=result as JSON
@@ -64,6 +68,7 @@ class ClassSubjectController {
             return
         }
         classSubject = new ClassSubject(classSubjectCommand.properties)
+        classSubject.numberOfSubject=numOfSubject
         if (!classSubjectCommand.validate()) {
             result.put('message','Please fill the form correctly')
             outPut=result as JSON

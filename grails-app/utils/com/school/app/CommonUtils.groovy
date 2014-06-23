@@ -49,4 +49,16 @@ class CommonUtils {
         }
         return returnStr
     }
+
+    public static int subjectIndexInCls(String subjectIds, def subjectToFind){
+        int returnIdx = -1
+        try{
+            def arrayFromOriginal = StringUtils.split(subjectIds,",")
+
+            returnIdx = StringUtils.indexOf(arrayFromOriginal, subjectToFind)
+        }catch(Exception ex){
+            println(ex.message)
+        }
+        return returnIdx
+    }
 }

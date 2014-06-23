@@ -13,6 +13,7 @@ class Student {
     String subjectIds
     StudentDetails details
     String studentName
+    String studentID
     Integer rollNumber
     Date admissionDate
     AdmissionType admissionType = AdmissionType.NEWADMISSION

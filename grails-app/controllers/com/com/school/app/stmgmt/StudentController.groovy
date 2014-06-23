@@ -56,6 +56,7 @@ class StudentController {
             }
             student.properties = studentCommand.properties
             student.studentName=student.details.fullName
+            student.studentID = student.details.studentID
             if (!student.validate()) {
                 result.put('message','Please fill the form correctly')
                 outPut=result as JSON
@@ -71,6 +72,7 @@ class StudentController {
         }
         student = new Student(studentCommand.properties)
         student.studentName=studentCommand.details.fullName
+        student.studentID = student.details.studentID
         if (!studentCommand.validate()) {
             result.put('message','Please fill the form correctly')
             outPut=result as JSON

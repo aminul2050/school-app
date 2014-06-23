@@ -5,6 +5,7 @@ class ClassSubject {
 
     ClassName className
     String subjectIds
+    int numberOfSubject
 
     static constraints = {
         className unique: true
