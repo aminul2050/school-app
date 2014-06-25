@@ -3,12 +3,14 @@ package com.school.app
 import org.apache.commons.lang3.ArrayUtils
 import org.apache.commons.lang3.StringUtils
 
+import java.lang.reflect.Array
+
 /**
  * Created by aminul on 5/29/2014.
  */
 class CommonUtils {
     public static final int DEFAULT_PAGINATION_START =0
-    public static final int DEFAULT_PAGINATION_LENGTH =10
+    public static final int DEFAULT_PAGINATION_LENGTH =25
     public static final String DEFAULT_PAGINATION_SORT_ORDER ='desc'
     public static final String DEFAULT_PAGINATION_SORT_COLUMN ='id'
     public static final int DEFAULT_PAGINATION_SORT_IDX =0
@@ -53,9 +55,25 @@ class CommonUtils {
     public static int subjectIndexInCls(String subjectIds, def subjectToFind){
         int returnIdx = -1
         try{
+
             def arrayFromOriginal = StringUtils.split(subjectIds,",")
 
-            returnIdx = StringUtils.indexOf(arrayFromOriginal, subjectToFind)
+            for (int i = 0; i < arrayFromOriginal.length; i++) {
+                if (arrayFromOriginal[i].toString().equalsIgnoreCase(subjectToFind.toString())) {
+                    System.out.println(i);
+                    returnIdx=i+1
+                    break;
+                }
+            }
+            print("arrayFromOriginal--------"+arrayFromOriginal)
+            print("subjectToFind--------"+subjectToFind)
+            print("returnIdx--------"+returnIdx)
+
+//            Array.asList(arrayFromOriginal).indexOf(arrayFromOriginal)
+//            returnIdx = StringUtils.indexOf(arrayFromOriginal, Character.parseInt(subjectToFind.toString()))
+//            returnIdx =  Array.asList(arrayFromOriginal).indexOf(arrayFromOriginal)
+//            print("returnIdx--------"+returnIdx)
+
         }catch(Exception ex){
             println(ex.message)
         }

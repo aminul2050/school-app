@@ -22,6 +22,7 @@ class ExamMarkController {
     def examMarkService
     def subjectService
     def jasperService
+    def tabulationService
 
     def index() {
         LinkedHashMap resultMap = examMarkService.examIniPaginateList(params)
@@ -144,6 +145,10 @@ class ExamMarkController {
 
         exam.notCompletedYet = CommonUtils.handleMarkComplete(exam.notCompletedYet, subject.id.toString())
         exam.save()
+
+        print("exam-------------"+exam)
+        def result = tabulationService.markSubjectComplete(exam,subject)
+
 
 //        def examMark=ExamMark.findAllBySchoolIdAndExamAndSubject(CommonUtils.DEFAULT_SCHOOL_ID, exam.className,exam.section)
 //        studentList = Student.findAllBySchoolIdAndClassNameAndSection(CommonUtils.DEFAULT_SCHOOL_ID, exam.className,exam.section)

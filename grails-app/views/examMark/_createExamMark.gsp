@@ -22,19 +22,20 @@
                         <div class="form-group ">
                             <label for="student" class="control-label col-lg-3">Student Name</label>
                             <div class="col-lg-6">
-                                %{--<g:textField class="form-control" id="details" name="details"/>--}%
                                 <g:select id="student" class="populate form-control" name='student'
                                           noSelection="${['': 'Select One...']}"
                                           from='${studentList}'
                                           optionKey="id" optionValue="studentName"></g:select>
                             </div>
                         </div>
+
                         <div class="form-group ">
                             <label for="Mark" class="control-label col-lg-3">Mark </label>
                             <div class="col-lg-6">
                                 <g:textField class="form-control" id="mark" name="mark"/>
                             </div>
                         </div>
+
                         <div class="form-group ">
                             <label for="description" class="control-label col-lg-3">Comments</label>
                             <div class="col-lg-6">
@@ -48,6 +49,7 @@
                                 <button class="btn btn-default" type="button">Cancel</button>
                             </div>
                         </div>
+
                     </form>
                 </div>
             </div>
